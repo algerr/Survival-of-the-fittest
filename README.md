@@ -1,7 +1,7 @@
 # Survival-of-the-fittest
 Informatik Projekt 2022/2023 - 1. Halbjahr
 
-![🟥Survival_of_the_fittest🟩](https://user-images.githubusercontent.com/65679099/199816695-0c6b57e9-45b8-4662-a3da-2343c47de6bf.png)
+![🟥Survival_of_the_fittest🟩](https://user-images.githubusercontent.com/65679099/199816844-95631972-b3f5-4ce5-8804-ca4810bd991a.png)
 
 ![image](https://user-images.githubusercontent.com/65679099/199478187-8c3a0b3c-76b7-4fb8-9c23-724da39c42ee.png)
 
