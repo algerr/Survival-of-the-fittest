@@ -21,19 +21,18 @@ Somit werden zunehmend Wesen mit ähnlichen Genen übrig bleiben, die fast alle 
 
 In unserer Simulation gibt es eine einstellbare Anzahl an Wesen. 
 Jedes Wesen ist als Objekt definiert und besitzt einen Parameter Genomgröße.
-
-# Die Gene
-
-![carbon (5)](https://user-images.githubusercontent.com/65679099/200275275-d3680b1c-8089-41f4-97be-e89226b3c53b.png)
-
 Die [GenomGröße](https://de.wikipedia.org/wiki/Genomgr%C3%B6%C3%9Fe) beschreibt die Menge der Genome.
 Ein [Genom](https://de.wikipedia.org/wiki/Genom) beinhaltet die Gesamtheit der vererbbaren Informationen einer Zelle.
-Ein "Datensatz" Ergbut, der in einem Genom gespeichert wird, besteht aus drei verschiedenen Genen.
+Ein "Datensatz" Ergbut, der in einem Genom gespeichert wird, besteht aus drei verschiedenen [Genen](#die-gene).
 Einem X-Gen, welches in zwei Werte aufgeteilt ist und einen zufälligen Wert zwischen 0 und 1 beinhaltet.
 Einem Y-Gen, welches auch in zwei Werte aufgeteilt ist und einen zufälligen Wert zwischen 0 und 7 hat.
 Und einem Z-Gen, welches lediglich einen Wert hat und dieser zufällig zwischen 0 und 8 ausgewählt.
 
 ...Grafik von Canva über Genom...
+
+# Die Gene
+
+![carbon (5)](https://user-images.githubusercontent.com/65679099/200275275-d3680b1c-8089-41f4-97be-e89226b3c53b.png)
 
 
 
