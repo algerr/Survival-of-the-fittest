@@ -32,8 +32,8 @@ Und einem Z-Gen, welches lediglich einen Wert hat und dieser zufällig zwischen 
 
 # Die Gene
 
+Das Objekt "gene" beschreibt eine Liste bestehend aus drei verschiedenen Gentypen, die auch als Parameter übergeben werden.
+Das X-Gen, Y-Gen und Z-Gen. Wie diese Gene initiiert werden (also, wie sie beispielsweise in zwei Werte geteilt werden oder welche Werte ihnen gegeben werden) ist
+bis dato nicht festgelegt. 
+
 ![carbon (5)](https://user-images.githubusercontent.com/65679099/200275275-d3680b1c-8089-41f4-97be-e89226b3c53b.png)
-
-
-
-![carbon (4)](https://user-images.githubusercontent.com/65679099/200268894-5ffe685f-92ee-4ce3-ae67-b0dc975abd11.png)
