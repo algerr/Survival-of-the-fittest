@@ -21,4 +21,4 @@ Somit werden zunehmend Wesen mit ähnlichen Genen übrig bleiben, die fast alle 
 
 In unserer Simulation gibt es eine einstellbare Anzahl an Wesen. Jedes Wesen ist als Objekt definiert und besitzt einen Parameter Genomgröße.
 
-![carbon (3)](https://user-images.githubusercontent.com/65679099/200268617-32d4f538-4637-4b09-b397-1c45a6112846.png)
+![carbon (4)](https://user-images.githubusercontent.com/65679099/200268894-5ffe685f-92ee-4ce3-ae67-b0dc975abd11.png)
