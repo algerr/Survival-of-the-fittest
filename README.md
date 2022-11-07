@@ -16,3 +16,9 @@ Wie in der menschlichen DNA gibt sind die Gene zweigeteilt. X[1] und X [2] sowie
 Davon abhängig sind die Bewegung jedes einzelnen Wesens und seine Farbe.
 Nun gilt: Wessen Gene es in die Safezone schaffen, werden weitergegeben.
 Somit werden zunehmend Wesen mit ähnlichen Genen übrig bleiben, die fast alle die Safezone erreichen.
+
+## Das Wesen
+
+In unserer Simulation gibt es eine einstellbare Anzahl an Wesen. Jedes Wesen ist als Objekt definiert und besitzt einen Parameter Genomgröße.
+
+![carbon (1)](https://user-images.githubusercontent.com/65679099/200268206-71e13076-4e7d-4e65-9fde-f381929a0c28.png)
