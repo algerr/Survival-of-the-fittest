@@ -17,6 +17,10 @@ Davon abhängig sind die Bewegung jedes einzelnen Wesens und seine Farbe.
 Nun gilt: Wessen Gene es in die Safezone schaffen, werden weitergegeben.
 Somit werden zunehmend Wesen mit ähnlichen Genen übrig bleiben, die fast alle die Safezone erreichen.
 
+## Die Initialisierung des Pygame-Fensters
+
+Die Simulation lässt sich natürlich komplett über Mathematik und Daten veranschaulichen. Da diese Simulation jedoch davon lebt, in Echtzeit mitverfolgt zu werden.
+
 ## Das Wesen
 
 In unserer Simulation gibt es eine einstellbare Anzahl an Wesen. 
@@ -37,3 +41,15 @@ Das X-Gen, Y-Gen und Z-Gen. Wie diese Gene initiiert werden (also, wie sie beisp
 bis dato nicht festgelegt. 
 
 ![carbon (5)](https://user-images.githubusercontent.com/65679099/200275275-d3680b1c-8089-41f4-97be-e89226b3c53b.png)
+
+# Die zufällige Bewegung der Wesen
+
+Die Bewegung jedes Wesens steht in Abhängigkeit zu dessen Genen.
+Je nachdem, welches X-, Y-, und Z-Gen vorhanden ist und auf welcher Höhe und Breite sich das Wesen befindet, bewegt sich das Wesen schneller oder langsamer nach oben, unten, links oder rechts.
+
+## Der Simulationsbeginn
+
+Sobald die Simulation startet, wird zuerst abgefragt, ob die Generation noch läuft.
+Daraufhin wird bei jedem Tick der Generation (von 200 bis 1) durch die Liste der Wesen iteriert und für jedes Wesen ein "stabiler Wert" definiert.
+Dazu wird auch eine Variable mit dem Namen "Veränderung" definiert, die die aktuelle Position, den Zeitwert, 
+Dieser "stabile Wert" wird im Folgenden dazu genutzt, die "Veränderung" zu speichern. 
