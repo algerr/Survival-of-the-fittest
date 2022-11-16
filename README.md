@@ -52,4 +52,10 @@ Je nachdem, welches X-, Y-, und Z-Gen vorhanden ist und auf welcher Höhe und Br
 Sobald die Simulation startet, wird zuerst abgefragt, ob die Generation noch läuft.
 Daraufhin wird bei jedem Tick der Generation (von 200 bis 1) durch die Liste der Wesen iteriert und für jedes Wesen ein "stabiler Wert" definiert.
 Dazu wird auch eine Variable mit dem Namen "Veränderung" definiert, die die aktuelle Position, den Zeitwert, 
-Dieser "stabile Wert" wird im Folgenden dazu genutzt, die "Veränderung" zu speichern. 
+Dieser "stabile Wert" wird im Folgenden dazu genutzt, die "Veränderung" zu speichern.
+
+
+
+
+![Screenshot_20221107_111302](https://user-images.githubusercontent.com/111282979/202248021-fbc11b40-15dc-49b3-b351-b211b11420cd.png)
+
