@@ -26,11 +26,8 @@ Die Simulation lässt sich natürlich komplett über Mathematik und Daten verans
 In unserer Simulation gibt es eine einstellbare Anzahl an Wesen. 
 Jedes Wesen ist als Objekt definiert und besitzt einen Parameter Genomgröße.
 Die [GenomGröße](https://de.wikipedia.org/wiki/Genomgr%C3%B6%C3%9Fe) beschreibt die Menge der Genome.
-Ein [Genom](https://de.wikipedia.org/wiki/Genom) beinhaltet die Gesamtheit der vererbbaren Informationen einer Zelle.
-Ein "Datensatz" Ergbut, der in einem Genom gespeichert wird, besteht aus drei verschiedenen [Genen](#das-genom).
-Einem X-Gen, welches in zwei Werte aufgeteilt ist und einen zufälligen Wert zwischen 0 und 1 beinhaltet.
-Einem Y-Gen, welches auch in zwei Werte aufgeteilt ist und einen zufälligen Wert zwischen 0 und 7 hat.
-Und einem Z-Gen, welches lediglich einen Wert hat und dieser zufällig zwischen 0 und 8 ausgewählt.
+Ein [Genom](https://de.wikipedia.org/wiki/Genom) beinhaltet die Gesamtheit der vererbbaren Informationen einer Zelle und ist bei uns (vgl. Abbildung) die Gesammtheit der x, y und z-Gene. Die einzelnen Gene bestehen aus Zahlen, wobei die gesammte Zahlenkombination eines Genoms bestimmt, wie sich das Wesen in einer Generation bewegt.
+Wie gut die Bewegung eines Wesens ist, geht daraus hervor, ob das Wesen es bis zum Ende der Generation schafft die Safezone zu erreichen. Wenn das Wesen dies tut, dann gibt es seine Gene an die nächste Generation weiter, damit diese ebenfalls so gut wie möglich in der nächsten Generation die Safezone erreichen. Daraus schließt sich, dass die einzige Aufgabe des Wesens jeder Generation ist zu überleben, indem es zufällig durch die Bewegung die Safezone erreicht. In dieser Welt ist das Wesen einzig und allein auf seine Bewegungsart angewiesen und kann somit nichts selbst aktiv beeinflussen, um zu überleben, so wie man es eigentlich aus der eigentlichen Natur kennt. Wenn das Wesen Glück oder Pech hat, können sich auch noch parallel seine Gene mutieren, was dann entweder zufällig sich positiv oder negativ auf des Überleben des Individuums auswirkt. Das Wesen besitzt eine Größe von 1x1 Kästchen und kann durch seine Gene nicht nur eine andere Bewegungsart, sondern auch eine andere FArbe einnehmen. Die Farbe hat allerdings keine Auswirkung auf die Überlebensrate hier so wie man es aus der Natur vermeinlich kennt, sondern lediglich die Bewegung spielt eine Rolle. Außerdem muss auch berücksichtigt werden, dass die Gesammtanzahl der Wesen von Generation zu Generation konstant bleibt und das keine richtige innerartliche Konkurenz vorhanden ist zwischen den Wesen, da sich sich nicht aktiv schaden oder sich bekämpfen.
 
 # Das Genom
 
