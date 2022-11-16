@@ -31,7 +31,7 @@ In unserer Simulation gibt es eine festlegbare Anzahl an Wesen.
 Ein Wesen hat ein Größe von einem Feld (Kästchen).
 Jedes Wesen ist als Objekt definiert und besitzt einen Parameter Genomgröße.
 Die [GenomGröße](https://de.wikipedia.org/wiki/Genomgr%C3%B6%C3%9Fe) beschreibt die Menge der Genome.
-Ein [Genom](https://de.wikipedia.org/wiki/Genom) beinhaltet die Gesamtheit der vererbbaren Informationen einer Zelle und ist bei uns ([vgl. Abbildung](#202248021-fbc11b40-15dc-49b3-b351-b211b11420cd)) die Gesamtheit der x, y- und z-Gene. Den einzelnen Genen sind verschiedene Werte zugeschrieben, wobei die gesamte Kombination eines Genoms bestimmt, wie sich das Wesen in einer Generation bewegt.
+Ein [Genom](https://de.wikipedia.org/wiki/Genom) beinhaltet die Gesamtheit der vererbbaren Informationen einer Zelle und ist bei uns ([vgl. Abbildung](https://user-images.githubusercontent.com/111282979/202248021-fbc11b40-15dc-49b3-b351-b211b11420cd.png)) die Gesamtheit der x, y- und z-Gene. Den einzelnen Genen sind verschiedene Werte zugeschrieben, wobei die gesamte Kombination eines Genoms bestimmt, wie sich das Wesen in einer Generation bewegt.
 Wie angepasst die Bewegung eines Wesens ist, geht daraus hervor, ob das Wesen bis zum Ende der Generation die [Safezone](#die-safezone) zu erreichen. 
 Wenn das Wesen dies tut, dann gibt es seine Gene an die Wesen der nächsten Generation weiter, damit diese bessere Chancen haben, die Safezone zu erreichen.
 Daraus ergibt sich, dass die einzige Aufgabe jedes Wesens ist, so viele Generationen wie möglich zu überleben, indem es durch die Bewegung zufällig die Safezone erreicht. 
