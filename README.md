@@ -27,18 +27,18 @@ In unserer Simulation gibt es eine einstellbare Anzahl an Wesen.
 Jedes Wesen ist als Objekt definiert und besitzt einen Parameter Genomgröße.
 Die [GenomGröße](https://de.wikipedia.org/wiki/Genomgr%C3%B6%C3%9Fe) beschreibt die Menge der Genome.
 Ein [Genom](https://de.wikipedia.org/wiki/Genom) beinhaltet die Gesamtheit der vererbbaren Informationen einer Zelle.
-Ein "Datensatz" Ergbut, der in einem Genom gespeichert wird, besteht aus drei verschiedenen [Genen](#die-gene).
+Ein "Datensatz" Ergbut, der in einem Genom gespeichert wird, besteht aus drei verschiedenen [Genen](#das-genom).
 Einem X-Gen, welches in zwei Werte aufgeteilt ist und einen zufälligen Wert zwischen 0 und 1 beinhaltet.
 Einem Y-Gen, welches auch in zwei Werte aufgeteilt ist und einen zufälligen Wert zwischen 0 und 7 hat.
 Und einem Z-Gen, welches lediglich einen Wert hat und dieser zufällig zwischen 0 und 8 ausgewählt.
 
-![Screenshot_20221107_111302](https://user-images.githubusercontent.com/111282979/202248021-fbc11b40-15dc-49b3-b351-b211b11420cd.png)
+# Das Genom
 
-# Die Gene
-
-Das Objekt "gene" beschreibt eine Liste bestehend aus drei verschiedenen Gentypen, die auch als Parameter übergeben werden.
+Das Objekt "Genom" beinhaltet drei verschiedenen Gentypen, die auch als Parameter übergeben werden.
 Das X-Gen, Y-Gen und Z-Gen. Wie diese Gene initiiert werden (also, wie sie beispielsweise in zwei Werte geteilt werden oder welche Werte ihnen gegeben werden) ist
 bis dato nicht festgelegt.
+
+![Screenshot_20221107_111302](https://user-images.githubusercontent.com/111282979/202248021-fbc11b40-15dc-49b3-b351-b211b11420cd.png)
 
 # Die Mutation
 
@@ -46,7 +46,7 @@ Jedes Wesen besitzt eine einstellbare [GenomGröße](https://de.wikipedia.org/wi
 Damit die ganze Genetik noch realistischer ist, können die Gene jedes Genoms nun mit einer Wahrscheinlichkeit von 2% mutieren. Dabei hat jedes einzelne Genom zu Beginn der Runde einen zufälligen Mutationswert, welcher im Intervall [0;15] liegt. Abhängig von dem Mutationswert, bestimmt die Zahl, welches Gen genau mutiert. Wenn der Mutationswert "0" beträgt , mutiert das x0-Gen, bei einem Mutationswert von "1" hingegen das x1-Gen.Wenn der Wert im Intervall [2;4] liegt, dann mutiert das y0-Gen und wenn die Zahl Im Intervall [5;7] liegt das y1-gen. Wennn der Wert sogar im Intervall [8;15] liegen sollte , mutiert das z-Gen. Insgesammt lässt sich abschließend betrachten, dass die Anzahl der Gesammtmutationen propotional zur Genomanzahl ist. Wenn man allerdings jedes Genom einzeln betrachtet, ist hier die Wahrscheinlichkeit konstant, dass ein Genom zu 1/50 also 2% mutiert. Eine Mutation kann sich zwar einserseits positiv auf das Überleben des Wesens auswirken, weil es die Bewegungsart zufällig verändert. Gleichzeitig kann eine Mutation aber auch negative Folgen mit sich bringen, weil alles auf dem Zufall beruht.
 
 
-![carbon (2)](https://user-images.githubusercontent.com/111282979/202263243-b464db35-c882-4ec5-8aaf-1cd695e5507b.png)
+![carbon (5)](https://user-images.githubusercontent.com/65679099/200275275-d3680b1c-8089-41f4-97be-e89226b3c53b.png)
 
 # Die zufällige Bewegung der Wesen
 
