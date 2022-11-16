@@ -62,7 +62,7 @@ Daraufhin wird bei jedem Tick der Generation (von 200 bis 1) durch die Liste der
 Dazu wird auch eine Variable mit dem Namen "Veränderung" definiert, die die aktuelle Position, den Zeitwert, 
 Dieser "stabile Wert" wird im Folgenden dazu genutzt, die "Veränderung" zu speichern.
 
-## Überprüfung der Validität
+### Überprüfung der Validität
 
 Da die Simulation, um schöne Ergebnisse mit dennoch komplexen Genen zu erhalten, viele Generationen durchlaufen muss, wäre es ziemlich schade, wenn auf einmal, ein Fehler, bezüglich der Koordinaten eines Wesens, auftreten würde.
 Dafür haben wir eine Funktion "überprüfeValidität" mit den Parametern "(x, y)" definiert, die überprüft, dass die Koordinaten jedes Wesens im Simulationsfenster liegen.
