@@ -25,7 +25,12 @@ Die Simulation lässt sich natürlich komplett über Mathematik und Daten verans
 
 Solarized dark             |  Solarized Ocean          |  Solarized Ocean          |  Solarized Ocean          |  Solarized Ocean
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![](https://cdn.discordapp.com/attachments/1031709624644141066/1042535158055718922/Screenshot_15.png)|![](https://cdn.discordapp.com/attachments/1031709624644141066/1042535189387153488/Screenshot_20221102_122531.png)|![](https://cdn.discordapp.com/attachments/1031709624644141066/1042535251865522269/Screenshot_16.png)|![](https://cdn.discordapp.com/attachments/1031709624644141066/1042535359805923379/Screenshot_17.png)|![](https://cdn.discordapp.com/attachments/1031709624644141066/1042535415304962098/Screenshot_16.png)|
+![Screenshot (21)](https://user-images.githubusercontent.com/111282979/202292263-010a98a2-c3b9-4c74-9d0a-a9044728c4c3.png)
+|![Screenshot (22)](https://user-images.githubusercontent.com/111282979/202292396-9ee88ca2-e483-4e44-8270-71874bb1585b.png)
+|![Screenshot (27)](https://user-images.githubusercontent.com/111282979/202292456-1963d65d-4299-4f87-b920-d56349f8b9d5.png)
+|![Screenshot (24)](https://user-images.githubusercontent.com/111282979/202292505-d3b0a395-f1c7-42d9-b514-ac72aaa20b56.png)
+|![Screenshot (25)](https://user-images.githubusercontent.com/111282979/202292567-007dd1f0-c356-492a-a688-cda0d7002c55.png)
+|
 
 In unserer Simulation gibt es eine festlegbare Anzahl an Wesen.
 Ein Wesen hat ein Größe von einem Feld (Kästchen).
