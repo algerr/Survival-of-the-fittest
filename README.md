@@ -23,6 +23,10 @@ Die Simulation lässt sich natürlich komplett über Mathematik und Daten verans
 
 ## Das Wesen
 
+Solarized dark             |  Solarized Ocean          |  Solarized Ocean          |  Solarized Ocean          |  Solarized Ocean
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+                           |                            |                            |                        |                                      |
+
 In unserer Simulation gibt es eine festlegbare Anzahl an Wesen.
 Ein Wesen hat ein Größe von einem Feld (Kästchen).
 Jedes Wesen ist als Objekt definiert und besitzt einen Parameter Genomgröße.
