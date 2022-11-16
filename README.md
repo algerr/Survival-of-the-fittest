@@ -32,13 +32,16 @@ Einem X-Gen, welches in zwei Werte aufgeteilt ist und einen zufälligen Wert zwi
 Einem Y-Gen, welches auch in zwei Werte aufgeteilt ist und einen zufälligen Wert zwischen 0 und 7 hat.
 Und einem Z-Gen, welches lediglich einen Wert hat und dieser zufällig zwischen 0 und 8 ausgewählt.
 
-...Grafik von Canva über Genom...
+![Screenshot_20221107_111302](https://user-images.githubusercontent.com/111282979/202248021-fbc11b40-15dc-49b3-b351-b211b11420cd.png)
 
 # Die Gene
 
 Das Objekt "gene" beschreibt eine Liste bestehend aus drei verschiedenen Gentypen, die auch als Parameter übergeben werden.
 Das X-Gen, Y-Gen und Z-Gen. Wie diese Gene initiiert werden (also, wie sie beispielsweise in zwei Werte geteilt werden oder welche Werte ihnen gegeben werden) ist
-bis dato nicht festgelegt. 
+bis dato nicht festgelegt.
+
+# Die Mutation
+
 
 ![carbon (5)](https://user-images.githubusercontent.com/65679099/200275275-d3680b1c-8089-41f4-97be-e89226b3c53b.png)
 
@@ -53,9 +56,4 @@ Sobald die Simulation startet, wird zuerst abgefragt, ob die Generation noch lä
 Daraufhin wird bei jedem Tick der Generation (von 200 bis 1) durch die Liste der Wesen iteriert und für jedes Wesen ein "stabiler Wert" definiert.
 Dazu wird auch eine Variable mit dem Namen "Veränderung" definiert, die die aktuelle Position, den Zeitwert, 
 Dieser "stabile Wert" wird im Folgenden dazu genutzt, die "Veränderung" zu speichern.
-
-
-
-
-![Screenshot_20221107_111302](https://user-images.githubusercontent.com/111282979/202248021-fbc11b40-15dc-49b3-b351-b211b11420cd.png)
 
