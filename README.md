@@ -72,3 +72,8 @@ Sollte das der Fall sein, wird ein False-Statement zurückgegeben, sodass die ei
 Wenn keine Äquivalenz zu den Positionen eines anderen Wesens vorliegt, wird ein True-Statement zurückgegeben und die eingegebenen Werte sind valide Positionen.
 
 ![überprüfeValiditätCarbon](https://user-images.githubusercontent.com/65679099/202256158-ccb9bd2e-1091-47c0-8350-b7cf945b668c.png)
+
+
+## Safezone
+
+Die Safezone ist die grün gekennzeichnete Fläche, welches auch das Zielfeld ist, in welchem sich die Wesen bis zum Ende einer Generation befinden sollten. Die Wesen wissen nicht wo sich die Safezone genau befindet und sind deshalb auf ihre Bewegungsart angewiesen bzw. müssen hoffen, dass sie durch ihre Bewegungsart die Zone bis zum Ende einer Generation erreichen. Die Wesen, welche es rechzeitig schaffen die Safezone zu erreichen, geben ihre Gene und somit auch ihre Bewegungsart weiter, damit in der nächsten Generation die neu entstandenen Wesen, welche jetzt hauptsächlich die Bewegungsart ihrer Vorfahren übernommen haben, ebenfalls die Safezone erreichen. Dieser Vorgang wiederholt sich immer wieder, wobei gehofft wird, dass irgendwann alle Individuen die Safezone erreichen, was aber unmöglich ist, da Mutationen z.B. immer auftreten können, oder manche sich direkt zu Beginn in der Safezone befinden, obwohl sie eine schlechte Bewegungsart für die nächsten Generationen vererben würden. Die Safezone an sich verändert von Generation zu Generation nicht ihre Koordinaten, weil die Weitergabe der erfolgreichen Bewegungsart um die ein und die gleiche Zone zu erreichen, beim verschieben dieser, keinen Sinn machen würde.
