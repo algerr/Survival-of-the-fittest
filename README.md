@@ -25,7 +25,7 @@ Die Simulation lässt sich natürlich komplett über Mathematik und Daten verans
 
 Solarized dark             |  Solarized Ocean          |  Solarized Ocean          |  Solarized Ocean          |  Solarized Ocean
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-                           |                            |                            |                        |                                      |
+![](https://cdn.discordapp.com/attachments/1031709624644141066/1042535158055718922/Screenshot_15.png)|![](https://cdn.discordapp.com/attachments/1031709624644141066/1042535189387153488/Screenshot_20221102_122531.png)|![](https://cdn.discordapp.com/attachments/1031709624644141066/1042535251865522269/Screenshot_16.png)|![](https://cdn.discordapp.com/attachments/1031709624644141066/1042535359805923379/Screenshot_17.png)|![](https://cdn.discordapp.com/attachments/1031709624644141066/1042535415304962098/Screenshot_16.png)|
 
 In unserer Simulation gibt es eine festlegbare Anzahl an Wesen.
 Ein Wesen hat ein Größe von einem Feld (Kästchen).
