@@ -23,11 +23,18 @@ Die Simulation lässt sich natürlich komplett über Mathematik und Daten verans
 
 ## Das Wesen
 
-In unserer Simulation gibt es eine festlegbare Anzahl an Wesen. 
+In unserer Simulation gibt es eine festlegbare Anzahl an Wesen.
+Ein Wesen hat ein Größe von einem Feld (Kästchen).
 Jedes Wesen ist als Objekt definiert und besitzt einen Parameter Genomgröße.
 Die [GenomGröße](https://de.wikipedia.org/wiki/Genomgr%C3%B6%C3%9Fe) beschreibt die Menge der Genome.
 Ein [Genom](https://de.wikipedia.org/wiki/Genom) beinhaltet die Gesamtheit der vererbbaren Informationen einer Zelle und ist bei uns (vgl. Abbildung) die Gesammtheit der x, y und z-Gene. Den einzelnen Genen sind verschiedene Werte zugeschrieben, wobei die gesammte Kombination eines Genoms bestimmt, wie sich das Wesen in einer Generation bewegt.
-Wie angepasst die Bewegung eines Wesens ist, geht daraus hervor, ob das Wesen bis zum Ende der Generation die [Safezone](#die-safezone) zu erreichen. Wenn das Wesen dies tut, dann gibt es seine Gene an die nächste Generation weiter, damit diese ebenfalls so gut wie möglich in der nächsten Generation die Safezone erreichen. Daraus schließt sich, dass die einzige Aufgabe des Wesens jeder Generation ist zu überleben, indem es zufällig durch die Bewegung die Safezone erreicht. In dieser Welt ist das Wesen einzig und allein auf seine Bewegungsart angewiesen und kann somit nichts selbst aktiv beeinflussen, um zu überleben, so wie man es eigentlich aus der eigentlichen Natur kennt. Wenn das Wesen Glück oder Pech hat, können sich auch noch parallel seine Gene mutieren, was dann entweder zufällig sich positiv oder negativ auf des Überleben des Individuums auswirkt. Das Wesen besitzt eine Größe von 1x1 Kästchen und kann durch seine Gene nicht nur eine andere Bewegungsart, sondern auch eine andere FArbe einnehmen. Die Farbe hat allerdings keine Auswirkung auf die Überlebensrate hier so wie man es aus der Natur vermeinlich kennt, sondern lediglich die Bewegung spielt eine Rolle. Außerdem muss auch berücksichtigt werden, dass die Gesammtanzahl der Wesen von Generation zu Generation konstant bleibt und das keine richtige innerartliche Konkurenz vorhanden ist zwischen den Wesen, da sich sich nicht aktiv schaden oder sich bekämpfen.
+Wie angepasst die Bewegung eines Wesens ist, geht daraus hervor, ob das Wesen bis zum Ende der Generation die [Safezone](#die-safezone) zu erreichen. 
+Wenn das Wesen dies tut, dann gibt es seine Gene an die Wesen der nächsten Generation weiter, damit diese bessere Chancen haben, die Safezone zu erreichen.
+Daraus ergibt sich, dass die einzige Aufgabe jedes Wesens ist, so viele Generationen wie möglich zu überleben, indem es durch die Bewegung zufällig die Safezone erreicht. 
+In dieser Simulation hat das Wesen nicht die Möglichkeit, sich aktiv zu bewegen oder zu verändern. Es ist auf seine Gene angewiesen, die ihm eine Bewegungsart verleihen.
+Wenn das Wesen Glück oder Pech hat, kann es auch noch zu einer Mutation seiner Gene kommen, was sich entweder positiv oder negativ auf seine Überlebenschancen auswirkt. 
+Die Gene nehmen auch Einfluss auf die Farbe. Diese hat allerdings keine Auswirkung auf die Überlebensrate, so wie es in der Natur mit Warnfarben der Fall ist, da sich die Wesen nicht gegenseitig fressen und kennzeichnet lediglich Wesen mit ähnlichen Genen. 
+Die Gesammtanzahl der Wesen bleibt von Generation zu Generation konstant, da sie sich nicht aktiv schaden oder bekämpfen.
 
 # Das Genom
 
