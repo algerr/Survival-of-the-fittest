@@ -42,6 +42,8 @@ bis dato nicht festgelegt.
 
 # Die Mutation
 
+Jedes Wesen, welches in der Simulation während einer Generation vorhanden ist, besteht aus einer einstellbaren Genomenanzahl. Dabei hat jedes einzelne Genom zu Beginn der Runde einen zufälligen Mutationswert, welcher im Intervall [0;15] liegt. Abhängig von dem Mutationswert, bestimmt die Zahl, welches Gen genau mutiert. Wenn der Mutationswert "0" beträgt , mutiert das x0-Gen, bei einem Mutationswert von "1" hingegen das x1-Gen.enn der Wert im Intervall von [2;4] liegt, dann mutiert das y0-Gen und wenn die Zahl Im Intervall von [5;7] liegt das y1-gen. Wennn der Wertsogar im Intervall [8;15] liegen sollte , mutiert das z-Gen. Insgesammt ergibt sich auch dadurch, dass insgesammt betrachtet, Wahrscheinlichkeit, dass es zur Mutation kommt propotional zur Genomanzahl ist. Wenn man allerdings jedes Genom einzeln betrachtet, besteht hier die Wahrscheinlichkeit, dass ein Genom mutiert 1/50 also 2%. Eine Mutation kann sich zwar einserseits positiv auf das Überleben des Wesens auswirken, weil es die Bewegungsart zufällig verändert. Gleichzeitig kann eine Mutation aber auch negative Folgen mit sich bringen, weil alles auf dem Zufall beruht.
+
 
 ![carbon (5)](https://user-images.githubusercontent.com/65679099/200275275-d3680b1c-8089-41f4-97be-e89226b3c53b.png)
 
