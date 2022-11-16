@@ -32,7 +32,7 @@ Einem X-Gen, welches in zwei Werte aufgeteilt ist und einen zufälligen Wert zwi
 Einem Y-Gen, welches auch in zwei Werte aufgeteilt ist und einen zufälligen Wert zwischen 0 und 7 hat.
 Und einem Z-Gen, welches lediglich einen Wert hat und dieser zufällig zwischen 0 und 8 ausgewählt.
 
-# Das Genom
+## Das Genom
 
 Das Objekt "Genom" beinhaltet drei verschiedenen Gentypen, die auch als Parameter übergeben werden.
 Das X-Gen, Y-Gen und Z-Gen. Wie diese Gene initiiert werden (also, wie sie beispielsweise in zwei Werte geteilt werden oder welche Werte ihnen gegeben werden) ist
@@ -62,7 +62,7 @@ Daraufhin wird bei jedem Tick der Generation (von 200 bis 1) durch die Liste der
 Dazu wird auch eine Variable mit dem Namen "Veränderung" definiert, die die aktuelle Position, den Zeitwert, 
 Dieser "stabile Wert" wird im Folgenden dazu genutzt, die "Veränderung" zu speichern.
 
-### Überprüfung der Validität
+## Überprüfung der Validität
 
 Da die Simulation, um schöne Ergebnisse mit dennoch komplexen Genen zu erhalten, viele Generationen durchlaufen muss, wäre es ziemlich schade, wenn auf einmal, ein Fehler, bezüglich der Koordinaten eines Wesens, auftreten würde.
 Dafür haben wir eine Funktion "überprüfeValidität" mit den Parametern "(x, y)" definiert, die überprüft, dass die Koordinaten jedes Wesens im Simulationsfenster liegen.
@@ -74,7 +74,7 @@ Wenn keine Äquivalenz zu den Positionen eines anderen Wesens vorliegt, wird ein
 ![überprüfeValiditätCarbon](https://user-images.githubusercontent.com/65679099/202256158-ccb9bd2e-1091-47c0-8350-b7cf945b668c.png)
 
 
-## Safezone
+### Safezone
 
 Die Safezone ist die grün gekennzeichnete Fläche, welche auch das "Zielfeld" markiert, in welchem sich die Wesen bis zum Ende einer Generation befinden sollten, damit sie ihre Gene weitergeben. Die Wesen wissen nicht, wo sich die Safezone genau befindet und sind deshalb auf ihre Bewegungsart angewiesen bzw. müssen hoffen, dass sie durch ihre Bewegungsart die Zone bis zum Ende einer Generation erreichen. Die Wesen, welche es rechzeitig schaffen die Safezone zu erreichen, geben ihre Gene und somit auch ihre Bewegungsart weiter, damit in der nächsten Generation die neu entstandenen Wesen, welche jetzt hauptsächlich die Bewegungsart ihrer Vorfahren übernommen haben, ebenfalls die Safezone erreichen. Dieser Vorgang wiederholt sich immer wieder, wobei gehofft wird, dass irgendwann alle Individuen die Safezone erreichen.
 Das ist jedoch unmöglich, da Mutationen immer auftreten können oder manche sich direkt zu Beginn in der Safezone befinden und sich überhaupt nicht bewegen, sodass ihr Überleben durch das Feld, in dem sie erscheinen, abhängt. Die Safezone verändert sich von Generation zu Generation nicht, weil die Weitergabe der erfolgreichen Bewegungsart, keinen Sinn ergibt, wenn sich die Safezone mit jedem Mal ändert. Dann würden sich die Wesen beispielsweise in die komplett falsche Richtung bewegen.
