@@ -75,8 +75,16 @@ Damit die ganze Genetik noch realistischer ist, können die Gene jedes Genoms nu
             self.z_gen = random.randrange(9)
 ```
 
-
-Wenn der Mutationswert "0" beträgt , mutiert das x0-Gen, bei einem Mutationswert von "1" hingegen das x1-Gen.Wenn der Wert im Intervall [2;4] liegt, dann mutiert das y0-Gen und wenn die Zahl Im Intervall [5;7] liegt das y1-gen. Wennn der Wert sogar im Intervall [8;15] liegen sollte , mutiert das z-Gen. Insgesammt lässt sich abschließend betrachten, dass die Anzahl der Gesammtmutationen propotional zur Genomanzahl ist. Wenn man allerdings jedes Genom einzeln betrachtet, ist hier die Wahrscheinlichkeit konstant, dass ein Genom zu 1/50 also 2% mutiert. Eine Mutation kann sich zwar einserseits positiv auf das Überleben des Wesens auswirken, weil es die Bewegungsart zufällig verändert. Gleichzeitig kann eine Mutation aber auch negative Folgen mit sich bringen, weil alles auf dem Zufall beruht.
+Wenn der Mutationswert "0" beträgt, mutiert das x0-Gen zu einem zufälligen Wert zwischen 0 und 1.
+Bei einem Mutationswert von "1" hingegen das x1-Gen zu einem zufälligen Wert zwischen 0 und 1.
+Wenn der Wert im Intervall [2;4] liegt, dann mutiert das y0-Gen zu einem zufälligen Wert zwischen 0 und 7(\n)
+und wenn die Zahl Im Intervall [5;7] liegt das y1-gen zu einem zufälligen Wert zwischen 0 und 7.
+Sollte der Wert zwischen 8 und 15 liegen, wird dieser zu einem zufälligen Wert zwischen 0 und 8.
+Abschließend lässt sich ein direkt proportionaler Zusammenhang zwischen Mutationswahrscheinlichkeit und Genomgröße feststellen. 
+Mit zunehmender Anzahl an Genomen ist eine Mutation immer wahrscheinlicher.
+Für jedes einzelne Genom bleibt die Mutationswahrscheinlichkeit jedoch gleich (1 zu 50 / 2%).
+Wie in der Natur, kann sich eine Mutation der Gene, da sie direkt mit der Bewegung verbunden ist, positiv oder negativ auf das Wesen auswirken.
+Es hängt alles vom Zufall ab.
 
 
 ![carbon (4)](https://user-images.githubusercontent.com/111282979/202468026-da998a81-9e79-44fb-adc0-f65f6c37acb3.png)
