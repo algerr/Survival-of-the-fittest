@@ -10,7 +10,7 @@ Einflussreich waren dabei der Biologieunterricht des vergangenen Jahres sowie [C
 ## Das Grundprinzip
 
 Mutationswert = 0          |
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+:-------------------------:|
 x0-Gen mutiert zu 
 zufälligem Wert zwischen
  0 und 1                   |
