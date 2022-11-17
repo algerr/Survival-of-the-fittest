@@ -1,6 +1,6 @@
 ![github-header-image](https://user-images.githubusercontent.com/111282979/202478536-29589dd2-2e8c-44dd-ba54-c7c463fa43de.png)
 
-![image](https://user-images.githubusercontent.com/65679099/199478187-8c3a0b3c-76b7-4fb8-9c23-724da39c42ee.png)
+![survivalofthefittest_repositorygif](https://user-images.githubusercontent.com/111282979/202487038-b06030f0-f728-46e1-9c2a-ca6164c86edc.gif)
 
 ## Der Hintergrund
 
