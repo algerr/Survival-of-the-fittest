@@ -11,9 +11,7 @@ Einflussreich waren dabei der Biologieunterricht des vergangenen Jahres sowie [C
 
 Mutationswert = 0          |
 :-------------------------:|
-x0-Gen mutiert zu 
-zufälligem Wert zwischen
- 0 und 1                   |
+x0-Gen mutiert zu zufälligem Wert zwischen 0 und 1|
 
 Das Programm stellt eine Evolution dar. Wesen mit unterschiedlichen Genen geben ihr Bestes, um die grünmarkierte Safezone zu erreichen. Wer am Ende der Generation die Zone erreicht hat, gibt seine Gene an die nächste Generation weiter.
 Zu Beginn erhalten alle Wesen ein zufälliges Erbgut.
