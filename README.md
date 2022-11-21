@@ -88,7 +88,8 @@ Die [Veränderung](#die-veränderung) wird im stabilen Wert gespeichert.
 
 Wert des x0-Gens           |x_gen[0] = 1               |x_gen[0] = 1
 :-------------------------:|:-------------------------:|:-------------------------:|
-In welcher Liste die Veränderung gespeichert wird| Wird in Liste 1 gespeichert ([0, 0, 0, 0])| Wird in Liste 2 gespeichert\([0, 0, 0, 0, 0, 0, 0, 0])
+In welcher Liste die Veränderung gespeichert wird| Wird in Liste 1 gespeichert ([0, 0, 0, 0])| Wird in Liste 2 gespeichert\s
+([0, 0, 0, 0, 0, 0, 0, 0])
 
 # Der Simulationsbeginn
 
