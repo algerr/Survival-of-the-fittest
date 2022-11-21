@@ -1,6 +1,6 @@
 ![github-header-image](https://user-images.githubusercontent.com/111282979/202478536-29589dd2-2e8c-44dd-ba54-c7c463fa43de.png)
 
-<img src="https://user-images.githubusercontent.com/111282979/203019520-8f5bb350-82f7-41cb-a5b9-6865cea33f66.gif" width="250" height="250"/>
+<img src="https://user-images.githubusercontent.com/111282979/203019520-8f5bb350-82f7-41cb-a5b9-6865cea33f66.gif" width="1000px" height="1000px"/>
 
 # Der Hintergrund
 
