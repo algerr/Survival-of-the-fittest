@@ -69,6 +69,9 @@ Wenn der Mutationswert "0" beträgt , mutiert das x0-Gen, bei einem Mutationswer
 Die Bewegung jedes Wesens steht in Abhängigkeit zu dessen Genen.
 Je nachdem, welches X-, Y-, und Z-Gen vorhanden ist und auf welcher Höhe und Breite sich das Wesen befindet, bewegt sich das Wesen schneller oder langsamer nach oben, unten, links oder rechts.
 
+# Der stabile Wert
+Eine der elementarsten Datenspeicherungen in unserer Simulation bildet der stabile Wert.
+Dieser ist eine [verschachtelte Liste](https://github.com/algerr/VocabNow/blob/1dfc29ce07933b6082c18c72e7a229793dc04fcb/sotf.py#L236) 
 
 # Der Simulationsbeginn
 
