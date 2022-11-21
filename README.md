@@ -90,7 +90,7 @@ Wert des x0-Gens           |x_gen[0] = 1               |x_gen[0] = 1
 :-------------------------:|:-------------------------:|:-------------------------:|
 In welcher Liste die Veränderung gespeichert wird| Wird in Liste 1 gespeichert<br>([0, 0, 0, 0])| Wird in Liste 2 gespeichert<br>([0, 0, 0, 0, 0, 0, 0, 0])
 
-
+![carbon (6)](https://user-images.githubusercontent.com/65679099/203022345-ae6ef6a8-d340-4779-b36f-eeff81980d6b.png)
 
 # Der Simulationsbeginn
 
