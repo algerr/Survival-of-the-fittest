@@ -71,10 +71,17 @@ Je nachdem, welches X-, Y-, und Z-Gen vorhanden ist und auf welcher Höhe und Br
 
 # Der stabile Wert
 Eine der elementarsten Datenspeicherungen in unserer Simulation bildet der stabile Wert.
-Dieser ist eine [verschachtelte Liste](https://github.com/algerr/VocabNow/blob/1dfc29ce07933b6082c18c72e7a229793dc04fcb/sotf.py#L236)
-[```python
+Dieser besteht aus einer [verschachtelten Liste](https://github.com/algerr/VocabNow/blob/1dfc29ce07933b6082c18c72e7a229793dc04fcb/sotf.py#L236) mit zwei Listen.
+
+```python
 stabilerWert = [[0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]]
-```](https://github.com/algerr/VocabNow/blob/1dfc29ce07933b6082c18c72e7a229793dc04fcb/sotf.py#L236)
+```
+
+Liste                      |Erste Liste                |Zweite Liste
+:-------------------------:|:-------------------------:|:-------------------------:|
+Werte                      |[0, 0, 0, 0]               |[0, 0, 0, 0, 0, 0, 0, 0]
+
+Die erste Liste besteht aus 4 Werten und die zweite aus 8 Werten. 
 
 # Der Simulationsbeginn
 
