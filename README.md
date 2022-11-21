@@ -90,6 +90,8 @@ Wert des x0-Gens           |x_gen[0] = 1               |x_gen[0] = 1
 :-------------------------:|:-------------------------:|:-------------------------:|
 In welcher Liste die Veränderung gespeichert wird| Wird in Liste 1 gespeichert<br>([0, 0, 0, 0])| Wird in Liste 2 gespeichert<br>([0, 0, 0, 0, 0, 0, 0, 0])
 
+
+
 # Der Simulationsbeginn
 
 Sobald die Simulation startet, wird zuerst abgefragt, ob die Generation noch läuft.
