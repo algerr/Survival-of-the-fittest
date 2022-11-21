@@ -71,6 +71,7 @@ Je nachdem, welches X-, Y-, und Z-Gen vorhanden ist und auf welcher Höhe und Br
 
 # Der stabile Wert
 Eine der elementarsten Datenspeicherungen in unserer Simulation bildet der stabile Wert.
+Jedes Wesen besitz einen eigenen stabilen Wert.
 Dieser besteht aus einer [verschachtelten Liste](https://github.com/algerr/VocabNow/blob/1dfc29ce07933b6082c18c72e7a229793dc04fcb/sotf.py#L236) mit zwei Listen.
 
 ```python
@@ -81,7 +82,13 @@ Liste                      |Erste Liste                |Zweite Liste
 :-------------------------:|:-------------------------:|:-------------------------:|
 Werte                      |[0, 0, 0, 0]               |[0, 0, 0, 0, 0, 0, 0, 0]
 
-Die erste Liste besteht aus 4 Werten und die zweite aus 8 Werten. 
+Die erste Liste besteht aus 4 Werten und die zweite aus 8 Werten.
+Doch welche Funktion erfüllt der stabile Wert denn nun eigentlich? 
+Die [Veränderung](#die-veränderung) wird im stabilen Wert gespeichert.
+
+Wert des x0-Gens           |x_gen[0] = 1               |x_gen[0] = 1
+:-------------------------:|:-------------------------:|:-------------------------:|
+In welcher Liste die Veränderung gespeichert wird| Wird in Liste 1 gespeichert ([0, 0, 0, 0])| Wird in Liste 2 gespeichert ([0, 0, 0, 0, 0, 0, 0, 0])
 
 # Der Simulationsbeginn
 
