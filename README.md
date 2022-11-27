@@ -4,7 +4,7 @@
 
 - [Der Hintergrund](#der-hintergrund)
 - [Das Grundprinzip](#das-grundprinzip)
-- [Die Initialisierung des Pygame-Fensters](#die-initialisierung des pygame-fesnters)
+- [Was ist Pygame?](#was-ist-pygame?)
 
 # Der Hintergrund
 
@@ -21,9 +21,10 @@ Davon abhängig sind die Bewegung jedes einzelnen Wesens und seine Farbe.
 Nun gilt: Wessen Gene es in die Safezone schaffen, werden weitergegeben.
 Somit werden zunehmend Wesen mit ähnlichen Genen übrig bleiben, die fast alle die Safezone erreichen.
 
-# Die Initialisierung des Pygame-Fensters
+# Was ist Pygame?
 
-Die Simulation lässt sich natürlich komplett über Mathematik und Daten veranschaulichen. Da diese Simulation jedoch davon lebt, in Echtzeit mitverfolgt zu werden.
+Die Simulation lässt sich natürlich komplett über Mathematik und Daten auswerten. Da man sich dadurch jedoch wenig vorstellen kann, wie das Ganze eigentlich aussehen müsste, wird in diesem Projekt [Pygame](https://www.pygame.org/) genutzt, um eine lebhafte Simulation zu ermöglichen.
+Pygame ist eine Pythonbibliothek, die zur Spieleprogrammierung genutzt wird. 
 
 ## Das Wesen
 
