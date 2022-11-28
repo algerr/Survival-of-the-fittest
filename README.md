@@ -24,7 +24,8 @@ Somit werden zunehmend Wesen mit ähnlichen Genen übrig bleiben, die fast alle 
 # Was ist Pygame?
 
 Die Simulation lässt sich natürlich komplett über Mathematik und Daten auswerten. Da man sich dadurch jedoch wenig vorstellen kann, wie das Ganze eigentlich aussehen müsste, wird in diesem Projekt [Pygame](https://www.pygame.org/) genutzt, um eine lebhafte Simulation zu ermöglichen.
-Pygame ist eine Pythonbibliothek, die zur Spieleprogrammierung genutzt wird. 
+Pygame ist eine Pythonbibliothek, die zur Spieleprogrammierung genutzt wird.
+
 
 ## Das Wesen
 
@@ -96,6 +97,57 @@ Wert des x0-Gens           |x_gen[0] = 1               |x_gen[0] = 1
 In welcher Liste die Veränderung gespeichert wird| Wird in Liste 1 gespeichert<br>([0, 0, 0, 0])| Wird in Liste 2 gespeichert<br>([0, 0, 0, 0, 0, 0, 0, 0])
 
 ![carbon (6)](https://user-images.githubusercontent.com/65679099/203022345-ae6ef6a8-d340-4779-b36f-eeff81980d6b.png)
+
+
+
+
+
+
+
+
+-----------------------------------------------
+
+
+
+# Die Veränderung
+Da wir versuchen, die Bewegung der Wesen so zufällig, wie möglich zu machen, haben wir uns überlegt, möglichst viele Einflussfaktoren einzubeziehen.
+Um einen Wert zu erhalten, der diese Kombination der Einflussfaktoren beinhaltet, haben wir **die Veränderung** eingeführt.
+Der Name mag zwar im ersten Moment ein wenig komisch erscheinen, jedoch besagt dieser genau das, wofür die Variable da ist.
+Sie beschreibt die Veränderung, die letztendlich an der Position eines Wesens vorgenommen werden soll, sodass daraus durch mehrfaches Wiederholen eine flüssige Bewegung entsteht.
+Da diese Faktoren, die einen Einfluss auf die Bewegung nehmen sehr zahlreich sind, werden sie in der folgenden Tabelle veranschaulicht.
+Zu Beginn, nachdem der [stabile Wert](#der-stabile-wert) definiert wurde, wird durch alle Genome jedes Wesens iteriert.
+
+```python
+for i, Wesen in enumerate(WesenListe):
+  stabilerWert = [[0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]]
+  for j, genom in enumerate(Wesen.Gene):
+```
+
+Nun werden mehrere Bedingungen ineinander verschachtelt.
+Das Ganze beginnt mit zwei Bedingungen:
+
+if genom.x_gen[0] == 0     |if genom.x_gen[0] == 1     |
+:-------------------------:|:-------------------------:|
+Untersuchung der Bedingungen für die y_gene
+
+Dabei 
+
+:-------------------------:|
+
+
+!!! Weitermachen!!!
+
+--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
 
 # Der Simulationsbeginn
 
