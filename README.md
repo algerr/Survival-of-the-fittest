@@ -151,7 +151,7 @@ Die [Veränderung](#die-veränderung) wird im stabilen Wert gespeichert.
 
 Nun haben wir bei jedem Tick unserer Simulation eine Liste mit zufälligen Werten, die aus den Genen des Wesens berechnet wurden.
 Um nun auch wirklich zufällig die Bewegungen auszuführen, erstellen wir eine weitere Liste, genannt: "ZufälligeBewegungen".
-Es wird durch die Liste der stabilen Werte iteriert und jeder Wert wird, multipliziert mit einem zufälligen Wert zwischen 0 und 39, der Liste der ZufälligenBewegungen angehängt. 
+Die Liste des stabilen Wertes wird nun enumeriert und jeder Wert wird, multipliziert mit einem zufälligen Wert zwischen 0 und 39, der Liste der ZufälligenBewegungen angehängt. 
 Nun wird das letzte Mal die Liste der zufälligen Bewegungen enumeriert.
 Dabei gibt die Variable *s* den Index des Wertes in der Liste (von 0 bis 7) an und die Variable *Aktion* den Wert an sich.
 Damit kein unnötiger Fehler auftritt, wird noch die Bedingung überprüft, dass die Variable *Aktion* größer als 0 ist.
