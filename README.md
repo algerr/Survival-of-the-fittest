@@ -69,6 +69,13 @@ Wenn der Mutationswert "0" beträgt , mutiert das x0-Gen, bei einem Mutationswer
 
 ![carbon (4)](https://user-images.githubusercontent.com/111282979/202468026-da998a81-9e79-44fb-adc0-f65f6c37acb3.png)
 
+# Der Simulationsbeginn
+
+Sobald die Simulation startet, wird zuerst abgefragt, ob die Generation noch läuft.
+Daraufhin wird bei jedem Tick der Generation (von 200 bis 1) durch die Liste der Wesen iteriert und für jedes Wesen ein "stabiler Wert" definiert.
+Dazu wird auch eine Variable mit dem Namen "Veränderung" definiert, die die aktuelle Position, den Zeitwert, 
+Dieser "stabile Wert" wird im Folgenden dazu genutzt, die "Veränderung" zu speichern.
+
 
 # Die zufällige Bewegung der Wesen
 
@@ -111,7 +118,12 @@ In welcher Liste die Veränderung gespeichert wird| Wird in Liste 1 gespeichert<
 
 An welcher Stelle (Index) die Veränderung in der jeweiligen Liste nun jedoch genau gespeichert wird, ist abhängig von einer Berechnung.
 
+
+-- Latex Gleichung einfügen
 <img src="https://render.githubusercontent.com/render/math?math=\frac{y1_gen}{2 - x1_gen}">
+
+-------
+
 
 Das y1_gen wird durch (2 - x1-gen) geteilt und das Ergebnis in einen Integer (Ganzzahl) gerundet.
 Da das y1_gen einen Wert zwischen 0 und 8 haben kann und das x1_gen entweder 0 oder 1 beträgt, kann sich bei dieser Rechnung jede Ganzzahl zwischen 0 und 8 ergeben. Somit besteht die Möglichkeit, abhängig von den Genen des Wesens, die Veränderung an jeder Stelle der Liste zu speichern.
@@ -135,12 +147,22 @@ Die erste Liste besteht aus 4 Werten und die zweite aus 8 Werten.
 Doch welche Funktion erfüllt der stabile Wert denn nun eigentlich? 
 Die [Veränderung](#die-veränderung) wird im stabilen Wert gespeichert.
 
-# Der Simulationsbeginn
+## Zufällige Ausführung der Bewegungen
 
-Sobald die Simulation startet, wird zuerst abgefragt, ob die Generation noch läuft.
-Daraufhin wird bei jedem Tick der Generation (von 200 bis 1) durch die Liste der Wesen iteriert und für jedes Wesen ein "stabiler Wert" definiert.
-Dazu wird auch eine Variable mit dem Namen "Veränderung" definiert, die die aktuelle Position, den Zeitwert, 
-Dieser "stabile Wert" wird im Folgenden dazu genutzt, die "Veränderung" zu speichern.
+Nun haben wir bei jedem Tick unserer Simulation eine Liste mit zufälligen Werten, die aus den Genen des Wesens berechnet wurden.
+Um nun auch wirklich zufällig die Bewegungen auszuführen, erstellen wir eine weitere Liste, genannt: "ZufälligeBewegungen".
+Es wird durch die Liste der stabilen Werte iteriert und jeder Wert wird, multipliziert mit einem zufälligen Wert zwischen 0 und 39, der Liste der ZufälligenBewegungen angehängt. 
+Nun wird das letzte Mal die Liste der zufälligen Bewegungen enumeriert.
+Dabei gibt die Variable *s* den Index des Wertes in der Liste (von 0 bis 7) an und die Variable *Aktion* den Wert an sich.
+Damit kein unnötiger Fehler auftritt, wird noch die Bedingung überprüft, dass die Variable *Aktion* größer als 0 ist.
+Dazu soll die Bedingung auch nur erfüllt sein, wenn *Aktion* das Maximum aller Werte ist (von ZufälligeBewegungen[0] bis ZufälligeBewegungen[0]).
+Nun wird der Index des Maximums der Liste, der in *s* gespeichert ist, entscheidend.
+Dieser kann zwischen 0 und 7 liegen, doch, da die Bewegung, bzw. Änderung der Position eines Wesens nur in alle vier Himmelsrichtungen erfolgen kann, haben wir die Indizes 5 bis 7 bisher nicht implementiert. 
+
+Index (s)                  |s = 0                      |s = 1                      |s = 2                      |s = 3                      |s = 4|
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
+Änderung der Position      |Ein Feld nach links        |Ein Feld nach rechts       |Ein Feld nach oben         |Ein Feld nach unten        |Zwei zufällige Werte zwischen [-1;1] werden jeweils zur x und y Koordinate addiert|
+
 
 ## Überprüfung der Validität
 
