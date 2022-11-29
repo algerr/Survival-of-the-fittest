@@ -75,7 +75,48 @@ Wenn der Mutationswert "0" beträgt , mutiert das x0-Gen, bei einem Mutationswer
 Die Bewegung jedes Wesens steht in Abhängigkeit zu dessen Genen.
 Je nachdem, welches X-, Y-, und Z-Gen vorhanden ist und auf welcher Höhe und Breite sich das Wesen befindet, bewegt sich das Wesen schneller oder langsamer nach oben, unten, links oder rechts.
 
-# Der stabile Wert
+## Die Veränderung
+Da wir versuchen, die Bewegung der Wesen so zufällig, wie möglich zu machen, haben wir uns überlegt, möglichst viele Einflussfaktoren einzubeziehen.
+Um einen Wert zu erhalten, der diese Kombination der Einflussfaktoren beinhaltet, haben wir **die Veränderung** eingeführt.
+Der Name mag zwar im ersten Moment ein wenig komisch erscheinen, jedoch besagt dieser genau das, wofür die Variable da ist.
+Sie beschreibt die Veränderung, die letztendlich an der Position eines Wesens vorgenommen werden soll, sodass daraus durch mehrfaches Wiederholen eine flüssige Bewegung entsteht.
+Da diese Faktoren, die einen Einfluss auf die Bewegung nehmen sehr zahlreich sind, werden sie in der folgenden Tabelle veranschaulicht.
+Zu Beginn, nachdem der [stabile Wert](#der-stabile-wert) definiert wurde, wird durch alle Genome jedes Wesens iteriert.
+
+```python
+for i, Wesen in enumerate(WesenListe):
+  stabilerWert = [[0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]]
+  for j, genom in enumerate(Wesen.Gene):
+```
+
+Nun werden mehrere Bedingungen ineinander verschachtelt.
+Das Ganze beginnt mit einer Hauptbedingung:
+
+```python
+if x_gen[0] == 0:
+```
+
+y0-gen == 0                |y0_gen == 1                |y0_gen == 2                |y0_gen == 3                |y0_gen == 4                |y0_gen == 5
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
+Die y-Position des Wesens wird der Veränderung hinzugefügt|Die x-Position des Wesens wird der Veränderung hinzugefügt|Der aktuelle Zeitpunkt (Tick) der Generation wird der Veränderung hinzugefügt|Die Tatsache, dass das Wesen sich in der Safezone befindet wird der Veränderung als Wert hinzugefügt|Ein zufälliger Wert zwischen 0 und 4, multipliziert mit dem z_gen / 8, wird der Veränderung hinzugefügt|Ein zufälliger Wert zwischen 0 und 3, multipliziert mit dem z_gen / 8, wird der Veränderung hinzugefügt|
+
+Nun, da die Veränderung durch alle möglichen Einflüsse verändert wurde, soll diese abgespeichert werden, da sie bei jedem Zeitpunkt wieder neuen Einflüssen ausgesetzt ist. Um die Veränderung folglich statisch und sicher abspeichern zu können, nutzen wir den [stabilen Wert](#der-stabile-wert). An welcher Stelle die Veränderung gespeichert wird, ist abhängig vom jeweiligen Wert des x1-gens (entweder 0 oder 1).
+Das x1-gen entscheidet, ob die erste oder zweite Liste für die Speicherung genutzt werden soll. An welcher Stelle genau, ist jedoch abhängig vom 
+
+Wert des x1-Gens           |x1_gen = 1               |x1_gen = 1
+:-------------------------:|:-------------------------:|:-------------------------:|
+In welcher Liste die Veränderung gespeichert wird| Wird in Liste 1 gespeichert<br>([0, 0, 0, 0])| Wird in Liste 2 gespeichert<br>([0, 0, 0, 0, 0, 0, 0, 0])
+
+An welcher Stelle (Index) die Veränderung in der jeweiligen Liste nun jedoch genau gespeichert wird, ist abhängig von einer Berechnung.
+
+<img src="https://render.githubusercontent.com/render/math?math=\frac{y1_gen}{2 - x1_gen}">
+
+Das y1_gen wird durch (2 - x1-gen) geteilt und das Ergebnis in einen Integer (Ganzzahl) gerundet.
+Da das y1_gen einen Wert zwischen 0 und 8 haben kann und das x1_gen entweder 0 oder 1 beträgt, kann sich bei dieser Rechnung jede Ganzzahl zwischen 0 und 8 ergeben. Somit besteht die Möglichkeit, abhängig von den Genen des Wesens, die Veränderung an jeder Stelle der Liste zu speichern.
+
+![carbon (6)](https://user-images.githubusercontent.com/65679099/203022345-ae6ef6a8-d340-4779-b36f-eeff81980d6b.png)
+
+## Der stabile Wert
 Eine der elementarsten Datenspeicherungen in unserer Simulation bildet der stabile Wert.
 Jedes Wesen besitz einen eigenen stabilen Wert.
 Dieser besteht aus einer [verschachtelten Liste](https://github.com/algerr/VocabNow/blob/1dfc29ce07933b6082c18c72e7a229793dc04fcb/sotf.py#L236) mit zwei Listen.
@@ -91,63 +132,6 @@ Werte                      |[0, 0, 0, 0]               |[0, 0, 0, 0, 0, 0, 0, 0]
 Die erste Liste besteht aus 4 Werten und die zweite aus 8 Werten.
 Doch welche Funktion erfüllt der stabile Wert denn nun eigentlich? 
 Die [Veränderung](#die-veränderung) wird im stabilen Wert gespeichert.
-
-Wert des x0-Gens           |x_gen[0] = 1               |x_gen[0] = 1
-:-------------------------:|:-------------------------:|:-------------------------:|
-In welcher Liste die Veränderung gespeichert wird| Wird in Liste 1 gespeichert<br>([0, 0, 0, 0])| Wird in Liste 2 gespeichert<br>([0, 0, 0, 0, 0, 0, 0, 0])
-
-![carbon (6)](https://user-images.githubusercontent.com/65679099/203022345-ae6ef6a8-d340-4779-b36f-eeff81980d6b.png)
-
-
-
-
-
-
-
-
------------------------------------------------
-
-
-
-# Die Veränderung
-Da wir versuchen, die Bewegung der Wesen so zufällig, wie möglich zu machen, haben wir uns überlegt, möglichst viele Einflussfaktoren einzubeziehen.
-Um einen Wert zu erhalten, der diese Kombination der Einflussfaktoren beinhaltet, haben wir **die Veränderung** eingeführt.
-Der Name mag zwar im ersten Moment ein wenig komisch erscheinen, jedoch besagt dieser genau das, wofür die Variable da ist.
-Sie beschreibt die Veränderung, die letztendlich an der Position eines Wesens vorgenommen werden soll, sodass daraus durch mehrfaches Wiederholen eine flüssige Bewegung entsteht.
-Da diese Faktoren, die einen Einfluss auf die Bewegung nehmen sehr zahlreich sind, werden sie in der folgenden Tabelle veranschaulicht.
-Zu Beginn, nachdem der [stabile Wert](#der-stabile-wert) definiert wurde, wird durch alle Genome jedes Wesens iteriert.
-
-```python
-for i, Wesen in enumerate(WesenListe):
-  stabilerWert = [[0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]]
-  for j, genom in enumerate(Wesen.Gene):
-```
-
-Nun werden mehrere Bedingungen ineinander verschachtelt.
-Das Ganze beginnt mit zwei Bedingungen:
-
-if genom.x_gen[0] == 0     |if genom.x_gen[0] == 1     |
-:-------------------------:|:-------------------------:|
-Untersuchung der Bedingungen für die y_gene
-
-Dabei 
-
-:-------------------------:|
-
-
-!!! Weitermachen!!!
-
---------------------------------------------------
-
-
-
-
-
-
-
-
-
-
 
 # Der Simulationsbeginn
 
