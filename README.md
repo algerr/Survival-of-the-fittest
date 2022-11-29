@@ -96,6 +96,8 @@ Das Ganze beginnt mit einer Hauptbedingung:
 if x_gen[0] == 0:
 ```
 
+![Screenshot (30)](https://user-images.githubusercontent.com/111282979/204501332-41445875-13b4-4159-ac91-ee6d7a3883c1.png)
+
 y0-gen == 0                |y0_gen == 1                |y0_gen == 2                |y0_gen == 3                |y0_gen == 4                |y0_gen == 5
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
 Die y-Position des Wesens wird der Veränderung hinzugefügt|Die x-Position des Wesens wird der Veränderung hinzugefügt|Der aktuelle Zeitpunkt (Tick) der Generation wird der Veränderung hinzugefügt|Die Tatsache, dass das Wesen sich in der Safezone befindet wird der Veränderung als Wert hinzugefügt|Ein zufälliger Wert zwischen 0 und 4, multipliziert mit dem z_gen / 8, wird der Veränderung hinzugefügt|Ein zufälliger Wert zwischen 0 und 3, multipliziert mit dem z_gen / 8, wird der Veränderung hinzugefügt|
