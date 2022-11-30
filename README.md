@@ -129,13 +129,6 @@ In welcher Liste die Veränderung gespeichert wird| Wird in Liste 1 gespeichert<
 
 An welcher Stelle (Index) die Veränderung in der jeweiligen Liste nun jedoch genau gespeichert wird, ist abhängig von einer Berechnung.
 
-
--- Latex Gleichung einfügen
-<img src="https://render.githubusercontent.com/render/math?math=\frac{y1_gen}{2 - x1_gen}">
-
--------
-
-
 Das y1_gen wird durch (2 - x1-gen) geteilt und das Ergebnis in einen Integer (Ganzzahl) gerundet.
 Da das y1_gen einen Wert zwischen 0 und 8 haben kann und das x1_gen entweder 0 oder 1 beträgt, kann sich bei dieser Rechnung jede Ganzzahl zwischen 0 und 8 ergeben. Somit besteht die Möglichkeit, abhängig von den Genen des Wesens, die Veränderung an jeder Stelle der Liste zu speichern.
 
@@ -144,17 +137,13 @@ Da das y1_gen einen Wert zwischen 0 und 8 haben kann und das x1_gen entweder 0 o
 ## Der stabile Wert
 Eine der elementarsten Datenspeicherungen in unserer Simulation bildet der stabile Wert.
 Jedes Wesen besitz einen eigenen stabilen Wert.
-Dieser besteht aus einer [verschachtelten Liste](https://github.com/algerr/VocabNow/blob/1dfc29ce07933b6082c18c72e7a229793dc04fcb/sotf.py#L236) mit zwei Listen.
 
 ```python
-stabilerWert = [[0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]]
+stabilerWert = [0, 0, 0, 0, 0, 0, 0, 0]
 ```
 
-Liste                      |Erste Liste                |Zweite Liste
-:-------------------------:|:-------------------------:|:-------------------------:|
-Werte                      |[0, 0, 0, 0]               |[0, 0, 0, 0, 0, 0, 0, 0]
-
 Die erste Liste besteht aus 4 Werten und die zweite aus 8 Werten.
+
 Doch welche Funktion erfüllt der stabile Wert denn nun eigentlich? 
 Die [Veränderung](#die-veränderung) wird im stabilen Wert gespeichert.
 
@@ -188,7 +177,16 @@ Wenn keine Äquivalenz zu den Positionen eines anderen Wesens vorliegt, wird ein
 
 # Die Farbgebung
 
+Die Wesen in unserer Simulation sollen, wie auch die Menschen oder andere Lebewesen, individuell sein. Um nicht jedem Wesen eine zufällige Farbe zu geben, ist der RGB-Wert der Farbe in die drei Bestandteile: "Rot, Grün, Blau" aufgeteilt. Je nachdem, welche Gene das Wesen besitzt, wird sich die Farbe verändern. Die Standardfarbe für ein Wesen mit keinerlei besonderen Genen, die Einfluss auf die Farbe nehmen, ist grau (125, 125, 125 (R,G,B,)). Wesen mit ähnlichen Genen erkennt man an der ähnlichen Farbgebung. Die Wahrscheinlichkeit, dass sie sich infolgedessen auch gleich verhalten/bewegen, ist höher, je ähnlicher die Farben sind.
 
+Alles ist ausgehend von den Werten der Standardfarbe grau (125, 125, 125). Je nach Kombination der Gene wird ein Wert mit dem Standardwert summiert oder davon subtrahiert. Um die Wesen auch visuell bezüglich "guter, angepasster Gene" unterscheiden zu können, wird ein Zähler verwendet, der die Anzahl der funktionalen Genome beschreibt. Ein Genom gilt als funktional, wenn das x1_gen den Wert 1 besitzt, denn dadurch nimmt dieses Genom einen Einfluss auf die Bewegung des Wesens - das x1_gen = 1 wird benötigt, um die Veränderung im stabilen Wert zu speichern. Die Anzahl dieser funktionalen Genome wird folglich durch Enumeration überprüft.
+
+
+Genkombination             |x1_gen = 1 und y1_gen = 0  |x1_gen = 1 und y1_gen = 1  |x1_gen = 1 und y1_gen = 2  |x1_gen = 1 und y1_gen = 3  |x1_gen = 1 und y1_gen = 4  |
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
+Veränderung des Roten      |Wert wird addiert          |Wert wird subtrahiert      |
+Veränderung des Grünen     |Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert          |Wert wird subtrahiert      |
+Veränderung des Blauen     |Wert bleibt gleich         |Wert bleibt gleich         |Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert |
 
 # Die Safezone
 
