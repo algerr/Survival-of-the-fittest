@@ -188,6 +188,15 @@ Veränderung des Roten      |Wert wird addiert          |Wert wird subtrahiert  
 Veränderung des Grünen     |Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert          |Wert wird subtrahiert      |
 Veränderung des Blauen     |Wert bleibt gleich         |Wert bleibt gleich         |Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert |
 
+Nach Feinjustierung hat sich für die Berechnung des zu *addierenden Wertes* ergeben, dass das Minimum aus (254 - *dem Farbwert*) und dem Integer (Ganzzahl) aus ((40 + z_gen * 60) * 2 / Anzahl der funktionellen Gene) für jegliche Genomgrößen funktioniert.
+
+Für den zu *subtrahierenden Wert* hat sich ergeben, dass das Minimum aus dem *Farbwert* und dem Integer (Ganzzahl) aus ((40 + z_gen * 60) * 2 / Anzahl der funktionellen Genome) für jegliche GenomGrößen funktioniert. Hierbei ist zu erkennen, dass dadurch, dass durch die Anzahl der funktionellen Genome dividiert wird, der Integer kleiner wird, je höher die Anzahl der funktionellen Genome. Deshalb wird die Wahrscheinlichkeit, dass der Integer kleiner als die Farbe selbst ist, größer. Somit ist der Integer das Minimum der beiden Werte und der geringere Wert wird vom bisherigen *Farbwert* abgezogen. Deshalb sind Wesen mit vielen funktionellen Genomen, die ausgeprägtere bewegungen haben, heller gefärbt und diese mit wenigeren funktionellen Genomen, die sich potentiell auch weniger bewegen, dunkler gefärbt.
+
+Beim dritten Farbwert (Blau) wird eine Kombination des Additions-/Subtraktionsverfahren der vorherigen Farben verwendet. 
+Durch das Maximum aus dem *negativen Farbwert* und dem Minimum aus ((254 - dem Farbwert) und (80 + z_gen * 60) / Anzahl der funktionellen Genome).
+Sollte das Minimum geringer als der *Farbwert* mit negativem Vorzeichen sein, wird ein Fehler umgangen, da der *negativen Farbwert* dann das Maximum ist.
+Somit ergibt sich minimal ein *Farbwert* von 0, wenn der *Farbwert* mit dem *negativen Farbwert* addiert wird.
+
 # Die Safezone
 
 Die Safezone ist die grün gekennzeichnete Fläche, welche auch das "Zielfeld" markiert, in welchem sich die Wesen bis zum Ende einer Generation befinden sollten, damit sie ihre Gene weitergeben. Die Wesen wissen nicht, wo sich die Safezone genau befindet und sind deshalb auf ihre Bewegungsart angewiesen bzw. müssen hoffen, dass sie durch ihre Bewegungsart die Zone bis zum Ende einer Generation erreichen. Die Wesen, welche es rechzeitig schaffen die Safezone zu erreichen, geben ihre Gene und somit auch ihre Bewegungsart weiter, damit in der nächsten Generation die neu entstandenen Wesen, welche jetzt hauptsächlich die Bewegungsart ihrer Vorfahren übernommen haben, ebenfalls die Safezone erreichen. Dieser Vorgang wiederholt sich immer wieder, wobei gehofft wird, dass irgendwann alle Individuen die Safezone erreichen.
