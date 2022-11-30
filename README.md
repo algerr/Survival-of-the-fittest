@@ -23,9 +23,15 @@ Somit werden zunehmend Wesen mit ähnlichen Genen übrig bleiben, die fast alle 
 
 # Was ist Pygame?
 
+Pygame ist eine Bibliothek in Python, womit Spiele programmiert werden. Durch die gute Möglichkeit der Visualisierung von Daten in Animationen, wie bei dieser Simulation, lässt sich die Bewegung der Wesen und der Ablauf der Simulation damit gut veranschaulichen.
+
+<details>
+<summary>Erklärung</summary>
+
 Die Simulation lässt sich natürlich komplett über Mathematik und Daten auswerten. Da man sich dadurch jedoch wenig vorstellen kann, wie das Ganze eigentlich aussehen müsste, wird in diesem Projekt [Pygame](https://www.pygame.org/) genutzt, um eine lebhafte Simulation zu ermöglichen.
 Pygame ist eine Pythonbibliothek, die zur Spieleprogrammierung genutzt wird.
 
+</details>
 
 ## Das Wesen
 
@@ -174,6 +180,9 @@ Sollte das der Fall sein, wird ein False-Statement zurückgegeben, sodass die ei
 Wenn keine Äquivalenz zu den Positionen eines anderen Wesens vorliegt, wird ein True-Statement zurückgegeben und die eingegebenen Werte sind valide Positionen.
 
 ![überprüfeValiditätCarbon](https://user-images.githubusercontent.com/65679099/202256158-ccb9bd2e-1091-47c0-8350-b7cf945b668c.png)
+
+# Die Farbgebung
+
 
 
 # Die Safezone
