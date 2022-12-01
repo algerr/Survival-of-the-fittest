@@ -329,6 +329,8 @@ Das ist jedoch unmöglich, da jederzeit Mutationen auftreten können oder manche
 
 ![Screenshot (14)](https://user-images.githubusercontent.com/111282979/202275940-c29e4862-93db-4afe-a4f3-cf434d3aa931.png)
 
+## Die Initialisierung der Safezone
+
 Die Initialisierung, bzw. Berechnung der Safezone erfolgt durch einzelne Felder, deren Koordinaten in der Liste "Safezone" gespeichert werden. 
 Durch die Variablen *SafezoneX* und *SafezoneY* lässt sich die Safezone beliebig begrenzen.
 *SafezoneX* und *SafezoneY* entsprechen zu Beginn der (Größe des Simulationsbereiches - 1).
