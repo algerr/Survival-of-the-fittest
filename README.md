@@ -241,40 +241,41 @@ Die Bewegung jedes Wesens steht in Abhängigkeit zu dessen Genen.
 Je nachdem, welches X-, Y-, und Z-Gen vorhanden ist und auf welcher Höhe und Breite sich das Wesen befindet, bewegt sich das Wesen schneller oder langsamer nach oben, unten, links oder rechts.
 
 ## Die Veränderung
-Da wir versuchen, die Bewegung der Wesen so zufällig, wie möglich zu machen, haben wir uns überlegt, möglichst viele Einflussfaktoren einzubeziehen.
+Da wir versuchen, die Bewegung der Wesen so zufällig, wie möglich zu gestalten, haben wir uns überlegt, möglichst viele Einflussfaktoren einzubeziehen.
 Um einen Wert zu erhalten, der diese Kombination der Einflussfaktoren beinhaltet, haben wir **die Veränderung** eingeführt.
 Der Name mag zwar im ersten Moment ein wenig komisch erscheinen, jedoch besagt dieser genau das, wofür die Variable da ist.
-Sie beschreibt die Veränderung, die letztendlich an der Position eines Wesens vorgenommen werden soll, sodass daraus durch mehrfaches Wiederholen eine flüssige Bewegung entsteht.
+Sie beschreibt die Veränderung, die letztendlich an der Position eines Wesens vorgenommen werden soll, sodass daraus durch mehrfaches Wiederholen eine flüssige und zufällige Bewegung entsteht.
 Da diese Faktoren, die einen Einfluss auf die Bewegung nehmen sehr zahlreich sind, werden sie in der folgenden Tabelle veranschaulicht.
-Zu Beginn, nachdem der [stabile Wert](#der-stabile-wert) definiert wurde, wird durch alle Genome jedes Wesens iteriert.
+Zu Beginn, nachdem der [stabile Wert](#der-stabile-wert) initialisiert wurde, werden die Genome jedes Wesens enumeriert.
 
 ```python
 for i, Wesen in enumerate(WesenListe):
-  stabilerWert = [[0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]]
+  stabilerWert = [0, 0, 0, 0, 0, 0, 0, 0]
   for j, genom in enumerate(Wesen.Gene):
 ```
 
-Nun werden mehrere Bedingungen ineinander verschachtelt.
-Das Ganze beginnt mit einer Hauptbedingung:
+Nun steht alles in Abhängigkeit zu einer Hauptbedingung:
 
 ```python
 if x_gen[0] == 0:
 ```
 
+**Das x0_gen muss den Wert 0 haben.**
+
 ![Screenshot (30)](https://user-images.githubusercontent.com/111282979/204501332-41445875-13b4-4159-ac91-ee6d7a3883c1.png)
 
 y0-gen == 0                |y0_gen == 1                |y0_gen == 2                |y0_gen == 3                |y0_gen == 4                |y0_gen == 5
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
-Die y-Position des Wesens wird der Veränderung hinzugefügt|Die x-Position des Wesens wird der Veränderung hinzugefügt|Der aktuelle Zeitpunkt (Tick) der Generation wird der Veränderung hinzugefügt|Die Tatsache, dass das Wesen sich in der Safezone befindet wird der Veränderung als Wert hinzugefügt|Ein zufälliger Wert zwischen 0 und 4, multipliziert mit dem z_gen / 8, wird der Veränderung hinzugefügt|Ein zufälliger Wert zwischen 0 und 3, multipliziert mit dem z_gen / 8, wird der Veränderung hinzugefügt|
+Die y-Position(Höhe) des Wesens wird der Veränderung hinzugefügt|Die x-Position(Breite) des Wesens wird der Veränderung hinzugefügt|Der aktuelle Zeitpunkt (Tick) der Generation wird der Veränderung hinzugefügt|Die Tatsache, dass das Wesen sich in der Safezone befindet wird der Veränderung als Wert(z_gen / 2) hinzugefügt|Ein zufälliger Wert zwischen 0 und 4, multipliziert mit dem (z_gen / 8), wird der Veränderung hinzugefügt|Ein zufälliger Wert zwischen 0 und 3, multipliziert mit dem (z_gen / 8), wird der Veränderung hinzugefügt|
 
 Nun, da die Veränderung durch alle möglichen Einflüsse verändert wurde, soll diese abgespeichert werden, da sie bei jedem Zeitpunkt wieder neuen Einflüssen ausgesetzt ist. Um die Veränderung folglich statisch und sicher abspeichern zu können, nutzen wir den [stabilen Wert](#der-stabile-wert). An welcher Stelle die Veränderung gespeichert wird, ist abhängig vom jeweiligen Wert des x1-gens (entweder 0 oder 1).
-Das x1-gen entscheidet, ob die erste oder zweite Liste für die Speicherung genutzt werden soll. An welcher Stelle genau, ist jedoch abhängig vom 
+Das x1-gen entscheidet, ob die Veränderung gespeichert wird, oder nicht. An welcher Stelle der Liste genau, ist jedoch abhängig vom Wert des x1-Gens.
 
-Wert des x1-Gens           |x1_gen = 1               |x1_gen = 1
+Wert des x1-Gens           |x1_gen = 0               |x1_gen = 1
 :-------------------------:|:-------------------------:|:-------------------------:|
-In welcher Liste die Veränderung gespeichert wird| Wird in Liste 1 gespeichert<br>([0, 0, 0, 0])| Wird in Liste 2 gespeichert<br>([0, 0, 0, 0, 0, 0, 0, 0])
+Wie mit der Veränderung verfahren wird| Die Veränderung wird nicht gespeichert| Die Veränderung wird in der Liste:<br>([0, 0, 0, 0, 0, 0, 0, 0]) gespeichert|
 
-An welcher Stelle (Index) die Veränderung in der jeweiligen Liste nun jedoch genau gespeichert wird, ist abhängig von einer Berechnung.
+An welcher Stelle (Index) die Veränderung in der jeweiligen Liste nun jedoch genau gespeichert wird, soll jedoch auch mit den 
 
 Das y1_gen wird durch (2 - x1-gen) geteilt und das Ergebnis in einen Integer (Ganzzahl) gerundet.
 Da das y1_gen einen Wert zwischen 0 und 8 haben kann und das x1_gen entweder 0 oder 1 beträgt, kann sich bei dieser Rechnung jede Ganzzahl zwischen 0 und 8 ergeben. Somit besteht die Möglichkeit, abhängig von den Genen des Wesens, die Veränderung an jeder Stelle der Liste zu speichern.
@@ -289,36 +290,36 @@ Jedes Wesen besitz einen eigenen stabilen Wert.
 stabilerWert = [0, 0, 0, 0, 0, 0, 0, 0]
 ```
 
-Die erste Liste besteht aus 4 Werten und die zweite aus 8 Werten.
+Der stabile Wert besteht aus einer Liste mit 8 einzelnen Werten.
 
 Doch welche Funktion erfüllt der stabile Wert denn nun eigentlich? 
-Die [Veränderung](#die-veränderung) wird im stabilen Wert gespeichert.
+Der stabile Wert ist für die Simulation von elementarer Bedeutung, denn er speichert die einzelnen [Veränderungen](#die-veränderung) jedes Wesens, die für die Bewegung genutzt werden.
 
 ## Zufällige Ausführung der Bewegungen
 
-Nun haben wir bei jedem Tick unserer Simulation eine Liste mit zufälligen Werten, die aus den Genen des Wesens berechnet wurden.
-Um nun auch wirklich zufällig die Bewegungen auszuführen, erstellen wir eine weitere Liste, genannt: "ZufälligeBewegungen".
-Die Liste des stabilen Wertes wird nun enumeriert und jeder Wert wird, multipliziert mit einem zufälligen Wert zwischen 0 und 39, der Liste der ZufälligenBewegungen angehängt. 
-Nun wird das letzte Mal die Liste der zufälligen Bewegungen enumeriert.
-Dabei gibt die Variable *s* den Index des Wertes in der Liste (von 0 bis 7) an und die Variable *Aktion* den Wert an sich.
-Damit kein unnötiger Fehler auftritt, wird noch die Bedingung überprüft, dass die Variable *Aktion* größer als 0 ist.
-Dazu soll die Bedingung auch nur erfüllt sein, wenn *Aktion* das Maximum aller Werte ist (von ZufälligeBewegungen[0] bis ZufälligeBewegungen[0]).
-Nun wird der Index des Maximums der Liste, der in *s* gespeichert ist, entscheidend.
-Dieser kann zwischen 0 und 7 liegen, doch, da die Bewegung, bzw. Änderung der Position eines Wesens nur in alle vier Himmelsrichtungen erfolgen kann, haben wir die Indizes 5 bis 7 bisher nicht implementiert. 
+Nun haben wir bei jedem Zeitwert (Tick) unserer Simulation eine Liste mit Werten, die aus der Kombination der Gene des Wesens berechnet wurden.
+Um die Bewegungen nun auch wirklich zufällig auszuführen, initialisieren wir eine weitere leere Liste, genannt: "ZufälligeBewegungen".
+Die Liste des stabilen Wertes wird nun enumeriert und jeder Wert wird, multipliziert mit einem zufälligen Wert zwischen 0 und 39, der Liste der *ZufälligenBewegungen* angehängt. 
+Nun wird das letzte Mal die Liste der *ZufälligenBewegungen* enumeriert.
+Dabei gibt die Variable *s* den Index des Wertes in der Liste (von 0 bis 7) und die Variable *Aktion* den Wert an sich an.
+Damit kein unnötiger Fehler auftritt, wird noch die Bedingung überprüft, dass die Variable *Aktion* größer 0 ist.
+Dazu soll die Bedingung auch nur erfüllt sein, wenn *Aktion* das Maximum aller Werte ist (von ZufälligeBewegungen[0] bis ZufälligeBewegungen[7]).
+Nun ist der Index des Maximums der Liste, der in *s* gespeichert ist, von großer Bedeutung.
+Dieser kann zwischen 0 und 7 liegen, doch, da die Bewegung, bzw. Änderung der Position eines Wesens nur in alle vier Himmelsrichtungen erfolgen kann, sind die Indizes 5 bis 7 bisher nicht implementiert. Wenn dafür aber eine gute Idee vorhanden sind, können diese mit Leichtigkeit umgesetzt werden.
 
 Index (s)                  |s = 0                      |s = 1                      |s = 2                      |s = 3                      |s = 4|
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
-Änderung der Position      |Ein Feld nach links        |Ein Feld nach rechts       |Ein Feld nach oben         |Ein Feld nach unten        |Zwei zufällige Werte zwischen [-1;1] werden jeweils zur x und y Koordinate addiert|
+Änderung der Position      |Ein Feld nach links        |Ein Feld nach rechts       |Ein Feld nach oben         |Ein Feld nach unten        |Zwei zufällige Werte zwischen [-1;1] werden jeweils zur x und y Koordinate hinzuaddiert|
 
 
 ## Überprüfung der Validität
 
-Da die Simulation, um schöne Ergebnisse mit dennoch komplexen Genen zu erhalten, viele Generationen durchlaufen muss, wäre es ziemlich schade, wenn auf einmal, ein Fehler, bezüglich der Koordinaten eines Wesens, auftreten würde.
-Dafür haben wir eine Funktion "überprüfeValidität" mit den Parametern "(x, y)" definiert, die überprüft, dass die Koordinaten jedes Wesens im Simulationsfenster liegen.
-Dazu ist es aber auch ungünstig, wenn sich mehrere Wesen auf dem gleichen Feld befinden können, da somit der Konkurrenzkampf darunter leidet.
-Infolgedessen, wird noch überprüft, ob die x- und y-Position jedes Wesen mit den übergebenen Werten übereinstimmt.
-Sollte das der Fall sein, wird ein False-Statement zurückgegeben, sodass die eingegebenen Werte keine validen Positionen sein können.
-Wenn keine Äquivalenz zu den Positionen eines anderen Wesens vorliegt, wird ein True-Statement zurückgegeben und die eingegebenen Werte sind valide Positionen.
+Da die Simulation, um schöne Ergebnisse mit dennoch komplexen Genen zu erhalten, viele Generationen durchlaufen muss, wäre es ziemlich schade, wenn auf einmal, ein Fehler, bezüglich der Koordinaten eines Wesens oder der Felder der Safezone, auftreten würde.
+Dafür haben wir eine Funktion "überprüfeValidität" mit den Parametern "(x und y)" definiert, die überprüft, dass die eingegebenen Parameter gültigen Koordinaten im Simulationsfenster entsprechen.
+Infolgedessen ist es sehr ungültig, wenn sich mehrere Wesen auf ein und demselben Feld befinden können, da die Konkurrenz darunter leidet.
+Deshalb wird dazu auch noch überprüft, ob die x- und y-Positionen irgendeines Wesens mit den übergebenen Parametern übereinstimmt.
+Sollte das der Fall sein, wird ein False-Statement zurückgegeben, das die eingegebenen Werte als invalide Positionen deklariert.
+Wenn keine Kongruenz zu den Positionen eines anderen Wesens vorliegt, wird ein True-Statement zurückgegeben und die eingegebenen Werte sind valide Positionen.
 
 ![überprüfeValiditätCarbon](https://user-images.githubusercontent.com/65679099/202256158-ccb9bd2e-1091-47c0-8350-b7cf945b668c.png)
 
@@ -377,7 +378,7 @@ if Generation[1] < 0:
   Generation[0] += 1
   # Die ablaufenden Zeitwerte (Ticks) werden wieder auf 200 gesetzt
   Generation[1] = Generation[2]
-  # Eine neue Liste mit den überlebenden Wesen, die es in die Safezone geschafft haben, wird definiert
+  # Eine neue Liste mit den überlebenden Wesen, die es in die Safezone geschafft haben, wird initialisiert
   Überlebende = []
 ```
 
@@ -434,7 +435,7 @@ Nun sind wir am Ende des Programmes angelangt. Alle Objekte, Funktionen und jede
 Als Main wird in jeder Programmiersprache die Funktion bezeichnet, in der alle Funktionen, Klassen, Objekte und Sonstiges zusammengefügt und letztendlich ausgeführt werden. Das ist in unserem Projekt auch der Fall. In dieser Funktion werden auch die ganzen "verstellbaren" Variablen, welche als Parameter für die zahlreichen Funktionen dienen, initialisiert. Man kann beispielsweise die Länge einer Generation verändern, die Größe des Fensters oder der Safezone, die Gesamtanzahl der Wesen oder die Genomgröße. Diese Änderungen haben eine globale Wirkung.
 Normalerweise bleiben Variablen, bzw. die Werte, die Variablen in einer Funktion zugewiesen werden, lokal in dieser Funktion. 
 Das Schlüsselwort *global* legt jedoch fest, dass die Änderungen, die man an den, mit diesem Schlüsselwort bezeichneten Variablen vornimmt, im gesamten Programm wirksam sind.
-Alle wichtigen, zu definierenden Variablen, die wir in unserem Programm an verschiedensten Stellen benötigen, sind als *global* in der Main-Funktion deklariert.
+Alle wichtigen, zu initialisierenden Variablen, die wir in unserem Programm an verschiedensten Stellen benötigen, sind als *global* in der Main-Funktion deklariert.
 ```python
 global WesenListe, Generation, Größe, GenomGröße, PositionsListe, Safezone, Überlebende, GesamtAnzahl
 ```
@@ -496,7 +497,7 @@ def main():
     #                                                                                                                                 Mensch = 1000)
     GenomGröße = 10
 
-    # Mit den definierten Parametern werden die Wesen generiert
+    # Mit den initialisierten (Variablen)Parametern werden die Wesen generiert
     generieren()
 
     # Die Fenstergröße wird festgelegt (Der Faktor 8 und der Summand 59 fungiert wieder als Anpassung an die Größe des Pygame Fensters)
