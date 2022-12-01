@@ -5,6 +5,7 @@
 - [Der Hintergrund](#der-hintergrund)
 - [Das Grundprinzip](#das-grundprinzip)
 - [Was ist Pygame?](#was-ist-pygame?)
+- [Das Rendering](#das-rendering)
 
 # Der Hintergrund
 
