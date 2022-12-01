@@ -352,7 +352,7 @@ while SafezoneX >= 0:
   SafezoneX -= 1
 ```
 
-## Nach dem Ende der Generation
+# Nach dem Ende der Generation
 
 Zuerst wird überprüft, ob das Pygamefenster noch offen ist.
 
