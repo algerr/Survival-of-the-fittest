@@ -43,14 +43,17 @@ Zum Schluss kommen noch die einzelnen Wesen hinzu und der "Generationszähler", 
 
   Zuerst führen wir in der folgenden Tabelle die nützlichen Pygamefunktionen und -objekte auf, die diese Simulation derartig visualisieren, damit beim weiteren Lesen nicht erst die [Pygame-Dokumentation](https://www.pygame.org/docs/) studiert werden muss. Es sind in der Tabelle lediglich die Parameter der Funktionen angegeben, die auch im Projekt benutzt werden.
 
-  Pygamefunktion/-objekt             |rklärung            |
+  Pygamefunktion/-objekt     |Erklärung                  |
   :-------------------------:|:-------------------------:|
+  init()                     |Alle Pygame-Module werden initialisiert und die Programmierung mit Pygame kann beginnen. Diese Funktion ist grundlegend und in unserer Main-Funktion an erster Stelle nach der Deklaration der globalen Variablen zu finden. In diesem Projekt nutzen wir keine Parameter für diese Funktion.|
   Surface.fill()             |Eine Oberfläche, in unserem Fall ein Fenster, wird mit einer Farbe gefüllt. Benötigte Parameter: (Die RGB-Werte).|
   draw.rect()                |Ein Rechteck mit beliebiger Größe und Farbe kann gezeichnet werden. Diese Funktion wird in diesem Projekt für das Rendering jeder viereckigen Form genutzt. Vom Wesen bis zum schwarzen Hintergrund. Benötigte Parameter: (Die Oberfläche, die RGB-Werte, (der Abstand vom linken Rand, der Abstand vom oberen Rand, die Breite des Rechtecks, die Höhe des Rechtecks)|
   font.Font()                |Es wird ein neues Objekt erstellt. Die Schriftart und Größe können festgelegt werden. Benötigte Parameter: (Schriftart, Größe(Höhe der Schrift in Pixeln))|
   font.Font.render()         |Ein Text wird auf einer neuerzeugten Oberfläche gerendert. Benötigte Parameter: (Der Text, Anti-Aliasing, Farbe des Textes)|
   Surface.blit()             |Eine Oberfläche wird auf eine andere "draufgelegt". Benötigte Paramter: (Neue Oberfläche, Untergrund-Oberfläche|
   display.update()           |Ein gewisser Teil des Pygamefensters kann neu geladen werden. Wenn kein Parameter übergeben wird, wird das gesamte Fenster, bzw. die gesamte Oberfläche neu geladen. (In diesem Projekt wird pygame.display.update() ohne Parameter aufgerufen.)|
+  display.set_mode()         |Ein Fenster kann mit dieser Funktion initialisiert werden. Benötigte Parameter: (Breite, Höhe)|
+  display.set_caption()      |Der Fenstertitel kann mit dieser Funktion festgelegt werden. Benötigte Parameter: (Fenstertitel (Beispiel: "Survival of the fittest - Wer ist am besten angepasst?)|
 
   Die Funktion, in der das gesamte Rendering erfolgt "renderFenster" besitzt einen Parameter "Fenster". Dieser bildet die grundlegende Oberfläche des Pygamefensters.
   Zuerst wird mit
@@ -320,11 +323,32 @@ Wenn keine Äquivalenz zu den Positionen eines anderen Wesens vorliegt, wird ein
 
 # Die Safezone
 
-Die Safezone ist die grün gekennzeichnete Fläche, welche auch das "Zielfeld" markiert, in welchem sich die Wesen bis zum Ende einer Generation befinden sollten, damit sie ihre Gene weitergeben. Die Wesen wissen nicht, wo sich die Safezone genau befindet und sind deshalb auf ihre Bewegungsart angewiesen bzw. müssen hoffen, dass sie durch ihre Bewegungsart die Zone bis zum Ende einer Generation erreichen. Die Wesen, welche es rechzeitig schaffen die Safezone zu erreichen, geben ihre Gene und somit auch ihre Bewegungsart weiter, damit in der nächsten Generation die neu entstandenen Wesen, welche jetzt hauptsächlich die Bewegungsart ihrer Vorfahren übernommen haben, ebenfalls die Safezone erreichen. Dieser Vorgang wiederholt sich immer wieder, wobei gehofft wird, dass irgendwann alle Individuen die Safezone erreichen.
-Das ist jedoch unmöglich, da Mutationen immer auftreten können oder manche sich direkt zu Beginn in der Safezone befinden und sich überhaupt nicht bewegen, sodass ihr Überleben durch das Feld, in dem sie erscheinen, abhängt. Die Safezone verändert sich von Generation zu Generation nicht, weil die Weitergabe der erfolgreichen Bewegungsart, keinen Sinn ergibt, wenn sich die Safezone mit jedem Mal ändert. Dann würden sich die Wesen beispielsweise in die komplett falsche Richtung bewegen.
-
+Die Safezone ist die grün gekennzeichnete Fläche, welche auch das "Zielfeld" markiert, in welchem sich die Wesen bis zum [Ende einer Generation](#nach-dem-ende-der-generation) befinden sollten, damit sie ihre Gene vererben.<br> Die Wesen wissen nicht, wo sich die Safezone genau befindet und sind deshalb auf ihre Bewegungsart und somit indirekt auf ihre Gene angewiesen, bzw. müssen hoffen, dass sie durch ihre Bewegung die Zone bis zum Ende einer Generation erreichen.<br>
+Die Wesen, welche es rechzeitig schaffen die Safezone zu erreichen, vererben ihre Gene und somit auch ihre Bewegungsart weiter, damit in der nächsten Generation die neu entstandenen Wesen, welche jetzt hauptsächlich die Bewegungsart ihrer Vorfahren übernommen haben, ebenfalls die Safezone erreichen. Dieser Vorgang wiederholt sich immer wieder, wobei gehofft wird, dass irgendwann alle Individuen die Safezone erreichen.
+Das ist jedoch unmöglich, da jederzeit Mutationen auftreten können oder manche Wesen sich direkt zu Beginn in der Safezone befinden und sich überhaupt nicht bewegen, sodass ihr Überleben vom Feld, in dem sie erscheinen, abhängig ist. Die Safezone verändert sich von Generation zu Generation nicht, weil die Weitergabe der angepassten Gene, die eine erfolgreiche Bewegungsart bewirken, keinen Sinn ergibt, wenn sich die Safezone mit jedem Mal ändert. Dann müssten sich die Gene der Wesen jedes Mal verändern, was bezüglich des Vererbungsprinzips jedoch nicht mit solcher Präzision möglich ist, dass ein Wesen jede Safezone mit hundertprozentiger Sicherheit erreicht.
 
 ![Screenshot (14)](https://user-images.githubusercontent.com/111282979/202275940-c29e4862-93db-4afe-a4f3-cf434d3aa931.png)
+
+Die Initialisierung, bzw. Berechnung der Safezone erfolgt durch einzelne Felder, deren Koordinaten in der Liste "Safezone" gespeichert werden. 
+Durch die Variablen *SafezoneX* und *SafezoneY* lässt sich die Safezone beliebig begrenzen.
+*SafezoneX* und *SafezoneY* entsprechen zu Beginn der (Größe des Simulationsbereiches - 1).
+Nun lassen sich Intervalle festlegen, in denen sich die Safezone befinden soll.
+Daraufhin werden die Variablen iterativ um 1 verringert und wenn sie sich im festgelegten Intervall befinden, werden die Werte als x- und y-Koordinaten der "Safezone" Liste angehängt.
+
+```python
+Safezone = []
+SafezoneX = Größe[0] - 1
+while SafezoneX >= 0:
+  SafezoneY = Größe[1] - 1
+  while SafezoneY >= 0:
+    # Über die Intervalle für X und Y lässt sich die Safezone bestimmen
+    # Es wird von 100 bis 0 iteriert und, wenn sich SafezoneX/SafezoneY im Safezone-Bereich befinden, werden diese der Safezone Liste angehänt
+    if SafezoneX >= 0 and SafezoneX <= 30 and SafezoneY >= 0 and SafezoneY <= 30:
+      # Die Safezone Pixel werden festgehalten
+      Safezone.append([SafezoneX, SafezoneY])
+    SafezoneY -= 1
+  SafezoneX -= 1
+```
 
 ## Nach dem Ende der Generation
 
@@ -399,4 +423,79 @@ for i, creature in enumerate(WesenListe):
       WesenListe.append(neuesWesen)
       # Das Ganze geht so lange, bis durch alle Wesen durch iteriert wurde
       Temp -= 1
+```
+
+# Die Main-Funktion und Initialisierung aller Variablen
+
+Nun sind wir am Ende des Programmes angelangt. Alle Objekte, Funktionen und jedes klitzekleine Detail wurde erklärt und nun fragt man sich, was denn überhaupt noch fehlen kann, wo doch bereits knapp 400 Zeilen Quelltext überstanden sind. Um kurz auf die Frage zu antworten: Die Main-Funktion.
+Als Main wird in jeder Programmiersprache die Funktion bezeichnet, in der alle Funktionen, Klassen, Objekte und Sonstiges zusammengefügt und letztendlich ausgeführt werden. Das ist in unserem Projekt auch der Fall. In dieser Funktion werden auch die ganzen "verstellbaren" Variablen initialisiert. Man kann beispielsweise die Länge einer Generation verändern, die Größe des Fensters oder der Safezone, die Gesamtanzahl der Wesen oder die Genomgröße. Diese Änderungen haben eine globale Wirkung.
+Normalerweise bleiben Variablen, bzw. die Werte, die Variablen in einer Funktion zugewiesen werden, lokal in dieser Funktion. 
+Das Schlüsselwort *global* legt jedoch fest, dass die Änderungen, die man an den, mit diesem Schlüsselwort bezeichneten Variablen vornimmt, im gesamten Programm wirksam sind.
+Alle wichtigen, zu definierenden Variablen, die wir in unserem Programm an verschiedensten Stellen benötigen, sind als *global* in der Main-Funktion deklariert.
+```python
+global WesenListe, Generation, Größe, GenomGröße, PositionsListe, Safezone, Überlebende, GesamtAnzahl
+```
+Als erste Funktion wird pygame.init() ausgeführt, um alle Module Pygames zu initialisieren und den Prozess zu starten.
+Daraufhin werden alle Variablen initialisiert.
+Die besondere Festlegung der Safezone wird 
+```python
+def main():
+    # Deklarierung der Variablen als Global, sodass jedes Objekt und jede Funktion darauf zugreifen kann
+    global WesenListe, Generation, Größe, GenomGröße, PositionsListe, Safezone, Überlebende, GesamtAnzahl
+    # Initialisierung Pygames
+    pygame.init()
+    # In dieser Liste werden alle Wesen gespeichert
+    WesenListe = []
+    # Von jedem Wesen werden 8 Positionen gespeichert, sodass die Bewegung nachverfolgbar ist (s. Schweif im GitHub Repository)
+    PositionsListe = [[], [], [], [], [], [], [], []]
+    # Alle überlebenden Wesen werden in dieser Liste gespeichert
+    Überlebende = []
+    # [Aktuelle Generation, Ablaufende Ticks, Standard-Zeitwert für die ablaufenden Ticks]
+    # Eine Generation dauert 200 Ticks, es sei denn, die Wesen bewegen sich vorher nicht mehr.
+    # Danach werden die ablaufenden Ticks (Generation[1]) wieder auf 200 gesetzt und das Ganze beginnt von Neuem
+    Generation = [1, 200, 200]
+    # Größe des Simulationsbereiches
+    Größe = [100, 100]
+    # Anzahl der Wesen
+    GesamtAnzahl = 200
+    # Beinhaltet alle Pixel, die die Safezone markieren
+    Safezone = []
+    SafezoneX = Größe[0] - 1
+    while SafezoneX >= 0:
+        SafezoneY = Größe[1] - 1
+        while SafezoneY >= 0:
+            # Über die Intervalle für X und Y lässt sich die Safezone bestimmen
+            # Es wird von 100 bis 0 iteriert und, wenn sich SafezoneX/SafezoneY im Safezone-Bereich befinden, werden diese der Safezone Liste angehänt
+            if SafezoneX >= 0 and SafezoneX <= 30 and SafezoneY >= 0 and SafezoneY <= 30:
+                # Die Safezone Pixel werden festgehalten
+                Safezone.append([SafezoneX, SafezoneY])
+            SafezoneY -= 1
+        SafezoneX -= 1
+        # print(SafezoneX)
+        # print(SafezoneY)
+    # Die Größe (Komplexität in der Berechnung) des Erbguts wird festgelegt. Je gräßer, desto komplizierter der Organismus (Beispiel: Bakterium = 1
+    #                                                                                                                                 Mensch = 1000)
+    GenomGröße = 10
+
+    # Mit den definierten Parametern werden die Wesen generiert
+    generieren()
+
+    # Die Fenstergröße wird festgelegt (Der Faktor 8 und der Summand 59 fungiert wieder als Anpassung an die Größe des Pygame Fensters)
+    Fenster = pygame.display.set_mode((Größe[0] * 8 + 59, Größe[1] * 8 + 59))
+
+    # Fenstertitel: 'Survival of the fittest - Wer ist am besten angepasst ?' wird festgelegt
+    pygame.display.set_caption('Survival of the fittest - Wer ist am besten angepasst ?')
+
+    # Während das Programm läuft, gibt es nach jeder Generation eine 5ms Pause.
+    # Daraufhin wird das Fenster gerendert, überprüft, ob die Simulation überhaupt noch läuft und dann die simulationStart-Funktion aufgerufen
+    while True:
+        pygame.time.delay(5)
+        renderFenster(Fenster)
+        GenerationsEnde()
+        simulationStart()
+    pass
+
+
+if __name__ == "__main__":
+    main()
 ```
