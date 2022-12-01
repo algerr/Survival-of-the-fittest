@@ -485,7 +485,7 @@ def main():
         SafezoneY = Größe[1] - 1
         while SafezoneY >= 0:
             # Über die Intervalle für X und Y lässt sich die Safezone bestimmen
-            # Es wird von 100 bis 0 iteriert und, wenn sich SafezoneX/SafezoneY im Safezone-Bereich befinden, werden diese der Safezone Liste angehänt
+            # Es wird von 100 bis 0 iteriert und, wenn sich SafezoneX/SafezoneY im Safezone-Bereich befinden, werden diese der Safezone Liste angehängt
             if SafezoneX >= 0 and SafezoneX <= 30 and SafezoneY >= 0 and SafezoneY <= 30:
                 # Die Safezone Pixel werden festgehalten
                 Safezone.append([SafezoneX, SafezoneY])
