@@ -447,12 +447,11 @@ Eigentlich kann das Programm, wenn es nicht vorher abgebrochen wird, auf immer u
 Zuerst gibt es eine Pause von 5ms und daraufhin wird das Fenster gerendert, die Simulation beendet und daraufhin wieder gestartet.
 Dieser Ablauf wiederholt sich dauerhaft.
 Nun bleibt nur noch eine Frage offen.<br>
-Wofür steht das:
-```
+Wofür stehen denn diese letzten beiden Zeilen?:
+```python
 if __name__ == "__main__":
   main()
 ``` 
-?
 <br>
 In Python beschreibt diese Bedingung, dass die *main()*-Funktion, die in der Bedinung steht, nur ausgeführt werden, soll, wenn die Datei als Skript ausgeführt wird.
 Es gebe auch die Möglichkeit, die Datei als Modul in eine andere Datei zu importieren. Dann würde das, was in der Bedingung steht, nicht ausgeführt werden, da die Datei nicht als "Hauptdatei", sondern als Modul ausgeführt wird.
