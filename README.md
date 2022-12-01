@@ -454,7 +454,6 @@ Wofür stehen denn diese letzten beiden Zeilen?:
 if __name__ == "__main__":
   main()
 ``` 
-<br>
 In Python beschreibt diese Bedingung, dass die *main()*-Funktion, die in der Bedinung steht, nur ausgeführt werden, soll, wenn die Datei als Skript ausgeführt wird.
 Es gebe auch die Möglichkeit, die Datei als Modul in eine andere Datei zu importieren. Dann würde das, was in der Bedingung steht, nicht ausgeführt werden, da die Datei nicht als "Hauptdatei", sondern als Modul ausgeführt wird.
 Eigentlich wäre dieser Zusatz nicht nötig, da dieses Projekt nur auf einer Datei beruht, jedoch ist es eine gute Angewohnheit, "Hauptdateien" (Main-Dateien) mit dieser Bedingung am Ende zu versehen, da sich das Ganze positiv auf zukünftige Projekte, wo vielleicht mit selbstgeschriebenen Modulen gearbeitet wird, auswirkt.
