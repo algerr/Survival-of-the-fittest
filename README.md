@@ -38,110 +38,113 @@ Pygame ist eine Pythonbibliothek, die zur Spieleprogrammierung genutzt wird.
 Um die ganze Simulation nun auch wirklich darzustellen, muss das Ganze natürlich gerendert werden. Dafür haben wir die Funktion "renderFenster" definiert, die ein Fenster mit grauem Hintergrund erschafft, das schwarze Feld, worin sich die Simulation abspielt, in der festgelegten Größe einzeichnet und dazu auch die Safezone.
 Zum Schluss kommen noch die einzelnen Wesen hinzu und der "Generationszähler", der am oberen rechten Rand die aktuelle Generation indiziert.
 
-
-
-Zuerst führen wir in der folgenden Tabelle die nützlichen Pygamefunktionen und -objekte auf, die diese Simulation derartig visualisieren, damit beim weiteren Lesen nicht erst die [Pygame-Dokumentation](https://www.pygame.org/docs/) studiert werden muss. Es sind in der Tabelle lediglich die Parameter der Funktionen angegeben, die auch im Projekt benutzt werden.
-
-Pygamefunktion/-objekt             |rklärung            |
-:-------------------------:|:-------------------------:|
-Surface.fill()             |Eine Oberfläche, in unserem Fall ein Fenster, wird mit einer Farbe gefüllt. Benötigte Parameter: (Die RGB-Werte).|
-draw.rect()                |Ein Rechteck mit beliebiger Größe und Farbe kann gezeichnet werden. Diese Funktion wird in diesem Projekt für das Rendering jeder viereckigen Form genutzt. Vom Wesen bis zum schwarzen Hintergrund. Benötigte Parameter: (Die Oberfläche, die RGB-Werte, (der Abstand vom linken Rand, der Abstand vom oberen Rand, die Breite des Rechtecks, die Höhe des Rechtecks)|
-font.Font()                |Es wird ein neues Objekt erstellt. Die Schriftart und Größe können festgelegt werden. Benötigte Parameter: (Schriftart, Größe(Höhe der Schrift in Pixeln))|
-font.Font.render()         |Ein Text wird auf einer neuerzeugten Oberfläche gerendert. Benötigte Parameter: (Der Text, Anti-Aliasing, Farbe des Textes)|
-Surface.blit()             |Eine Oberfläche wird auf eine andere "draufgelegt". Benötigte Paramter: (Neue Oberfläche, Untergrund-Oberfläche|
-display.update()           |Ein gewisser Teil des Pygamefensters kann neu geladen werden. Wenn kein Parameter übergeben wird, wird das gesamte Fenster, bzw. die gesamte Oberfläche neu geladen. (In diesem Projekt wird pygame.display.update() ohne Parameter aufgerufen.)|
-
-Die Funktion, in der das gesamte Rendering erfolgt "renderFenster" besitzt einen Parameter "Fenster". Dieser bildet die grundlegende Oberfläche des Pygamefensters.
-Zuerst wird mit
-```python
-Fenster.fill((50,50,50))
-```
-die gesamte Oberfläche grau eingefärbt. Daraufhin wird ein Quadrat mit 
-```python
-pygame.draw.rect(Fenster, (0,0,0), (29, 29, Größe[0] * 8 + 1, Größe[1] * 8 + 1))
-```
-auf diese graue Oberfläche gezeichnet. In diesem schwarzen Quadrat spielt sich die gesamte Simulation ab.
-In der draw.rect() Funktion wird die Oberfläche "Fenster", die Farbe (0,0,0) (schwarz) und der Abstand vom linken sowie oberen Rand und die Größe des Quadrats übergeben. Die Größe haben wir standardmäßig, damit die nachfolgenden Rechnungen einfacher sind, auf 100 gesetzt. Damit das Ganze an das Fenster angepasst ist, wird der Faktor 8 genutzt und zum Schluss noch 1 dazuaddiert. Diese Multiplikationen und Additionen werden häufiger im Quelltext auftreten, da alles genau an die Fenstergröße angepasst wird. Nach dem schwarzen Quadrat wird nun auch schon die [Safezone](#die-safezone) gezeichnet. Hierbei, damit die Rasterstruktur der Simulation beibehalten wird, wird die Liste "Safezone", in der jedes Feld mit x- und y-Koordinate gespeichert ist, enumeriert und jedes Feld als einzelnes kleines Quadrat gezeichnet.
-```python
-pygame.draw.rect(Fenster, (0, 100, 0), (30 + zielpunkt_der_safezone[0] * 8, 30 + zielpunkt_der_safezone[1] * 8, 7, 7))
-```
-Die grüne Farbe wird durch die RGB-Werte (0, 100, 0) festgelegt. Hier ist bereits das erste Beispiel für die Multiplikation und Addition, die benötigt wird, um die Größe an das Fenster anzupassen. Um die Felder mit ein wenig Abstand zueinander zu zeichnen, wird jede x- und y-Koordinate des Feldes mit 8 multipliziert und mit 30 addiert. Die Größe eines Feldes beträgt (7,7), somit ist muss bei draw.rect() für die Breite und Höhe der Wert 7 eingegeben werden.
-
-## Der Schweif hinter den Wesen
-
-Um die Bewegung jedes Wesen erkennbar zu machen, wird nicht einfach nur das farbige Feld verschoben, sondern jedem Wesen wird auch ein kleiner werdender Schweif "angehängt". Dieser hat eine Länge von bis zu 8 Feldern.<br>
-Die [PositionsListe](#die-positionsliste) ist eine verschachtelte Liste mit 8 inneren Listen. In diesen Listen werden die vorherigen Positionen der Wesen gespeichert. Durch die Speicherung der Positionen ist es möglich, auch auf diesen vorherigen Positionen mit draw.rect() ein Rechteck zu zeichnen. Je weiter die Position von der aktuellen entfernt ist, desto dunkler wird sie gefärbt. So lässt sich, wie bei einer Sternschnuppe, die Bewegung der Wesen nachverfolgen.
-Die PositionsListe wird mit *PositionsListenWerte* enumeriert und daraufhin werden die *PositionsListenWerte* mit der Variable *altePosition* enumeriert.<br>
-Dadurch ist es möglich, die gespeicherten alten Positionen aus der PositionsListe der Reihe nach zu färben. Da die PositionsListe mit den ältesten Positionen beginnt und mit den aktuellsten aufhört, wird mit jedem Durchlaufen des for-Loops, die Farbe des Feldes erhöht. Somit werden, je näher man der aktuellen Position des Wesens kommt, die Felder der ehemaligen Positionen heller gefärbt.
-```python
-for i, PositionsListenWerte in enumerate(PositionsListe):
-  # Nun wird durch die Positionsdaten (also PositionsListenWerte) iteriert und das Ganze in "altePosition" gespeichert
-  for j, altePosition in enumerate(PositionsListenWerte):
-  # Je nachdem, welchen Index die Position hat, wird sie dunkler/heller gefärbt
-  # Der erste gespeicherte Wert (die älteste Position) wird mit i=0 bezeichnet
-  # Also beträgt der Farbwert (5 + 0*10)
-  # Somit ist der RGB Wert ((5+0*10),(5+0*10),(5+0*10)) also (5,5,5)
-  # Je neuer der gespeicherte, alte Wert ist, also, je näher er an der aktuellen Position liegt,
-  # desto heller wird er.
-  # Somit wird der aktuellste gespeicherte Wert (nach dem aktuellen) mit i = 7 bezeichnet
-  # Also ist der RGB Wert ((5+7*10),(5+7*10),(5+7*10)) also (75,75,75), welcher definitiv heller ist als (5,5,5)
-  # Die altePosition wird mit dem Faktor 8 und dem Summanden 30 an die Größe des Fensters angepasst
-  # Und anschließend wird jede altePosition in ihrer Farbe gezeichnet
-    pygame.draw.rect(Fenster, (5 + i * 10, 5 + i * 10, 5 + i * 10), (30 + altePosition[0] * 8, 30 + altePosition[1] * 8, 7, 7))
-```
-
-## Der Generationsindikator
-
-Da sich in der Simulation mit jeder Generation die Wesen weiterentwicklen und man sich natürlich fragt, wie lange es denn eigentlich dauert, bis die meisten Wesen die richtigen Gene besitzen, um die Safezone jedes Mal zu erreichen, ist ein Indikator, der die aktuelle Generation anzeigt, von Vorteil. Hierbei wird ein neues Schriftobjekt mit font.Font() initiiert, genannt "generationsIndikator". Diesem wird keine besondere Schriftart zugeschrieben, jedoch eine Schriftgröße von 30 Pixeln. 
-```python
-generationsIndikator = pygame.font.Font(None, 30)
-```
-<br>
-Um den Text zu rendern, wird eine neue Oberfläche "generationsRendering" definiert, die das Schriftobjekt rendert. 
-
-```python
-generationsRendering = generationsIndikator.render("Generation:" + str(Generation[0]), True, (255, 120, 0))
-# Der Text wird oben rechts über das schwarze Quadrat geschrieben
-Fenster.blit(generationsRendering, generationsRendering.get_rect(center=(Größe[0] * 8 + 59 - 90, 20)))
-```
-
-Der Text beinhaltet "Generation: " und die aktuelle Generationenanzahl. Anti-Aliasing ist aktiviert, da dies den Text glättet, indem unerwünschte Pixel, die durch das Pixelraster entstehen, vermindert werden. Die Farbe des Textes ist ein kräftiges Orange (255, 120, 0).
-Nun wird zum Schluss noch die Oberfläche mit dem Generationsindikator auf die normale Oberfläche des Fensters "draufgelegt".
-Die Position des Textes wird festgelegt, wobei wieder der Faktor 8 für die Anpassung der Größe an die des Pygamefensters auftaucht.
-Zum Schluss wird das gesamte Pygamefenster aktualisiert und alles neu gerendert.
-Dieser Vorgang geschieht bei jedem Zeitwert (Tick) der Generation.
-
-## Die Farbgebung
-
-Die Wesen in unserer Simulation sollen, wie auch die Menschen oder andere Lebewesen, individuell sein. Um nicht jedem Wesen eine zufällige Farbe zu geben, ist der RGB-Wert der Farbe in die drei Bestandteile: "Rot, Grün, Blau" aufgeteilt. Je nachdem, welche Gene das Wesen besitzt, wird sich die Farbe verändern. Die Standardfarbe für ein Wesen mit keinerlei besonderen Genen, die Einfluss auf die Farbe nehmen, ist grau (125, 125, 125 (R,G,B,)). Wesen mit ähnlichen Genen erkennt man an der ähnlichen Farbgebung. Die Wahrscheinlichkeit, dass sie sich infolgedessen auch gleich verhalten/bewegen, ist höher, je ähnlicher die Farben sind.
-
 <details>
   <summary>Erklärung</summary>
 
-  Alles ist ausgehend von den Werten der Standardfarbe grau (125, 125, 125). Je nach Kombination der Gene wird ein Wert mit dem Standardwert summiert oder davon subtrahiert. Um die Wesen auch visuell bezüglich "guter, angepasster Gene" unterscheiden zu können, wird die Anzahl der funktionalen Genome genutzt. Ein Genom gilt als funktional, wenn das x1_gen den Wert 1 besitzt, denn dadurch nimmt dieses Genom einen Einfluss auf die Bewegung des Wesens.<br> (Nur zur Erinnerung: das x1_gen benötigt den Wert 1, um die Veränderung im stabilen Wert zu speichern.)<br> Die Anzahl dieser funktionalen Genome wird folglich durch Enumeration überprüft.
+  Zuerst führen wir in der folgenden Tabelle die nützlichen Pygamefunktionen und -objekte auf, die diese Simulation derartig visualisieren, damit beim weiteren Lesen nicht erst die [Pygame-Dokumentation](https://www.pygame.org/docs/) studiert werden muss. Es sind in der Tabelle lediglich die Parameter der Funktionen angegeben, die auch im Projekt benutzt werden.
+
+  Pygamefunktion/-objekt             |rklärung            |
+  :-------------------------:|:-------------------------:|
+  Surface.fill()             |Eine Oberfläche, in unserem Fall ein Fenster, wird mit einer Farbe gefüllt. Benötigte Parameter: (Die RGB-Werte).|
+  draw.rect()                |Ein Rechteck mit beliebiger Größe und Farbe kann gezeichnet werden. Diese Funktion wird in diesem Projekt für das Rendering jeder viereckigen Form genutzt. Vom Wesen bis zum schwarzen Hintergrund. Benötigte Parameter: (Die Oberfläche, die RGB-Werte, (der Abstand vom linken Rand, der Abstand vom oberen Rand, die Breite des Rechtecks, die Höhe des Rechtecks)|
+  font.Font()                |Es wird ein neues Objekt erstellt. Die Schriftart und Größe können festgelegt werden. Benötigte Parameter: (Schriftart, Größe(Höhe der Schrift in Pixeln))|
+  font.Font.render()         |Ein Text wird auf einer neuerzeugten Oberfläche gerendert. Benötigte Parameter: (Der Text, Anti-Aliasing, Farbe des Textes)|
+  Surface.blit()             |Eine Oberfläche wird auf eine andere "draufgelegt". Benötigte Paramter: (Neue Oberfläche, Untergrund-Oberfläche|
+  display.update()           |Ein gewisser Teil des Pygamefensters kann neu geladen werden. Wenn kein Parameter übergeben wird, wird das gesamte Fenster, bzw. die gesamte Oberfläche neu geladen. (In diesem Projekt wird pygame.display.update() ohne Parameter aufgerufen.)|
+
+  Die Funktion, in der das gesamte Rendering erfolgt "renderFenster" besitzt einen Parameter "Fenster". Dieser bildet die grundlegende Oberfläche des Pygamefensters.
+  Zuerst wird mit
+  ```python
+  Fenster.fill((50,50,50))
+  ```
+  die gesamte Oberfläche grau eingefärbt. Daraufhin wird ein Quadrat mit 
+  ```python
+  pygame.draw.rect(Fenster, (0,0,0), (29, 29, Größe[0] * 8 + 1, Größe[1] * 8 + 1))
+  ```
+  auf diese graue Oberfläche gezeichnet. In diesem schwarzen Quadrat spielt sich die gesamte Simulation ab.
+  In der draw.rect() Funktion wird die Oberfläche "Fenster", die Farbe (0,0,0) (schwarz) und der Abstand vom linken sowie oberen Rand und die Größe des Quadrats übergeben. Die Größe haben wir standardmäßig, damit die nachfolgenden Rechnungen einfacher sind, auf 100 gesetzt. Damit das Ganze an das Fenster angepasst ist, wird der Faktor 8 genutzt und zum Schluss noch 1 dazuaddiert. Diese Multiplikationen und Additionen werden häufiger im Quelltext auftreten, da alles genau an die Fenstergröße angepasst wird. Nach dem schwarzen Quadrat wird nun auch schon die [Safezone](#die-safezone) gezeichnet. Hierbei, damit die Rasterstruktur der Simulation beibehalten wird, wird die Liste "Safezone", in der jedes Feld mit x- und y-Koordinate gespeichert ist, enumeriert und jedes Feld als einzelnes kleines Quadrat gezeichnet.
+  ```python
+  pygame.draw.rect(Fenster, (0, 100, 0), (30 + zielpunkt_der_safezone[0] * 8, 30 + zielpunkt_der_safezone[1] * 8, 7, 7))
+  ```
+  Die grüne Farbe wird durch die RGB-Werte (0, 100, 0) festgelegt. Hier ist bereits das erste Beispiel für die Multiplikation und Addition, die benötigt wird, um die Größe an das Fenster anzupassen. Um die Felder mit ein wenig Abstand zueinander zu zeichnen, wird jede x- und y-Koordinate des Feldes mit 8 multipliziert und mit 30 addiert. Die Größe eines Feldes beträgt (7,7), somit ist muss bei draw.rect() für die Breite und Höhe der Wert 7 eingegeben werden.
+
+  ## Der Schweif hinter den Wesen
+
+  Um die Bewegung jedes Wesen erkennbar zu machen, wird nicht einfach nur das farbige Feld verschoben, sondern jedem Wesen wird auch ein kleiner werdender Schweif "angehängt". Dieser hat eine Länge von bis zu 8 Feldern.<br>
+  Die [PositionsListe](#die-positionsliste) ist eine verschachtelte Liste mit 8 inneren Listen. In diesen Listen werden die vorherigen Positionen der Wesen gespeichert. Durch die Speicherung der Positionen ist es möglich, auch auf diesen vorherigen Positionen mit draw.rect() ein Rechteck zu zeichnen. Je weiter die Position von der aktuellen entfernt ist, desto dunkler wird sie gefärbt. So lässt sich, wie bei einer Sternschnuppe, die Bewegung der Wesen nachverfolgen.
+  Die PositionsListe wird mit *PositionsListenWerte* enumeriert und daraufhin werden die *PositionsListenWerte* mit der Variable *altePosition* enumeriert.<br>
+  Dadurch ist es möglich, die gespeicherten alten Positionen aus der PositionsListe der Reihe nach zu färben. Da die PositionsListe mit den ältesten Positionen beginnt und mit den aktuellsten aufhört, wird mit jedem Durchlaufen des for-Loops, die Farbe des Feldes erhöht. Somit werden, je näher man der aktuellen Position des Wesens kommt, die Felder der ehemaligen Positionen heller gefärbt.
+  ```python
+  for i, PositionsListenWerte in enumerate(PositionsListe):
+    # Nun wird durch die Positionsdaten (also PositionsListenWerte) iteriert und das Ganze in "altePosition" gespeichert
+    for j, altePosition in enumerate(PositionsListenWerte):
+    # Je nachdem, welchen Index die Position hat, wird sie dunkler/heller gefärbt
+    # Der erste gespeicherte Wert (die älteste Position) wird mit i=0 bezeichnet
+    # Also beträgt der Farbwert (5 + 0*10)
+    # Somit ist der RGB Wert ((5+0*10),(5+0*10),(5+0*10)) also (5,5,5)
+    # Je neuer der gespeicherte, alte Wert ist, also, je näher er an der aktuellen Position liegt,
+    # desto heller wird er.
+    # Somit wird der aktuellste gespeicherte Wert (nach dem aktuellen) mit i = 7 bezeichnet
+    # Also ist der RGB Wert ((5+7*10),(5+7*10),(5+7*10)) also (75,75,75), welcher definitiv heller ist als (5,5,5)
+    # Die altePosition wird mit dem Faktor 8 und dem Summanden 30 an die Größe des Fensters angepasst
+    # Und anschließend wird jede altePosition in ihrer Farbe gezeichnet
+      pygame.draw.rect(Fenster, (5 + i * 10, 5 + i * 10, 5 + i * 10), (30 + altePosition[0] * 8, 30 + altePosition[1] * 8, 7, 7))
+  ```
+
+  ## Der Generationsindikator
+
+  Da sich in der Simulation mit jeder Generation die Wesen weiterentwicklen und man sich natürlich fragt, wie lange es denn eigentlich dauert, bis die meisten Wesen die richtigen Gene besitzen, um die Safezone jedes Mal zu erreichen, ist ein Indikator, der die aktuelle Generation anzeigt, von Vorteil. Hierbei wird ein neues Schriftobjekt mit font.Font() initiiert, genannt "generationsIndikator". Diesem wird keine besondere Schriftart zugeschrieben, jedoch eine Schriftgröße von 30 Pixeln. 
+  ```python
+  generationsIndikator = pygame.font.Font(None, 30)
+  ```
+  <br>
+  Um den Text zu rendern, wird eine neue Oberfläche "generationsRendering" definiert, die das Schriftobjekt rendert. 
+
+  ```python
+  generationsRendering = generationsIndikator.render("Generation:" + str(Generation[0]), True, (255, 120, 0))
+  # Der Text wird oben rechts über das schwarze Quadrat geschrieben
+  Fenster.blit(generationsRendering, generationsRendering.get_rect(center=(Größe[0] * 8 + 59 - 90, 20)))
+  ```
+
+  Der Text beinhaltet "Generation: " und die aktuelle Generationenanzahl. Anti-Aliasing ist aktiviert, da dies den Text glättet, indem unerwünschte Pixel, die durch das Pixelraster entstehen, vermindert werden. Die Farbe des Textes ist ein kräftiges Orange (255, 120, 0).
+  Nun wird zum Schluss noch die Oberfläche mit dem Generationsindikator auf die normale Oberfläche des Fensters "draufgelegt".
+  Die Position des Textes wird festgelegt, wobei wieder der Faktor 8 für die Anpassung der Größe an die des Pygamefensters auftaucht.
+  Zum Schluss wird das gesamte Pygamefenster aktualisiert und alles neu gerendert.
+  Dieser Vorgang geschieht bei jedem Zeitwert (Tick) der Generation.
+
+  ## Die Farbgebung
+
+  Die Wesen in unserer Simulation sollen, wie auch die Menschen oder andere Lebewesen, individuell sein. Um nicht jedem Wesen eine zufällige Farbe zu geben, ist der RGB-Wert der Farbe in die drei Bestandteile: "Rot, Grün, Blau" aufgeteilt. Je nachdem, welche Gene das Wesen besitzt, wird sich die Farbe verändern. Die Standardfarbe für ein Wesen mit keinerlei besonderen Genen, die Einfluss auf die Farbe nehmen, ist grau (125, 125, 125 (R,G,B,)). Wesen mit ähnlichen Genen erkennt man an der ähnlichen Farbgebung. Die Wahrscheinlichkeit, dass sie sich infolgedessen auch gleich verhalten/bewegen, ist höher, je ähnlicher die Farben sind.
+
+  <details>
+    <summary>Erklärung</summary>
+
+    Alles ist ausgehend von den Werten der Standardfarbe grau (125, 125, 125). Je nach Kombination der Gene wird ein Wert mit dem Standardwert summiert oder davon subtrahiert. Um die Wesen auch visuell bezüglich "guter, angepasster Gene" unterscheiden zu können, wird die Anzahl der funktionalen Genome genutzt. Ein Genom gilt als funktional, wenn das x1_gen den Wert 1 besitzt, denn dadurch nimmt dieses Genom einen Einfluss auf die Bewegung des Wesens.<br> (Nur zur Erinnerung: das x1_gen benötigt den Wert 1, um die Veränderung im stabilen Wert zu speichern.)<br> Die Anzahl dieser funktionalen Genome wird folglich durch Enumeration überprüft.
 
 
-  Genkombination             |x1_gen = 1 und y1_gen = 0  |x1_gen = 1 und y1_gen = 1  |x1_gen = 1 und y1_gen = 2  |x1_gen = 1 und y1_gen = 3  |x1_gen = 1 und y1_gen = 4  |
-  :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
-  Veränderung der roten Farbe|Wert wird addiert          |Wert wird subtrahiert      |
-  Veränderung der grünen Farbe|Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert          |Wert wird subtrahiert      |
-  Veränderung der blauen Farbe|Wert bleibt gleich         |Wert bleibt gleich         |Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert |
+    Genkombination             |x1_gen = 1 und y1_gen = 0  |x1_gen = 1 und y1_gen = 1  |x1_gen = 1 und y1_gen = 2  |x1_gen = 1 und y1_gen = 3  |x1_gen = 1 und y1_gen = 4  |
+    :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
+    Veränderung der roten Farbe|Wert wird addiert          |Wert wird subtrahiert      |
+    Veränderung der grünen Farbe|Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert          |Wert wird subtrahiert      |
+    Veränderung der blauen Farbe|Wert bleibt gleich         |Wert bleibt gleich         |Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert |
 
-  Nach Feinjustierung hat sich für die Berechnung des zu *addierenden Wertes* ergeben, dass<br> das Minimum aus (254 - *dem Farbwert*) und dem Integer (Ganzzahl) aus ((40 + z_gen * 60) * 2 / Anzahl der funktionellen Gene) **für jegliche Genomgrößen funktioniert**.
+    Nach Feinjustierung hat sich für die Berechnung des zu *addierenden Wertes* ergeben, dass<br> das Minimum aus (254 - *dem Farbwert*) und dem Integer (Ganzzahl) aus ((40 + z_gen * 60) * 2 / Anzahl der funktionellen Gene) **für jegliche Genomgrößen funktioniert**.
 
-  Für den zu *subtrahierenden Wert* hat sich ergeben, dass<br> das Minimum aus dem *Farbwert* und dem Integer (Ganzzahl) aus ((40 + z_gen * 60) * 2 / Anzahl der funktionellen Genome) **für jegliche Genomgrößen funktioniert**.<br> Hierbei ist erkennbar, dass dadurch, dass durch die Anzahl der funktionellen Genome dividiert wird, der Integer kleiner wird, je mehr funktionelle Genome vorhanden sind. Deshalb wird die Wahrscheinlichkeit, dass der Integer kleiner als die Farbe selbst ist, größer. Somit ist der Integer das Minimum der beiden Werte und wird somit vom bisherigen *Farbwert* abgezogen. Deshalb sind Wesen mit vielen funktionellen Genomen, die ausgeprägtere Bewegungen haben, heller gefärbt und diese mit wenigeren funktionellen Genomen, die potentiell auch weniger ausgeprägte Bewegungen besitzen, dunkler gefärbt.
+    Für den zu *subtrahierenden Wert* hat sich ergeben, dass<br> das Minimum aus dem *Farbwert* und dem Integer (Ganzzahl) aus ((40 + z_gen * 60) * 2 / Anzahl der funktionellen Genome) **für jegliche Genomgrößen funktioniert**.<br> Hierbei ist erkennbar, dass dadurch, dass durch die Anzahl der funktionellen Genome dividiert wird, der Integer kleiner wird, je mehr funktionelle Genome vorhanden sind. Deshalb wird die Wahrscheinlichkeit, dass der Integer kleiner als die Farbe selbst ist, größer. Somit ist der Integer das Minimum der beiden Werte und wird somit vom bisherigen *Farbwert* abgezogen. Deshalb sind Wesen mit vielen funktionellen Genomen, die ausgeprägtere Bewegungen haben, heller gefärbt und diese mit wenigeren funktionellen Genomen, die potentiell auch weniger ausgeprägte Bewegungen besitzen, dunkler gefärbt.
 
-  Beim dritten Farbwert (Blau) wird eine Kombination des Additions-/Subtraktionsverfahrens der vorherigen Farben verwendet. 
-  Durch das Maximum aus dem *negativen Farbwert* und dem<br> Minimum aus ((254 - dem Farbwert) und (80 + z_gen * 60) / Anzahl der funktionellen Genome), kann gewährleistet werden, dass **jegliche Genomgrößen funktionieren**.
-  Sollte das Minimum geringer als der *Farbwert* mit negativem Vorzeichen sein, wird ein Fehler umgangen, da der *negative Farbwert* dann das Maximum bildet.
-  Somit ergibt sich mindestens ein *Farbwert* von 0, wenn der *Farbwert* mit dem *negativen Farbwert* addiert wird.
+    Beim dritten Farbwert (Blau) wird eine Kombination des Additions-/Subtraktionsverfahrens der vorherigen Farben verwendet. 
+    Durch das Maximum aus dem *negativen Farbwert* und dem<br> Minimum aus ((254 - dem Farbwert) und (80 + z_gen * 60) / Anzahl der funktionellen Genome), kann gewährleistet werden, dass **jegliche Genomgrößen funktionieren**.
+    Sollte das Minimum geringer als der *Farbwert* mit negativem Vorzeichen sein, wird ein Fehler umgangen, da der *negative Farbwert* dann das Maximum bildet.
+    Somit ergibt sich mindestens ein *Farbwert* von 0, wenn der *Farbwert* mit dem *negativen Farbwert* addiert wird.
 
-</details>  
+  </details>  
+
+  So lassen sich die Wesen nach Anzahl der funktionellen Genome und Kombination von Genen einfärben.
+
+  Das Färben an sich geschieht letztendlich durch das [Rendering](#das-rendering).
+
+<details>
   
-So lassen sich die Wesen nach Anzahl der funktionellen Genome und Kombination von Genen einfärben.
-
-Das Färben an sich geschieht letztendlich durch das [Rendering](#das-rendering).
-
 # Das Wesen
 
 Lila             |Pink            |Grün            |Hautfarbe            |Blau  
