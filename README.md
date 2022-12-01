@@ -39,9 +39,10 @@ Um die ganze Simulation nun auch wirklich darzustellen, muss das Ganze natürlic
 Zum Schluss kommen noch die einzelnen Wesen hinzu und der "Generationszähler", der am oberen rechten Rand die aktuelle Generation indiziert.
 
 
+
 Zuerst führen wir in der folgenden Tabelle die nützlichen Pygamefunktionen und -objekte auf, die diese Simulation derartig visualisieren, damit beim weiteren Lesen nicht erst die [Pygame-Dokumentation](https://www.pygame.org/docs/) studiert werden muss. Es sind in der Tabelle lediglich die Parameter der Funktionen angegeben, die auch im Projekt benutzt werden.
 
-Pygamefunktion/-objekt             |Kurze Erklärung            |
+Pygamefunktion/-objekt             |rklärung            |
 :-------------------------:|:-------------------------:|
 Surface.fill()             |Eine Oberfläche, in unserem Fall ein Fenster, wird mit einer Farbe gefüllt. Benötigte Parameter: (Die RGB-Werte).|
 draw.rect()                |Ein Rechteck mit beliebiger Größe und Farbe kann gezeichnet werden. Diese Funktion wird in diesem Projekt für das Rendering jeder viereckigen Form genutzt. Vom Wesen bis zum schwarzen Hintergrund. Benötigte Parameter: (Die Oberfläche, die RGB-Werte, (der Abstand vom linken Rand, der Abstand vom oberen Rand, die Breite des Rechtecks, die Höhe des Rechtecks)|
@@ -49,6 +50,66 @@ font.Font()                |Es wird ein neues Objekt erstellt. Die Schriftart un
 font.Font.render()         |Ein Text wird auf einer neuerzeugten Oberfläche gerendert. Benötigte Parameter: (Der Text, Anti-Aliasing, Farbe des Textes)|
 Surface.blit()             |Eine Oberfläche wird auf eine andere "draufgelegt". Benötigte Paramter: (Neue Oberfläche, Untergrund-Oberfläche|
 display.update()           |Ein gewisser Teil des Pygamefensters kann neu geladen werden. Wenn kein Parameter übergeben wird, wird das gesamte Fenster, bzw. die gesamte Oberfläche neu geladen. (In diesem Projekt wird pygame.display.update() ohne Parameter aufgerufen.)|
+
+Die Funktion, in der das gesamte Rendering erfolgt "renderFenster" besitzt einen Parameter "Fenster". Dieser bildet die grundlegende Oberfläche des Pygamefensters.
+Zuerst wird mit
+```python
+Fenster.fill((50,50,50))
+```
+die gesamte Oberfläche grau eingefärbt. Daraufhin wird ein Quadrat mit 
+```python
+pygame.draw.rect(Fenster, (0,0,0), (29, 29, Größe[0] * 8 + 1, Größe[1] * 8 + 1))
+```
+auf diese graue Oberfläche gezeichnet. In diesem schwarzen Quadrat spielt sich die gesamte Simulation ab.
+In der draw.rect() Funktion wird die Oberfläche "Fenster", die Farbe (0,0,0) (schwarz) und der Abstand vom linken sowie oberen Rand und die Größe des Quadrats übergeben. Die Größe haben wir standardmäßig, damit die nachfolgenden Rechnungen einfacher sind, auf 100 gesetzt. Damit das Ganze an das Fenster angepasst ist, wird der Faktor 8 genutzt und zum Schluss noch 1 dazuaddiert. Diese Multiplikationen und Additionen werden häufiger im Quelltext auftreten, da alles genau an die Fenstergröße angepasst wird. Nach dem schwarzen Quadrat wird nun auch schon die [Safezone](#die-safezone) gezeichnet. Hierbei, damit die Rasterstruktur der Simulation beibehalten wird, wird die Liste "Safezone", in der jedes Feld mit x- und y-Koordinate gespeichert ist, enumeriert und jedes Feld als einzelnes kleines Quadrat gezeichnet.
+```python
+pygame.draw.rect(Fenster, (0, 100, 0), (30 + zielpunkt_der_safezone[0] * 8, 30 + zielpunkt_der_safezone[1] * 8, 7, 7))
+```
+Die grüne Farbe wird durch die RGB-Werte (0, 100, 0) festgelegt. Hier ist bereits das erste Beispiel für die Multiplikation und Addition, die benötigt wird, um die Größe an das Fenster anzupassen. Um die Felder mit ein wenig Abstand zueinander zu zeichnen, wird jede x- und y-Koordinate des Feldes mit 8 multipliziert und mit 30 addiert. Die Größe eines Feldes beträgt (7,7), somit ist muss bei draw.rect() für die Breite und Höhe der Wert 7 eingegeben werden.
+
+## Der Schweif hinter den Wesen
+
+Um die Bewegung jedes Wesen erkennbar zu machen, wird nicht einfach nur das farbige Feld verschoben, sondern jedem Wesen wird auch ein kleiner werdender Schweif "angehängt". Dieser hat eine Länge von bis zu 8 Feldern.<br>
+Die [PositionsListe](#die-positionsliste) ist eine verschachtelte Liste mit 8 inneren Listen. In diesen Listen werden die vorherigen Positionen der Wesen gespeichert. Durch die Speicherung der Positionen ist es möglich, auch auf diesen vorherigen Positionen mit draw.rect() ein Rechteck zu zeichnen. Je weiter die Position von der aktuellen entfernt ist, desto dunkler wird sie gefärbt. So lässt sich, wie bei einer Sternschnuppe, die Bewegung der Wesen nachverfolgen.
+Die PositionsListe wird mit *PositionsListenWerte* enumeriert und daraufhin werden die *PositionsListenWerte* mit der Variable *altePosition* enumeriert.<br>
+Dadurch ist es möglich, die gespeicherten alten Positionen aus der PositionsListe der Reihe nach zu färben. Da die PositionsListe mit den ältesten Positionen beginnt und mit den aktuellsten aufhört, wird mit jedem Durchlaufen des for-Loops, die Farbe des Feldes erhöht. Somit werden, je näher man der aktuellen Position des Wesens kommt, die Felder der ehemaligen Positionen heller gefärbt.
+```python
+for i, PositionsListenWerte in enumerate(PositionsListe):
+  # Nun wird durch die Positionsdaten (also PositionsListenWerte) iteriert und das Ganze in "altePosition" gespeichert
+  for j, altePosition in enumerate(PositionsListenWerte):
+  # Je nachdem, welchen Index die Position hat, wird sie dunkler/heller gefärbt
+  # Der erste gespeicherte Wert (die älteste Position) wird mit i=0 bezeichnet
+  # Also beträgt der Farbwert (5 + 0*10)
+  # Somit ist der RGB Wert ((5+0*10),(5+0*10),(5+0*10)) also (5,5,5)
+  # Je neuer der gespeicherte, alte Wert ist, also, je näher er an der aktuellen Position liegt,
+  # desto heller wird er.
+  # Somit wird der aktuellste gespeicherte Wert (nach dem aktuellen) mit i = 7 bezeichnet
+  # Also ist der RGB Wert ((5+7*10),(5+7*10),(5+7*10)) also (75,75,75), welcher definitiv heller ist als (5,5,5)
+  # Die altePosition wird mit dem Faktor 8 und dem Summanden 30 an die Größe des Fensters angepasst
+  # Und anschließend wird jede altePosition in ihrer Farbe gezeichnet
+    pygame.draw.rect(Fenster, (5 + i * 10, 5 + i * 10, 5 + i * 10), (30 + altePosition[0] * 8, 30 + altePosition[1] * 8, 7, 7))
+```
+
+## Der Generationsindikator
+
+Da sich in der Simulation mit jeder Generation die Wesen weiterentwicklen und man sich natürlich fragt, wie lange es denn eigentlich dauert, bis die meisten Wesen die richtigen Gene besitzen, um die Safezone jedes Mal zu erreichen, ist ein Indikator, der die aktuelle Generation anzeigt, von Vorteil. Hierbei wird ein neues Schriftobjekt mit font.Font() initiiert, genannt "generationsIndikator". Diesem wird keine besondere Schriftart zugeschrieben, jedoch eine Schriftgröße von 30 Pixeln. 
+```python
+generationsIndikator = pygame.font.Font(None, 30)
+```
+<br>
+Um den Text zu rendern, wird eine neue Oberfläche "generationsRendering" definiert, die das Schriftobjekt rendert. 
+
+```python
+generationsRendering = generationsIndikator.render("Generation:" + str(Generation[0]), True, (255, 120, 0))
+# Der Text wird oben rechts über das schwarze Quadrat geschrieben
+Fenster.blit(generationsRendering, generationsRendering.get_rect(center=(Größe[0] * 8 + 59 - 90, 20)))
+```
+
+Der Text beinhaltet "Generation: " und die aktuelle Generationenanzahl. Anti-Aliasing ist aktiviert, da dies den Text glättet, indem unerwünschte Pixel, die durch das Pixelraster entstehen, vermindert werden. Die Farbe des Textes ist ein kräftiges Orange (255, 120, 0).
+Nun wird zum Schluss noch die Oberfläche mit dem Generationsindikator auf die normale Oberfläche des Fensters "draufgelegt".
+Die Position des Textes wird festgelegt, wobei wieder der Faktor 8 für die Anpassung der Größe an die des Pygamefensters auftaucht.
+Zum Schluss wird das gesamte Pygamefenster aktualisiert und alles neu gerendert.
+Dieser Vorgang geschieht bei jedem Zeitwert (Tick) der Generation.
 
 ## Die Farbgebung
 
@@ -81,7 +142,7 @@ So lassen sich die Wesen nach Anzahl der funktionellen Genome und Kombination vo
 
 Das Färben an sich geschieht letztendlich durch das [Rendering](#das-rendering).
 
-## Das Wesen
+# Das Wesen
 
 Lila             |Pink            |Grün            |Hautfarbe            |Blau  
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
@@ -99,6 +160,24 @@ In dieser Simulation hat das Wesen nicht die Möglichkeit, sich aktiv zu bewegen
 Wenn das Wesen Glück oder Pech hat, kann es auch noch zu einer Mutation seiner Gene kommen, was sich entweder positiv oder negativ auf seine Überlebenschancen auswirkt. 
 Die Gene nehmen auch Einfluss auf die Farbe. Diese hat allerdings keine Auswirkung auf die Überlebensrate, so wie es in der Natur mit Warnfarben der Fall ist, da sich die Wesen nicht gegenseitig fressen und kennzeichnet lediglich Wesen mit ähnlichen Genen. 
 Die Gesammtanzahl der Wesen bleibt von Generation zu Generation konstant, da sie sich nicht aktiv schaden oder bekämpfen.
+
+## Die PositionsListe
+
+Um die Bewegung der Wesen nachverfolgen zu können, werden die vorherigen 8 Positionen gespeichert und unterschiedlich [gefärbt](#der-schweif-hinter-den-wesen).
+Um die PositionsListe jedoch immer zu aktualisieren, bedient man sich eines while-Loops. Da die PositionsListe 8 innere Listen besitzt, definieren wir einen *LoopZähler* mit dem Wert 7. Solange der LoopZähler also größer 0 ist, wird der Wert der PositionsListe an der Stelle (7 - LoopZähler) mit dem Wert der PositionsListe an der Stelle (8 - LoopZähler) ersetzt. Daraufhin wird der LoopZähler um 1 verringert.
+Anschließend wird die gespeicherte Position an letzter Stelle(8. Liste der PositionsListe) gelöscht, sodass Platz für eine neue vorhanden ist.
+```python
+while LoopZähler > 0:
+  PositionsListe[7 - LoopZähler] = PositionsListe[8 - LoopZähler]
+  LoopZähler -= 1
+PositionsListe[7] = []
+```
+Mit diesem Vorgehen, kann die Position des Wesens jedes Mal auf's Neue gespeichert werden und jede bisherige Position rückt in der PositionsListe um eine Liste weiter nach vorne. Die PositionsListe ist zudem rückwärts zu lesen, da die neue Position eines Wesens, nachdem das Wesen auf der Oberfläche gerendert wurde, an letzter Stelle der PositionsListe gespeichert wird.
+```python
+pygame.draw.rect(Fenster, (int(farbe[0]), int(farbe[1]), int(farbe[2])), (30 + Wesen.pos[0] * 8, 30 + Wesen.pos[1] * 8, 7, 7))
+# Die Positionen der Wesen werden gespeichert
+PositionsListe[7].append([Wesen.pos[0], Wesen.pos[1]])
+```
 
 # Das Genom
 
