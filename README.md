@@ -143,7 +143,7 @@ Zum Schluss kommen noch die einzelnen Wesen hinzu und der "Generationszähler", 
 
   Das Färben an sich geschieht letztendlich durch das [Rendering](#das-rendering).
 
-<details>
+</details>
   
 # Das Wesen
 
@@ -151,9 +151,9 @@ Lila             |Pink            |Grün            |Hautfarbe            |Blau
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
 ![Screenshot (21)](https://user-images.githubusercontent.com/111282979/202292263-010a98a2-c3b9-4c74-9d0a-a9044728c4c3.png)|![Screenshot (22)](https://user-images.githubusercontent.com/111282979/202292396-9ee88ca2-e483-4e44-8270-71874bb1585b.png)|![Screenshot (27)](https://user-images.githubusercontent.com/111282979/202292456-1963d65d-4299-4f87-b920-d56349f8b9d5.png)|![Screenshot (24)](https://user-images.githubusercontent.com/111282979/202292505-d3b0a395-f1c7-42d9-b514-ac72aaa20b56.png)|![Screenshot (25)](https://user-images.githubusercontent.com/111282979/202292567-007dd1f0-c356-492a-a688-cda0d7002c55.png)|
 
-In unserer Simulation gibt es eine festlegbare Anzahl an Wesen.
-Ein Wesen hat ein Größe von einem Feld (Kästchen).
-Jedes Wesen ist als Objekt definiert und besitzt einen Parameter Genomgröße.
+In der Simulation gibt es eine festlegbare Anzahl an Wesen.
+Ein Wesen besitzt die Größe eines Feldes.
+Jedes Wesen ist als Objekt definiert und besitzt einen Parameter, die Genomgröße.
 Die [GenomGröße](https://de.wikipedia.org/wiki/Genomgr%C3%B6%C3%9Fe) beschreibt die Menge der Genome.
 Ein [Genom](https://de.wikipedia.org/wiki/Genom) beinhaltet die Gesamtheit der vererbbaren Informationen einer Zelle und ist bei uns ([vgl. Abbildung](https://user-images.githubusercontent.com/111282979/202248021-fbc11b40-15dc-49b3-b351-b211b11420cd.png)) die Gesamtheit der x, y- und z-Gene. Den einzelnen Genen sind verschiedene Werte zugeschrieben, wobei die gesamte Kombination eines Genoms bestimmt, wie sich das Wesen in einer Generation bewegt.
 Wie angepasst die Bewegung eines Wesens ist, geht daraus hervor, ob das Wesen bis zum Ende der Generation die [Safezone](#die-safezone) zu erreichen. 
@@ -210,13 +210,26 @@ Wenn der Mutationswert "0" beträgt , mutiert das x0-Gen, bei einem Mutationswer
 
 ![carbon (4)](https://user-images.githubusercontent.com/111282979/202468026-da998a81-9e79-44fb-adc0-f65f6c37acb3.png)
 
-# Der Simulationsbeginn
+# Die Simulation
 
 Sobald die Simulation startet, wird zuerst abgefragt, ob die Generation noch läuft.
 Daraufhin wird bei jedem Tick der Generation (von 200 bis 1) durch die Liste der Wesen iteriert und für jedes Wesen ein "stabiler Wert" definiert.
 Dazu wird auch eine Variable mit dem Namen "Veränderung" definiert, die die aktuelle Position, den Zeitwert, 
 Dieser "stabile Wert" wird im Folgenden dazu genutzt, die "Veränderung" zu speichern.
 
+## Das Generieren
+
+Damit die Simulation beginnen kann, werden natürlich die Hauptakteure des Ganze benötigt. Die Wesen.
+Dafür haben wir die Funktion "generieren" definiert, welche die festlegbare Gesamtanzahl in einer temporären Variable speichert und solange Wesen mit der festgelegten Genomgröße erschafft und den temporären Wert um 1 verringert, bis der temporäre Wert 0 beträgt.
+
+```python
+def generieren():
+    Temp = GesamtAnzahl
+    # Solange der temporäre Wert größer 0 ist, werden Wesen mit der festgelegten Genomgröße erschaffen
+    while Temp > 0:
+        WesenListe.append(Wesen(GenomGröße))
+        Temp -= 1
+```
 
 # Die zufällige Bewegung der Wesen
 
@@ -313,3 +326,77 @@ Das ist jedoch unmöglich, da Mutationen immer auftreten können oder manche sic
 
 ![Screenshot (14)](https://user-images.githubusercontent.com/111282979/202275940-c29e4862-93db-4afe-a4f3-cf434d3aa931.png)
 
+## Nach dem Ende der Generation
+
+Zuerst wird überprüft, ob das Pygamefenster noch offen ist.
+
+```python
+def GenerationsEnde():
+  for event in pygame.event.get():
+    if event.type == pygame.QUIT:
+      pygame.quit()
+      exit()
+```
+
+Wenn die Generation abgelaufen ist, sammelt zuerst der GarbageCollecter die nicht mehr genutzten Objekte ein, sodass der Arbeitsspeicher entlastet wird und die gesamte Simulation somit flüssiger laufen kann.
+Die Generationsanzahl wird um 1 erhöht und der Zeitwert (die Ticks) wieder auf 200 gesetzt.
+Nun wird die leere Liste "Überlebende" initialisiert.
+
+```python
+if Generation[1] < 0:
+  # Die nicht mehr genutzten Objekte werden durch den Garbage Collecter gelöscht, sodass die ganze Simulation flüssiger läuft.
+  gc.collect()
+  # Die Generationsanzahl wird um 1 erhöht
+  Generation[0] += 1
+  # Die ablaufenden Zeitwerte (Ticks) werden wieder auf 200 gesetzt
+  Generation[1] = Generation[2]
+  # Eine neue Liste mit den überlebenden Wesen, die es in die Safezone geschafft haben, wird definiert
+  Überlebende = []
+```
+
+## Die Vererbung der Gene
+
+Die Hauptfunktion dieser Simulation stellt die Vererbung der angepasstesten Gene, womit ein Wesen mit hoher Wahrscheinlichkeit die Safezone erreichen kann, dar.
+Damit das Ganze ohne Probleme ablaufen kann, wird die leere Liste "Überlebende" erstellt. Wenn die Generation abgelaufen ist, sammelt zuerst der GarbageCollecter die nicht mehr genutzten Objekte ein, sodass der Arbeitsspeicher entlastet wird und die gesamte Simulation somit flüssiger laufen kann.
+Die Generationsanzahl wird um 1 erhöht und der Zeitwert (die Ticks) wieder auf 200 gesetzt.
+Nun wird die leere Liste "Überlebende" initialisiert.
+Nun wird die Position jedes Wesens mit den Koordinaten der Safezone überprüft und wenn eine Übereinstimmung der x- und y-Koordinate besteht, wird ein neues Wesen erschaffen. Dieses Objekt (Wesen) wird mit der Genomgröße = 0 erschaffen, da es keine zufälligen Gene erhalten soll.
+Das Wesen, dessen Koordinaten mit denen der Safezone übereinstimmten, hat nun die Ehre, seine Gene an das neuerschaffene Wesen zu vererben. 
+Dieses neue Wesen, dass nun Gene erhalten hat, mit denen ein anderes Wesen in der vorigen Generation die Safezone erreicht hat, wird nun an die Liste der Überlebenden angehängt.
+Die "WesenListe" (Liste aller Wesen einer Generation) wird geleert und die Anzahl der Überlebenden wird mit der Anzahl der Werte in der "Überlebenden" Liste in der Konsole ausgegeben.
+Nun müssen für die neue Generation neue Wesen geschaffen und der WesenListe angehängt werden.
+Die Gesamtanzahl (standardmäßig 200) der Wesen in der Simulation wird wieder einem temporären Wert zugewiesen und solange dieser größer 0 ist, wird aus der Liste der Überlenden Wesen ein zufälliges Wesen ausgewählt, das einem neu erschaffenen Wesen, seine Gene vererbt. Nach jeder Vererbung wird der temporäre Wert um 1 verringert. <br>
+Jedes neue Wesen mit "guten Genen" wird an die WesenListe angehängt und ist in der nächsten Generation dabei.
+
+```python
+for i, creature in enumerate(WesenListe):
+  for x, Safespot in enumerate(Safezone):
+    # Bei jedem Wesen wird geprüft, ob die Koordinaten(Position) mit denen der Safezone übereinstimmen
+    if creature.pos[0] == Safespot[0] and creature.pos[1] == Safespot[1]:
+      # Wenn das Ganze zutrifft, wird ein neues Wesen erschaffen
+      # Dieses Wesen wird ohne Gene erschaffen
+      neuesWesen = Wesen(0)
+      for j, genom in enumerate(creature.Gene):
+        # Das überlebende Wesen vererbt seine Gene an das neuerschaffene Wesen
+        neuesWesen.Gene.append(gene([genom.x_gen[0], genom.x_gen[1]], [genom.y_gen[0], genom.y_gen[1]], genom.z_gen))
+      # Somit lässt sich eine Liste der Überlebenden mitsamt ihren Genen erstellen
+      Überlebende.append(neuesWesen)
+    # Die Liste der Wesen wird nach jeder Generation geleert
+    WesenListe = []
+    # Die Anzahl der Wesen in der Liste der Überlebenden wird ausgegeben
+    print('Anzahl der Überlebenden:' + str(len(Überlebende)))
+    Temp = GesamtAnzahl
+    # Für jedes der Wesen (in unserem Beispiel 200)
+    while Temp > 0:
+      # Ein Wesen wird aus der Liste der Überlebenden ausgewählt
+      AuserwähltesWesen = Überlebende[random.randrange(len(Überlebende))]
+      neuesWesen = Wesen(0)
+      for j, genom in enumerate(AuserwähltesWesen.Gene):
+        # Und Erbinformationen (Bewegung, Farbe, etc.) werden an ein anderes Wesen weitergegeben
+        # Starke/gute Gene, mit denen ein Wesen in der vorigen Generation die Safezone erreicht hat, werden weitergegeben
+        neuesWesen.Gene.append(gene([genom.x_gen[0], genom.x_gen[1]], [genom.y_gen[0], genom.y_gen[1]], genom.z_gen))
+        # Das neue Wesen wird zur Liste der Wesen hinzugefügt
+      WesenListe.append(neuesWesen)
+      # Das Ganze geht so lange, bis durch alle Wesen durch iteriert wurde
+      Temp -= 1
+```
