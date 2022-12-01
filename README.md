@@ -39,8 +39,16 @@ Um die ganze Simulation nun auch wirklich darzustellen, muss das Ganze natürlic
 Zum Schluss kommen noch die einzelnen Wesen hinzu und der "Generationszähler", der am oberen rechten Rand die aktuelle Generation indiziert.
 
 
+Zuerst führen wir in der folgenden Tabelle die nützlichen Pygamefunktionen und -objekte auf, die diese Simulation derartig visualisieren, damit beim weiteren Lesen nicht erst die [Pygame-Dokumentation](https://www.pygame.org/docs/) studiert werden muss. Es sind in der Tabelle lediglich die Parameter der Funktionen angegeben, die auch im Projekt benutzt werden.
 
-
+Pygamefunktion/-objekt             |Kurze Erklärung            |
+:-------------------------:|:-------------------------:|
+Surface.fill()             |Eine Oberfläche, in unserem Fall ein Fenster, wird mit einer Farbe gefüllt. Benötigte Parameter: (Die RGB-Werte).|
+draw.rect()                |Ein Rechteck mit beliebiger Größe und Farbe kann gezeichnet werden. Diese Funktion wird in diesem Projekt für das Rendering jeder viereckigen Form genutzt. Vom Wesen bis zum schwarzen Hintergrund. Benötigte Parameter: (Die Oberfläche, die RGB-Werte, (der Abstand vom linken Rand, der Abstand vom oberen Rand, die Breite des Rechtecks, die Höhe des Rechtecks)|
+font.Font()                |Es wird ein neues Objekt erstellt. Die Schriftart und Größe können festgelegt werden. Benötigte Parameter: (Schriftart, Größe(Höhe der Schrift in Pixeln))|
+font.Font.render()         |Ein Text wird auf einer neuerzeugten Oberfläche gerendert. Benötigte Parameter: (Der Text, Anti-Aliasing, Farbe des Textes)|
+Surface.blit()             |Eine Oberfläche wird auf eine andere "draufgelegt". Benötigte Paramter: (Neue Oberfläche, Untergrund-Oberfläche|
+display.update()           |Ein gewisser Teil des Pygamefensters kann neu geladen werden. Wenn kein Parameter übergeben wird, wird das gesamte Fenster, bzw. die gesamte Oberfläche neu geladen. (In diesem Projekt wird pygame.display.update() ohne Parameter aufgerufen.)|
 
 ## Die Farbgebung
 
@@ -60,7 +68,7 @@ Die Wesen in unserer Simulation sollen, wie auch die Menschen oder andere Lebewe
 
   Nach Feinjustierung hat sich für die Berechnung des zu *addierenden Wertes* ergeben, dass<br> das Minimum aus (254 - *dem Farbwert*) und dem Integer (Ganzzahl) aus ((40 + z_gen * 60) * 2 / Anzahl der funktionellen Gene) **für jegliche Genomgrößen funktioniert**.
 
-  Für den zu *subtrahierenden Wert* hat sich ergeben, dass das Minimum aus dem *Farbwert* und dem Integer (Ganzzahl) aus ((40 + z_gen * 60) * 2 / Anzahl der funktionellen Genome) **für jegliche Genomgrößen funktioniert**.<br> Hierbei ist erkennbar, dass dadurch, dass durch die Anzahl der funktionellen Genome dividiert wird, der Integer kleiner wird, je mehr funktionelle Genome vorhanden sind. Deshalb wird die Wahrscheinlichkeit, dass der Integer kleiner als die Farbe selbst ist, größer. Somit ist der Integer das Minimum der beiden Werte und wird somit vom bisherigen *Farbwert* abgezogen. Deshalb sind Wesen mit vielen funktionellen Genomen, die ausgeprägtere Bewegungen haben, heller gefärbt und diese mit wenigeren funktionellen Genomen, die potentiell auch weniger ausgeprägte Bewegungen besitzen, dunkler gefärbt.
+  Für den zu *subtrahierenden Wert* hat sich ergeben, dass<br> das Minimum aus dem *Farbwert* und dem Integer (Ganzzahl) aus ((40 + z_gen * 60) * 2 / Anzahl der funktionellen Genome) **für jegliche Genomgrößen funktioniert**.<br> Hierbei ist erkennbar, dass dadurch, dass durch die Anzahl der funktionellen Genome dividiert wird, der Integer kleiner wird, je mehr funktionelle Genome vorhanden sind. Deshalb wird die Wahrscheinlichkeit, dass der Integer kleiner als die Farbe selbst ist, größer. Somit ist der Integer das Minimum der beiden Werte und wird somit vom bisherigen *Farbwert* abgezogen. Deshalb sind Wesen mit vielen funktionellen Genomen, die ausgeprägtere Bewegungen haben, heller gefärbt und diese mit wenigeren funktionellen Genomen, die potentiell auch weniger ausgeprägte Bewegungen besitzen, dunkler gefärbt.
 
   Beim dritten Farbwert (Blau) wird eine Kombination des Additions-/Subtraktionsverfahrens der vorherigen Farben verwendet. 
   Durch das Maximum aus dem *negativen Farbwert* und dem<br> Minimum aus ((254 - dem Farbwert) und (80 + z_gen * 60) / Anzahl der funktionellen Genome), kann gewährleistet werden, dass **jegliche Genomgrößen funktionieren**.
@@ -71,8 +79,7 @@ Die Wesen in unserer Simulation sollen, wie auch die Menschen oder andere Lebewe
   
 So lassen sich die Wesen nach Anzahl der funktionellen Genome und Kombination von Genen einfärben.
 
-Das Färben an sich geschieht letztendlich durch das [Zeichnen](#das-rendering)
-
+Das Färben an sich geschieht letztendlich durch das [Rendering](#das-rendering).
 
 ## Das Wesen
 
