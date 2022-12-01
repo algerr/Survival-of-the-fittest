@@ -344,7 +344,7 @@ while SafezoneX >= 0:
   SafezoneY = Größe[1] - 1
   while SafezoneY >= 0:
     # Über die Intervalle für X und Y lässt sich die Safezone bestimmen
-    # Es wird von 100 bis 0 iteriert und, wenn sich SafezoneX/SafezoneY im Safezone-Bereich befinden, werden diese der Safezone Liste angehänt
+    # Es wird von 100 bis 0 iteriert und, wenn sich SafezoneX/SafezoneY im Safezone-Bereich befinden, werden diese der Safezone Liste angehängt
     if SafezoneX >= 0 and SafezoneX <= 30 and SafezoneY >= 0 and SafezoneY <= 30:
       # Die Safezone Pixel werden festgehalten
       Safezone.append([SafezoneX, SafezoneY])
@@ -430,7 +430,7 @@ for i, creature in enumerate(WesenListe):
 # Die Main-Funktion und Initialisierung aller Variablen
 
 Nun sind wir am Ende des Programmes angelangt. Alle Objekte, Funktionen und jedes klitzekleine Detail wurde erklärt und nun fragt man sich, was denn überhaupt noch fehlen kann, wo doch bereits knapp 400 Zeilen Quelltext überstanden sind. Um kurz auf die Frage zu antworten: Die Main-Funktion.
-Als Main wird in jeder Programmiersprache die Funktion bezeichnet, in der alle Funktionen, Klassen, Objekte und Sonstiges zusammengefügt und letztendlich ausgeführt werden. Das ist in unserem Projekt auch der Fall. In dieser Funktion werden auch die ganzen "verstellbaren" Variablen initialisiert. Man kann beispielsweise die Länge einer Generation verändern, die Größe des Fensters oder der Safezone, die Gesamtanzahl der Wesen oder die Genomgröße. Diese Änderungen haben eine globale Wirkung.
+Als Main wird in jeder Programmiersprache die Funktion bezeichnet, in der alle Funktionen, Klassen, Objekte und Sonstiges zusammengefügt und letztendlich ausgeführt werden. Das ist in unserem Projekt auch der Fall. In dieser Funktion werden auch die ganzen "verstellbaren" Variablen, welche als Parameter für die zahlreichen Funktionen dienen, initialisiert. Man kann beispielsweise die Länge einer Generation verändern, die Größe des Fensters oder der Safezone, die Gesamtanzahl der Wesen oder die Genomgröße. Diese Änderungen haben eine globale Wirkung.
 Normalerweise bleiben Variablen, bzw. die Werte, die Variablen in einer Funktion zugewiesen werden, lokal in dieser Funktion. 
 Das Schlüsselwort *global* legt jedoch fest, dass die Änderungen, die man an den, mit diesem Schlüsselwort bezeichneten Variablen vornimmt, im gesamten Programm wirksam sind.
 Alle wichtigen, zu definierenden Variablen, die wir in unserem Programm an verschiedensten Stellen benötigen, sind als *global* in der Main-Funktion deklariert.
@@ -439,7 +439,24 @@ global WesenListe, Generation, Größe, GenomGröße, PositionsListe, Safezone, 
 ```
 Als erste Funktion wird pygame.init() ausgeführt, um alle Module Pygames zu initialisieren und den Prozess zu starten.
 Daraufhin werden alle Variablen initialisiert.
-Die besondere Festlegung der Safezone wird 
+Die besondere Festlegung der Safezone wird in der [Initialisierung der Safezone](#die-initialisierung-der-safezone) genauestens erklärt.
+Danach folgt auch schon die Generierung der Wesen durch die Funktion *generieren()*.
+Das Pygamefenster, welches als Parameter für die [*renderFenster-Funktion*](#das-rendering) dient, wird nun auch festgelegt.
+Dazu auch noch der Fenstertitel: **"Survival of the fittest - Wer ist am besten angepasst?"** und schon kommt die eigentliche Ausführung des ganzen Programms.
+Eigentlich kann das Programm, wenn es nicht vorher abgebrochen wird, auf immer und ewig weiterlaufen, da es sich in einem endlosen while-True-Loop befindet.
+Zuerst gibt es eine Pause von 5ms und daraufhin wird das Fenster gerendert, die Simulation beendet und daraufhin wieder gestartet.
+Dieser Ablauf wiederholt sich dauerhaft.
+Nun bleibt nur noch eine Frage offen.<br>
+Wofür steht das:
+```
+if __name__ == "__main__":
+  main()
+``` 
+?
+<br>
+In Python beschreibt diese Bedingung, dass die *main()*-Funktion, die in der Bedinung steht, nur ausgeführt werden, soll, wenn die Datei als Skript ausgeführt wird.
+Es gebe auch die Möglichkeit, die Datei als Modul in eine andere Datei zu importieren. Dann würde das, was in der Bedingung steht, nicht ausgeführt werden, da die Datei nicht als "Hauptdatei", sondern als Modul ausgeführt wird.
+Eigentlich wäre dieser Zusatz nicht nötig, da dieses Projekt nur auf einer Datei beruht, jedoch ist es eine gute Angewohnheit, "Hauptdateien" (Main-Dateien) mit dieser Bedingung am Ende zu versehen, da sich das Ganze positiv auf zukünftige Projekte, wo vielleicht mit selbstgeschriebenen Modulen gearbeitet wird, auswirkt.
 ```python
 def main():
     # Deklarierung der Variablen als Global, sodass jedes Objekt und jede Funktion darauf zugreifen kann
