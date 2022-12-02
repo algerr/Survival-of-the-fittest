@@ -141,7 +141,7 @@ Zum Schluss kommen noch die einzelnen Wesen hinzu und der "Generationszähler", 
     Sollte das Minimum geringer als der *Farbwert* mit negativem Vorzeichen sein, wird ein Fehler umgangen, da der *negative Farbwert* dann das Maximum bildet.
     Somit ergibt sich mindestens ein *Farbwert* von 0, wenn der *Farbwert* mit dem *negativen Farbwert* addiert wird.
 
-  </details>  
+  </details>
 
   So lassen sich die Wesen nach Anzahl der funktionellen Genome und Kombination von Genen einfärben.
 
