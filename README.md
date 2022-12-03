@@ -125,20 +125,20 @@ Zum Schluss kommen noch die einzelnen Wesen hinzu und der "Generationszähler", 
 
 Alles ist ausgehend von den Werten der Standardfarbe grau (125, 125, 125). Je nach Kombination der Gene wird ein Wert mit dem Standardwert summiert oder davon subtrahiert. Um die Wesen auch visuell bezüglich "guter, angepasster Gene" unterscheiden zu können, wird die Anzahl der funktionalen Genome genutzt. Ein Genom gilt als funktional, wenn das x1_gen den Wert 1 besitzt, denn dadurch nimmt dieses Genom einen Einfluss auf die Bewegung des Wesens.<br> (Nur zur Erinnerung: das x1_gen benötigt den Wert 1, um die Veränderung im stabilen Wert zu speichern.)<br> Die Anzahl dieser funktionalen Genome wird folglich durch Enumeration überprüft.
 
-Genkombination             |x1_gen = 1 und y1_gen = 0  |x1_gen = 1 und y1_gen = 1  |x1_gen = 1 und y1_gen = 2  |x1_gen = 1 und y1_gen = 3  |x1_gen = 1 und y1_gen = 4  |
-    :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
-    Veränderung der roten Farbe|Wert wird addiert          |Wert wird subtrahiert      |
-    Veränderung der grünen Farbe|Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert          |Wert wird subtrahiert      |
-    Veränderung der blauen Farbe|Wert bleibt gleich         |Wert bleibt gleich         |Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert |
+Genkombination|x1_gen = 1 und y1_gen = 0  |x1_gen = 1 und y1_gen = 1  |x1_gen = 1 und y1_gen = 2  |x1_gen = 1 und y1_gen = 3  |x1_gen = 1 und y1_gen = 4  |
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
+Veränderung der roten Farbe|Wert wird addiert          |Wert wird subtrahiert      |
+Veränderung der grünen Farbe|Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert          |Wert wird subtrahiert      |
+Veränderung der blauen Farbe|Wert bleibt gleich         |Wert bleibt gleich         |Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert |
 
-    Nach Feinjustierung hat sich für die Berechnung des zu *addierenden Wertes* ergeben, dass<br> das Minimum aus (254 - *dem Farbwert*) und dem Integer (Ganzzahl) aus ((40 + z_gen * 60) * 2 / Anzahl der funktionellen Gene) **für jegliche Genomgrößen funktioniert**.
+Nach Feinjustierung hat sich für die Berechnung des zu *addierenden Wertes* ergeben, dass<br> das Minimum aus (254 - *dem Farbwert*) und dem Integer (Ganzzahl) aus ((40 + z_gen * 60) * 2 / Anzahl der funktionellen Gene) **für jegliche Genomgrößen funktioniert**.
 
-    Für den zu *subtrahierenden Wert* hat sich ergeben, dass<br> das Minimum aus dem *Farbwert* und dem Integer (Ganzzahl) aus ((40 + z_gen * 60) * 2 / Anzahl der funktionellen Genome) **für jegliche Genomgrößen funktioniert**.<br> Hierbei ist erkennbar, dass dadurch, dass durch die Anzahl der funktionellen Genome dividiert wird, der Integer kleiner wird, je mehr funktionelle Genome vorhanden sind. Deshalb wird die Wahrscheinlichkeit, dass der Integer kleiner als die Farbe selbst ist, größer. Somit ist der Integer das Minimum der beiden Werte und wird somit vom bisherigen *Farbwert* abgezogen. Deshalb sind Wesen mit vielen funktionellen Genomen, die ausgeprägtere Bewegungen haben, heller gefärbt und diese mit wenigeren funktionellen Genomen, die potentiell auch weniger ausgeprägte Bewegungen besitzen, dunkler gefärbt.
+Für den zu *subtrahierenden Wert* hat sich ergeben, dass<br> das Minimum aus dem *Farbwert* und dem Integer (Ganzzahl) aus ((40 + z_gen * 60) * 2 / Anzahl der funktionellen Genome) **für jegliche Genomgrößen funktioniert**.<br> Hierbei ist erkennbar, dass dadurch, dass durch die Anzahl der funktionellen Genome dividiert wird, der Integer kleiner wird, je mehr funktionelle Genome vorhanden sind. Deshalb wird die Wahrscheinlichkeit, dass der Integer kleiner als die Farbe selbst ist, größer. Somit ist der Integer das Minimum der beiden Werte und wird somit vom bisherigen *Farbwert* abgezogen. Deshalb sind Wesen mit vielen funktionellen Genomen, die ausgeprägtere Bewegungen haben, heller gefärbt und diese mit wenigeren funktionellen Genomen, die potentiell auch weniger ausgeprägte Bewegungen besitzen, dunkler gefärbt.
 
-    Beim dritten Farbwert (Blau) wird eine Kombination des Additions-/Subtraktionsverfahrens der vorherigen Farben verwendet. 
-    Durch das Maximum aus dem *negativen Farbwert* und dem<br> Minimum aus ((254 - dem Farbwert) und (80 + z_gen * 60) / Anzahl der funktionellen Genome), kann gewährleistet werden, dass **jegliche Genomgrößen funktionieren**.
-    Sollte das Minimum geringer als der *Farbwert* mit negativem Vorzeichen sein, wird ein Fehler umgangen, da der *negative Farbwert* dann das Maximum bildet.
-    Somit ergibt sich mindestens ein *Farbwert* von 0, wenn der *Farbwert* mit dem *negativen Farbwert* addiert wird.
+Beim dritten Farbwert (Blau) wird eine Kombination des Additions-/Subtraktionsverfahrens der vorherigen Farben verwendet. 
+Durch das Maximum aus dem *negativen Farbwert* und dem<br> Minimum aus ((254 - dem Farbwert) und (80 + z_gen * 60) / Anzahl der funktionellen Genome), kann gewährleistet werden, dass **jegliche Genomgrößen funktionieren**.
+Sollte das Minimum geringer als der *Farbwert* mit negativem Vorzeichen sein, wird ein Fehler umgangen, da der *negative Farbwert* dann das Maximum bildet.
+Somit ergibt sich mindestens ein *Farbwert* von 0, wenn der *Farbwert* mit dem *negativen Farbwert* addiert wird.
 
   </details>
 
