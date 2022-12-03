@@ -125,8 +125,7 @@ Zum Schluss kommen noch die einzelnen Wesen hinzu und der "Generationszähler", 
 
     Alles ist ausgehend von den Werten der Standardfarbe grau (125, 125, 125). Je nach Kombination der Gene wird ein Wert mit dem Standardwert summiert oder davon subtrahiert. Um die Wesen auch visuell bezüglich "guter, angepasster Gene" unterscheiden zu können, wird die Anzahl der funktionalen Genome genutzt. Ein Genom gilt als funktional, wenn das x1_gen den Wert 1 besitzt, denn dadurch nimmt dieses Genom einen Einfluss auf die Bewegung des Wesens.<br> (Nur zur Erinnerung: das x1_gen benötigt den Wert 1, um die Veränderung im stabilen Wert zu speichern.)<br> Die Anzahl dieser funktionalen Genome wird folglich durch Enumeration überprüft.
 
-
-    Genkombination             |x1_gen = 1 und y1_gen = 0  |x1_gen = 1 und y1_gen = 1  |x1_gen = 1 und y1_gen = 2  |x1_gen = 1 und y1_gen = 3  |x1_gen = 1 und y1_gen = 4  |
+Genkombination             |x1_gen = 1 und y1_gen = 0  |x1_gen = 1 und y1_gen = 1  |x1_gen = 1 und y1_gen = 2  |x1_gen = 1 und y1_gen = 3  |x1_gen = 1 und y1_gen = 4  |
     :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
     Veränderung der roten Farbe|Wert wird addiert          |Wert wird subtrahiert      |
     Veränderung der grünen Farbe|Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert          |Wert wird subtrahiert      |
