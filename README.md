@@ -154,7 +154,7 @@ Somit ergibt sich mindestens ein *Farbwert* von 0, wenn der *Farbwert* mit dem *
 
 Lila             |Pink            |Grün            |Hautfarbe            |Blau  
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![Screenshot (21)](https://user-images.githubusercontent.com/111282979/202292263-010a98a2-c3b9-4c74-9d0a-a9044728c4c3.png)|![Screenshot (22)](https://user-images.githubusercontent.com/111282979/202292396-9ee88ca2-e483-4e44-8270-71874bb1585b.png)|![Screenshot (27)](https://user-images.githubusercontent.com/111282979/202292456-1963d65d-4299-4f87-b920-d56349f8b9d5.png)|![Screenshot (24)](https://user-images.githubusercontent.com/111282979/202292505-d3b0a395-f1c7-42d9-b514-ac72aaa20b56.png)|![Screenshot (25)](https://user-images.githubusercontent.com/111282979/202292567-007dd1f0-c356-492a-a688-cda0d7002c55.png)|
+![Screenshot (21)](https://user-images.githubusercontent.com/111282979/202292263-010a98a2-c3b9-4c74-9d0a-a9044728c4c3.png)|![Screenshot (22)](https://user-images.githubusercontent.com/111282979/202292396-9ee88ca2-e483-4e44-8270-71874bb1585b.png)|![Screenshot (27)](https://user-images.githubusercontent.com/111282979/202292456-1963d65d-4299-4f87-b920-d56349f8b9d5.png)|![202292505-d3b0a395-f1c7-42d9-b514-ac72aaa20b56 (1)](https://user-images.githubusercontent.com/65679099/205465711-c0301c56-8532-4d07-b3cc-5b5cad1e8c33.png)|![Screenshot (25)](https://user-images.githubusercontent.com/111282979/202292567-007dd1f0-c356-492a-a688-cda0d7002c55.png)|
 
 In der Simulation gibt es eine festlegbare Anzahl an Wesen.
 Ein Wesen besitzt die Größe eines Feldes.
