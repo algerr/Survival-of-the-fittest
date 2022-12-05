@@ -7,6 +7,22 @@
 - [Das Grundprinzip](#das-grundprinzip)
 - [Was ist Pygame?](#was-ist-pygame?)
 - [Das Rendering](#das-rendering)
+- [Der Schweif hinter den Wesen](#das-schweif-hinter-den-wesen)
+- [Der Generationsindikator](#der-generationsindikator)
+- [Die Farbgebung](#die-farbgebung)
+- [Das Wesen](#das-wesen)
+- [Die PositionsListe](#die-positionsliste)
+- [Das Genom](#das-genom)
+- [Die Mutation](#die-mutation)
+- [Die Simulation](#die-simulation)
+- [Das Generieren](#das-generieren)
+- [Die zufällige Bewegung der Wesen](#die-zufällige-bewegung-der-wesen)
+- [Zufällige Ausführung der Bewegungen](#zufällige-ausführung-der-bewegung)
+- [Überprüfung der Validität](#überprüfung-der-validität)
+- [Die Safezone](#die-safezone)
+- [Die Initialisierung der Safezone](#die-initialisierung-der-safezone)
+- [Die Vererbung der Gene](#die-vererbung-der-gene)
+- [Die Main-Funktion und Initialisierung aller Variablen](#die-main-funktion-und-initialisierung-aller-variablen)
 
 # Der Hintergrund
 
