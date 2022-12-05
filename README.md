@@ -6,7 +6,7 @@
 - [Das Grundprinzip](#das-grundprinzip)
 - [Was ist Pygame?](#was-ist-pygame)
 - [Das Rendering](#das-rendering)
-  - [Der Schweif hinter den Wesen](#das-schweif-hinter-den-wesen)
+  - [Der Schweif hinter den Wesen](#der-schweif-hinter-den-wesen)
   - [Der Generationsindikator](#der-generationsindikator)
   - [Die Farbgebung](#die-farbgebung)
 - [Das Wesen](#das-wesen)
