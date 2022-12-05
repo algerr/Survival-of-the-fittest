@@ -24,7 +24,7 @@
   - [Die Vererbung der Gene](#die-vererbung-der-gene)
 - [Die Main-Funktion und Initialisierung aller Variablen](#die-main-funktion-und-initialisierung-aller-variablen)
 - [Eigenständigkeitserklärung](#eigenständigkeitserklärung)
-- [Literaturverzeichnis](#literaturverzeichnis)
+- [Quellenverzeichnis](#quellenverzeichnis)
 
 # Der Hintergrund
 
