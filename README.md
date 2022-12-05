@@ -16,7 +16,7 @@
 - [Die Simulation](#die-simulation)
   - [Das Generieren](#das-generieren)
 - [Die zufällige Bewegung der Wesen](#die-zufällige-bewegung-der-wesen)
-  -[Die Veränderung](#die-veränderung)
+  - [Die Veränderung](#die-veränderung)
 - [Zufällige Ausführung der Bewegungen](#zufällige-ausführung-der-bewegungen)
 - [Überprüfung der Validität](#überprüfung-der-validität)
 - [Die Safezone](#die-safezone)
