@@ -1,6 +1,6 @@
 ![github-header-image](https://user-images.githubusercontent.com/111282979/202478536-29589dd2-2e8c-44dd-ba54-c7c463fa43de.png)
 
-https://user-images.githubusercontent.com/65679099/205526441-42e7eb40-f32e-4fd3-99cf-0d934164310a.mp4
+![SOTF](https://user-images.githubusercontent.com/65679099/205526510-60f6f9ab-ea10-4b1b-aa43-0b03b8c4e427.gif)
 
 <img src="https://user-images.githubusercontent.com/111282979/203019520-8f5bb350-82f7-41cb-a5b9-6865cea33f66.gif" width="650px" height="650px"/>
 
