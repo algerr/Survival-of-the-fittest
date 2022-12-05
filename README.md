@@ -7,22 +7,7 @@
 - [Das Grundprinzip](#das-grundprinzip)
 - [Was ist Pygame?](#was-ist-pygame?)
 - [Das Rendering](#das-rendering)
-- [Der Schweif hinter den Wesen](#das-schweif-hinter-den-wesen)
-- [Der Generationsindikator](#der-generationsindikator)
-- [Die Farbgebung](#die-farbgebung)
-- [Das Wesen](#das-wesen)
-- [Die PositionsListe](#die-positionsliste)
-- [Das Genom](#das-genom)
-- [Die Mutation](#die-mutation)
-- [Die Simulation](#die-simulation)
-- [Das Generieren](#das-generieren)
-- [Die zufällige Bewegung der Wesen](#die-zufällige-bewegung-der-wesen)
-- [Zufällige Ausführung der Bewegungen](#zufällige-ausführung-der-bewegung)
-- [Überprüfung der Validität](#überprüfung-der-validität)
-- [Die Safezone](#die-safezone)
-- [Die Initialisierung der Safezone](#die-initialisierung-der-safezone)
-- [Die Vererbung der Gene](#die-vererbung-der-gene)
-- [Die Main-Funktion und Initialisierung aller Variablen](#die-main-funktion-und-initialisierung-aller-variablen)
+
 # Der Hintergrund
 
 Wie durch die Chronologie der Blogeinträge bereits erkennbar wurde, war dieses Projekt nicht das erste, an welchem wir gearbeitet haben. Leider scheiterte die Umsetzung als Mobilapp durch die Kosten von 100€ für einen Apple-Developer Account. Nachdem wir zu dieser Erkenntnis gelangen, suchten wir nach einem neuen Projekt.
@@ -535,3 +520,13 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+# Eigenständigkeitserklärung
+
+Hiermit erklären wir, dass das Projekt selbstständig bearbeitet wurde und keine anderen als die angegebenen Quellen benutzt wurden.
+Ahresnburg, den 02. Dezember 2022
+Laurenz Brause und Daniel Pauli
+
+# Literaturverzeichnis
+
+
