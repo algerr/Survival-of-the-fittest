@@ -543,6 +543,11 @@ Hiermit erklären wir, dass das Projekt selbstständig bearbeitet wurde und kein
 Ahresnburg, den 02. Dezember 2022
 Laurenz Brause und Daniel Pauli
 
-# Literaturverzeichnis
+# Quellenverzeichnis
 
+### Biologische Quellen
+
+### [Carbon für die schöne Darstellung des Quelltextes in der Dokumentation]([https://www.carbon.now.sh)
+### [Pygame Dokumentation](https://www.pygame.org/docs/)
+### 
 
