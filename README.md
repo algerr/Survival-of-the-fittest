@@ -3,26 +3,28 @@
 <img src="https://user-images.githubusercontent.com/111282979/203019520-8f5bb350-82f7-41cb-a5b9-6865cea33f66.gif" width="650px" height="650px"/>
 
 # Inhaltsverzeichnis
-- [Der Hintergrund](#der-hintergrund)
 - [Das Grundprinzip](#das-grundprinzip)
 - [Was ist Pygame?](#was-ist-pygame?)
 - [Das Rendering](#das-rendering)
-- [Der Schweif hinter den Wesen](#das-schweif-hinter-den-wesen)
-- [Der Generationsindikator](#der-generationsindikator)
-- [Die Farbgebung](#die-farbgebung)
+  - [Der Schweif hinter den Wesen](#das-schweif-hinter-den-wesen)
+  - [Der Generationsindikator](#der-generationsindikator)
+  - [Die Farbgebung](#die-farbgebung)
 - [Das Wesen](#das-wesen)
-- [Die PositionsListe](#die-positionsliste)
+  - [Die PositionsListe](#die-positionsliste)
 - [Das Genom](#das-genom)
-- [Die Mutation](#die-mutation)
+  - [Die Mutation](#die-mutation)
 - [Die Simulation](#die-simulation)
-- [Das Generieren](#das-generieren)
+  - [Das Generieren](#das-generieren)
 - [Die zufällige Bewegung der Wesen](#die-zufällige-bewegung-der-wesen)
+  -[Die Veränderung](#die-veränderung)
 - [Zufällige Ausführung der Bewegungen](#zufällige-ausführung-der-bewegung)
 - [Überprüfung der Validität](#überprüfung-der-validität)
 - [Die Safezone](#die-safezone)
-- [Die Initialisierung der Safezone](#die-initialisierung-der-safezone)
-- [Die Vererbung der Gene](#die-vererbung-der-gene)
+  - [Die Initialisierung der Safezone](#die-initialisierung-der-safezone)
+  - [Die Vererbung der Gene](#die-vererbung-der-gene)
 - [Die Main-Funktion und Initialisierung aller Variablen](#die-main-funktion-und-initialisierung-aller-variablen)
+- [Eigenständigkeitserklärung](#eigenständigkeitserklärung)
+- [Literaturverzeichnis](#literaturverzeichnis)
 
 # Der Hintergrund
 
