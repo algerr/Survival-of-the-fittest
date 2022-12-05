@@ -17,7 +17,7 @@
   - [Das Generieren](#das-generieren)
 - [Die zufällige Bewegung der Wesen](#die-zufällige-bewegung-der-wesen)
   -[Die Veränderung](#die-veränderung)
-- [Zufällige Ausführung der Bewegungen](#zufällige-ausführung-der-bewegung)
+- [Zufällige Ausführung der Bewegungen](#zufällige-ausführung-der-bewegungen)
 - [Überprüfung der Validität](#überprüfung-der-validität)
 - [Die Safezone](#die-safezone)
   - [Die Initialisierung der Safezone](#die-initialisierung-der-safezone)
