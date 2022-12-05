@@ -4,7 +4,7 @@
 
 # Inhaltsverzeichnis
 - [Das Grundprinzip](#das-grundprinzip)
-- [Was ist Pygame?](#was-ist-pygame?)
+- [Was ist Pygame?](#was-ist-pygame)
 - [Das Rendering](#das-rendering)
   - [Der Schweif hinter den Wesen](#das-schweif-hinter-den-wesen)
   - [Der Generationsindikator](#der-generationsindikator)
@@ -23,8 +23,8 @@
   - [Die Initialisierung der Safezone](#die-initialisierung-der-safezone)
   - [Die Vererbung der Gene](#die-vererbung-der-gene)
 - [Die Main-Funktion und Initialisierung aller Variablen](#die-main-funktion-und-initialisierung-aller-variablen)
-- [Eigenständigkeitserklärung](#eigenständigkeitserklärung)
 - [Quellenverzeichnis](#quellenverzeichnis)
+- [Eigenständigkeitserklärung](#eigenständigkeitserklärung)
 
 # Der Hintergrund
 
@@ -539,12 +539,6 @@ if __name__ == "__main__":
     main()
 ```
 
-# Eigenständigkeitserklärung
-
-Hiermit erklären wir, dass das Projekt selbstständig bearbeitet wurde und keine anderen als die angegebenen Quellen benutzt wurden.
-Ahresnburg, den 02. Dezember 2022
-Laurenz Brause und Daniel Pauli
-
 # Quellenverzeichnis
 
 ### Inspiration
@@ -561,3 +555,8 @@ Laurenz Brause und Daniel Pauli
 - [Pygame Dokumentation](https://www.pygame.org/docs/)
 ### 
 
+# Eigenständigkeitserklärung
+
+Hiermit erklären wir, dass das Projekt selbstständig bearbeitet wurde und keine anderen als die angegebenen Quellen benutzt wurden.
+Ahresnburg, den 02. Dezember 2022
+Laurenz Brause und Daniel Pauli
