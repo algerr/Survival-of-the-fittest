@@ -553,7 +553,7 @@ if __name__ == "__main__":
 ### Quellen 
 - [Carbon für die schöne Darstellung des Quelltextes in der Dokumentation](https://www.carbon.now.sh)
 - [Pygame Dokumentation](https://www.pygame.org/docs/)
-- [Canva für die Erstellung von Grafiken] (https://www.canva.com/)
+- [Canva für die Erstellung von Grafiken](https://www.canva.com/)
 ### 
 
 # Eigenständigkeitserklärung
