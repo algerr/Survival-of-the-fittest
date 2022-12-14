@@ -3,7 +3,7 @@
 <img src="https://user-images.githubusercontent.com/111282979/203019520-8f5bb350-82f7-41cb-a5b9-6865cea33f66.gif" width="650px" height="650px"/>
 
 # Inhaltsverzeichnis
-- [Ausführungsanweisungen](#ausführungsanweisungen)
+- [Ausführungsanweisungen](#ausf%C3%BChrungsanweisung)
 - [Das Grundprinzip](#das-grundprinzip)
 - [Was ist Pygame?](#was-ist-pygame)
 - [Das Rendering](#das-rendering)
@@ -30,10 +30,10 @@
 # Ausführungsanweisung
 
 Um das Programm zu starten, wird mindestens [Python 3.8](https://www.python.org/downloads) benötigt. 
-Sobald Python installiert ist, kann die Installation durch den Befehl `python` in der Eingabeaufforderung überprüft werden.
+Sobald Python installiert ist, kann die Installation durch den Befehl `python` in der Eingabeaufforderung überprüft werden. <br>
 Wenn die Installation nun also erfolgreich war, muss nur noch die Python-Bibliothek [Pygame](https://www.pygame.org) installiert.
 Dies ist durch den Python-Packet-Manager `pip` möglich.
-Somit muss lediglich der Befehl
+Somit muss lediglich der Befehl:
 ```
 python -m pip install pygame
 ```
