@@ -578,6 +578,6 @@ if __name__ == "__main__":
 
 # Eigenständigkeitserklärung
 
-Hiermit erklären wir, dass das Projekt selbstständig bearbeitet wurde und keine anderen als die angegebenen Quellen benutzt wurden.
-Ahresnburg, den 02. Dezember 2022
+Hiermit erklären wir, dass das Projekt selbstständig bearbeitet wurde und keine anderen als die angegebenen Quellen benutzt wurden. <br>
+Ahrensburg, den 02. Dezember 2022 <br>
 Laurenz Brause und Daniel Pauli
