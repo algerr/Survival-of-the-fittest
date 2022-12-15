@@ -31,24 +31,24 @@
 
 Um das Programm zu starten, wird mindestens [Python 3.8](https://www.python.org/downloads) benötigt. 
 Sobald Python installiert ist, kann die Installation durch den Befehl `python` in der Eingabeaufforderung überprüft werden. <br>
-Wenn die Installation nun also erfolgreich war, muss nur noch die Python-Bibliothek [Pygame](https://www.pygame.org) installiert.
+Wenn die Installation nun also erfolgreich war, muss nur noch die Python-Bibliothek [Pygame](https://www.pygame.org) installiert werden.
 Dies ist durch den Python-Packet-Manager `pip` möglich.
-Somit muss lediglich der Befehl:
+Somit muss nur noch der Befehl:
 ```
 python -m pip install pygame
 ```
 in die Eingabeaufforderung eingefügt werden.
 Wenn diese Installation erfolgreich abgeschlossen ist, kann das Programm nun fehlerfrei ausgeführt werden.
-Dafür muss lediglich mit der Eingabeaufforderung in den Ordner, in dem sich die Python-Datei befindet, navigiert werden und daraufhin der Befehl: 
+Dafür muss mit der Eingabeaufforderung in den Ordner, in dem sich die Python-Datei befindet, navigiert werden und daraufhin der Befehl: 
 ```
 python sotf.py
 ```
-ausgeführt werden.
+ausgeführt werden. <br>
 Viel Freude mit dem Programm.
 
 # Der Hintergrund
 
-Wie durch die Chronologie der Blogeinträge bereits erkennbar wurde, war dieses Projekt nicht das erste, an welchem wir gearbeitet haben. Leider scheiterte die Umsetzung als Mobilapp durch die Kosten von 100€ für einen Apple-Developer Account. Nachdem wir zu dieser Erkenntnis gelangen, suchten wir nach einem neuen Projekt.
+Wie durch die Chronologie der Blogeinträge bereits erkennbar wurde, war dieses Projekt nicht das erste, an welchem wir gearbeitet haben. Leider scheiterte die Umsetzung als Mobilapp an den Kosten von 100€ für einen Apple-Developer Account. Nachdem wir zu dieser Erkenntnis gelangten, suchten wir nach einem neuen Projekt.
 Einflussreich waren dabei der Biologieunterricht des vergangenen Jahres sowie [Conway's Spiel des Lebens](https://de.wikipedia.org/wiki/Conways_Spiel_des_Lebens "Conway's Spiel des Lebens").
 
 # Das Grundprinzip
@@ -56,7 +56,7 @@ Einflussreich waren dabei der Biologieunterricht des vergangenen Jahres sowie [C
 Das Programm stellt eine Evolution dar. Wesen mit unterschiedlichen Genen geben ihr Bestes, um die grünmarkierte Safezone zu erreichen. Wer am Ende der Generation die Zone erreicht hat, gibt seine Gene an die nächste Generation weiter.
 Zu Beginn erhalten alle Wesen ein zufälliges Erbgut.
 Dieses besteht aus X-Genen, Y-Genen und Z-Genen.
-Wie in der menschlichen DNA gibt sind die Gene zweigeteilt. X[1] und X [2] sowie Y[1] und Y[2] nur Z hat lediglich einen Wert. 
+Wie in der menschlichen DNA bestehen die Gene aus Basenpaaren. Um diese Paare zu vereinfachen, besteht bei uns das X-Gen aus: X[1] und X[2], das Y-Gen aus: Y[1] und Y[2] und nur das Z-Gen besteht aus einem Wert. 
 Davon abhängig sind die Bewegung jedes einzelnen Wesens und seine Farbe.
 Nun gilt: Wessen Gene es in die Safezone schaffen, werden weitergegeben.
 Somit werden zunehmend Wesen mit ähnlichen Genen übrig bleiben, die fast alle die Safezone erreichen.
@@ -66,7 +66,7 @@ Somit werden zunehmend Wesen mit ähnlichen Genen übrig bleiben, die fast alle 
 Pygame ist eine Bibliothek in Python, womit Spiele programmiert werden. Durch die gute Möglichkeit der Visualisierung von Daten in Animationen, wie bei dieser Simulation, lässt sich die Bewegung der Wesen und der Ablauf der Simulation damit gut veranschaulichen.
 
 <details>
-<summary>Erklärung</summary>
+<summary>Weiterführende Erklärung</summary>
 
 Die Simulation lässt sich natürlich komplett über Mathematik und Daten auswerten. Da man sich dadurch jedoch wenig vorstellen kann, wie das Ganze eigentlich aussehen müsste, wird in diesem Projekt [Pygame](https://www.pygame.org/) genutzt, um eine lebhafte Simulation zu ermöglichen.
 Pygame ist eine Pythonbibliothek, die zur Spieleprogrammierung genutzt wird.
@@ -79,7 +79,7 @@ Um die ganze Simulation nun auch wirklich darzustellen, muss das Ganze natürlic
 Zum Schluss kommen noch die einzelnen Wesen hinzu und der "Generationszähler", der am oberen rechten Rand die aktuelle Generation indiziert.
 
 <details>
-  <summary>Erklärung</summary>
+  <summary>Weiterführende Erklärung</summary>
 
   Zuerst führen wir in der folgenden Tabelle die nützlichen Pygamefunktionen und -objekte auf, die diese Simulation derartig visualisieren, damit beim weiteren Lesen nicht erst die [Pygame-Dokumentation](https://www.pygame.org/docs/) studiert werden muss. Es sind in der Tabelle lediglich die Parameter der Funktionen angegeben, die auch im Projekt benutzt werden.
 
@@ -87,11 +87,11 @@ Zum Schluss kommen noch die einzelnen Wesen hinzu und der "Generationszähler", 
   :-------------------------:|:-------------------------:|
   init()                     |Alle Pygame-Module werden initialisiert und die Programmierung mit Pygame kann beginnen. Diese Funktion ist grundlegend und in unserer Main-Funktion an erster Stelle nach der Deklaration der globalen Variablen zu finden. In diesem Projekt nutzen wir keine Parameter für diese Funktion.|
   Surface.fill()             |Eine Oberfläche, in unserem Fall ein Fenster, wird mit einer Farbe gefüllt. Benötigte Parameter: (Die RGB-Werte).|
-  draw.rect()                |Ein Rechteck mit beliebiger Größe und Farbe kann gezeichnet werden. Diese Funktion wird in diesem Projekt für das Rendering jeder viereckigen Form genutzt. Vom Wesen bis zum schwarzen Hintergrund. Benötigte Parameter: (Die Oberfläche, die RGB-Werte, (der Abstand vom linken Rand, der Abstand vom oberen Rand, die Breite des Rechtecks, die Höhe des Rechtecks)|
+  draw.rect()                |Ein Rechteck mit beliebiger Größe und Farbe kann gezeichnet werden. Diese Funktion wird in diesem Projekt für das Rendering jeder viereckigen Form genutzt-vom Wesen bis zum schwarzen Hintergrund. Benötigte Parameter: (Die Oberfläche, die RGB-Werte, (der Abstand vom linken Rand, der Abstand vom oberen Rand, die Breite des Rechtecks, die Höhe des Rechtecks)|
   font.Font()                |Es wird ein neues Objekt erstellt. Die Schriftart und Größe können festgelegt werden. Benötigte Parameter: (Schriftart, Größe(Höhe der Schrift in Pixeln))|
-  font.Font.render()         |Ein Text wird auf einer neuerzeugten Oberfläche gerendert. Benötigte Parameter: (Der Text, Anti-Aliasing, Farbe des Textes)|
+  font.Font.render()         |Ein Text wird auf einer neu erzeugten Oberfläche gerendert. Benötigte Parameter: (Der Text, Anti-Aliasing, Farbe des Textes)|
   Surface.blit()             |Eine Oberfläche wird auf eine andere "draufgelegt". Benötigte Paramter: (Neue Oberfläche, Untergrund-Oberfläche|
-  display.update()           |Ein gewisser Teil des Pygamefensters kann neu geladen werden. Wenn kein Parameter übergeben wird, wird das gesamte Fenster, bzw. die gesamte Oberfläche neu geladen. (In diesem Projekt wird pygame.display.update() ohne Parameter aufgerufen.)|
+  display.update()           |Ein gewisser Teil des Pygamefensters kann neu geladen werden. Wenn kein Parameter übergeben wird, wird das gesamte Fenster bzw. die gesamte Oberfläche neu geladen. (In diesem Projekt wird pygame.display.update() ohne Parameter aufgerufen.)|
   display.set_mode()         |Ein Fenster kann mit dieser Funktion initialisiert werden. Benötigte Parameter: (Breite, Höhe)|
   display.set_caption()      |Der Fenstertitel kann mit dieser Funktion festgelegt werden. Benötigte Parameter: (Fenstertitel (Beispiel: "Survival of the fittest - Wer ist am besten angepasst?)|
 
@@ -109,11 +109,11 @@ Zum Schluss kommen noch die einzelnen Wesen hinzu und der "Generationszähler", 
   ```python
   pygame.draw.rect(Fenster, (0, 100, 0), (30 + zielpunkt_der_safezone[0] * 8, 30 + zielpunkt_der_safezone[1] * 8, 7, 7))
   ```
-  Die grüne Farbe wird durch die RGB-Werte (0, 100, 0) festgelegt. Hier ist bereits das erste Beispiel für die Multiplikation und Addition, die benötigt wird, um die Größe an das Fenster anzupassen. Um die Felder mit ein wenig Abstand zueinander zu zeichnen, wird jede x- und y-Koordinate des Feldes mit 8 multipliziert und mit 30 addiert. Die Größe eines Feldes beträgt (7,7), somit ist muss bei draw.rect() für die Breite und Höhe der Wert 7 eingegeben werden.
+  Die grüne Farbe wird durch die RGB-Werte (0, 100, 0) festgelegt. Hier ist bereits das erste Beispiel für die Multiplikation und Addition, die benötigt wird, um die Größe an das Fenster anzupassen. Um die Felder mit ein wenig Abstand zueinander zu zeichnen, wird jede x- und y-Koordinate des Feldes mit 8 multipliziert und mit 30 addiert. Die Größe eines Feldes beträgt (7,7), somit muss bei draw.rect() für die Breite und Höhe der Wert 7 eingegeben werden.
 
   ## Der Schweif hinter den Wesen
 
-  Um die Bewegung jedes Wesen erkennbar zu machen, wird nicht einfach nur das farbige Feld verschoben, sondern jedem Wesen wird auch ein kleiner werdender Schweif "angehängt". Dieser hat eine Länge von bis zu 8 Feldern.<br>
+  Um die Bewegung jedes Wesens erkennbar zu machen, wird nicht einfach nur das farbige Feld verschoben, sondern jedem Wesen wird auch ein kleiner werdender Schweif "angehängt". Dieser hat eine Länge von bis zu 8 Feldern.<br>
   Die [PositionsListe](#die-positionsliste) ist eine verschachtelte Liste mit 8 inneren Listen. In diesen Listen werden die vorherigen Positionen der Wesen gespeichert. Durch die Speicherung der Positionen ist es möglich, auch auf diesen vorherigen Positionen mit draw.rect() ein Rechteck zu zeichnen. Je weiter die Position von der aktuellen entfernt ist, desto dunkler wird sie gefärbt. So lässt sich, wie bei einer Sternschnuppe, die Bewegung der Wesen nachverfolgen.
   Die PositionsListe wird mit *PositionsListenWerte* enumeriert und daraufhin werden die *PositionsListenWerte* mit der Variable *altePosition* enumeriert.<br>
   Dadurch ist es möglich, die gespeicherten alten Positionen aus der PositionsListe der Reihe nach zu färben. Da die PositionsListe mit den ältesten Positionen beginnt und mit den aktuellsten aufhört, wird mit jedem Durchlaufen des for-Loops, die Farbe des Feldes erhöht. Somit werden, je näher man der aktuellen Position des Wesens kommt, die Felder der ehemaligen Positionen heller gefärbt.
@@ -199,27 +199,29 @@ In der Simulation gibt es eine festlegbare Anzahl an Wesen.
 Ein Wesen besitzt die Größe eines Feldes.
 Jedes Wesen ist als Objekt definiert und besitzt einen Parameter, die Genomgröße.
 Die [GenomGröße](https://de.wikipedia.org/wiki/Genomgr%C3%B6%C3%9Fe) beschreibt die Menge der Genome.
-Ein [Genom](https://de.wikipedia.org/wiki/Genom) beinhaltet die Gesamtheit der vererbbaren Informationen einer Zelle und ist bei uns ([vgl. Abbildung](https://user-images.githubusercontent.com/111282979/202248021-fbc11b40-15dc-49b3-b351-b211b11420cd.png)) die Gesamtheit der x, y- und z-Gene. Den einzelnen Genen sind verschiedene Werte zugeschrieben, wobei die gesamte Kombination eines Genoms bestimmt, wie sich das Wesen in einer Generation bewegt.
-Wie angepasst die Bewegung eines Wesens ist, geht daraus hervor, ob das Wesen bis zum Ende der Generation die [Safezone](#die-safezone) zu erreichen. 
-Wenn das Wesen dies tut, dann gibt es seine Gene an die Wesen der nächsten Generation weiter, damit diese bessere Chancen haben, die Safezone zu erreichen.
+Ein [Genom](https://de.wikipedia.org/wiki/Genom) beinhaltet die Gesamtheit der vererbbaren Informationen einer Zelle und ist bei uns ([vgl. Abbildung](https://user-images.githubusercontent.com/111282979/202248021-fbc11b40-15dc-49b3-b351-b211b11420cd.png)) die Gesamtheit der x-, y- und z-Gene. Den einzelnen Genen sind verschiedene Werte zugeschrieben, wobei die gesamte Kombination eines Genoms bestimmt, wie sich das Wesen in einer Generation bewegt.
+Wie angepasst die Bewegung eines Wesens ist, geht daraus hervor, ob das Wesen bis zum Ende der Generation die [Safezone](#die-safezone) erreicht. 
+Wenn das Wesen dies tut, gibt es seine Gene an die Wesen der nächsten Generation weiter, damit diese bessere Chancen haben, die Safezone zu erreichen.
 Daraus ergibt sich, dass die einzige Aufgabe jedes Wesens ist, so viele Generationen wie möglich zu überleben, indem es durch die Bewegung zufällig die Safezone erreicht. 
 In dieser Simulation hat das Wesen nicht die Möglichkeit, sich aktiv zu bewegen oder zu verändern. Es ist auf seine Gene angewiesen, die ihm eine Bewegungsart verleihen.
 Wenn das Wesen Glück oder Pech hat, kann es auch noch zu einer Mutation seiner Gene kommen, was sich entweder positiv oder negativ auf seine Überlebenschancen auswirkt. 
 Die Gene nehmen auch Einfluss auf die Farbe. Diese hat allerdings keine Auswirkung auf die Überlebensrate, so wie es in der Natur mit Warnfarben der Fall ist, da sich die Wesen nicht gegenseitig fressen und kennzeichnet lediglich Wesen mit ähnlichen Genen. 
-Die Gesammtanzahl der Wesen bleibt von Generation zu Generation konstant, da sie sich nicht aktiv schaden oder bekämpfen.
+Die Gesamtanzahl der Wesen bleibt von Generation zu Generation konstant, da sie sich nicht aktiv schaden oder bekämpfen.
 
 ## Die PositionsListe
 
 Um die Bewegung der Wesen nachverfolgen zu können, werden die vorherigen 8 Positionen gespeichert und unterschiedlich [gefärbt](#der-schweif-hinter-den-wesen).
-Um die PositionsListe jedoch immer zu aktualisieren, bedient man sich eines while-Loops. Da die PositionsListe 8 innere Listen besitzt, definieren wir einen *LoopZähler* mit dem Wert 7. Solange der LoopZähler also größer 0 ist, wird der Wert der PositionsListe an der Stelle (7 - LoopZähler) mit dem Wert der PositionsListe an der Stelle (8 - LoopZähler) ersetzt. Daraufhin wird der LoopZähler um 1 verringert.
-Anschließend wird die gespeicherte Position an letzter Stelle(8. Liste der PositionsListe) gelöscht, sodass Platz für eine neue vorhanden ist.
+Um die PositionsListe jedoch immer zu aktualisieren, bedient man sich eines while-Loops. Da die PositionsListe 8 innere Listen besitzt, definieren wir einen *LoopZähler* mit dem Wert 7. <br>
+Solange der LoopZähler also größer 0 ist, wird der Wert der PositionsListe an der Stelle (7 - LoopZähler) mit dem Wert der PositionsListe an der Stelle (8 - LoopZähler) ersetzt. Daraufhin wird der LoopZähler um 1 verringert.
+Somit rückt jede Position immer eine Liste weiter nach vorne.
+Anschließend wird die gespeicherte Position an letzter Stelle (8. Liste der PositionsListe) gelöscht, sodass Platz für eine neue vorhanden ist.
 ```python
 while LoopZähler > 0:
   PositionsListe[7 - LoopZähler] = PositionsListe[8 - LoopZähler]
   LoopZähler -= 1
 PositionsListe[7] = []
 ```
-Mit diesem Vorgehen, kann die Position des Wesens jedes Mal auf's Neue gespeichert werden und jede bisherige Position rückt in der PositionsListe um eine Liste weiter nach vorne. Die PositionsListe ist zudem rückwärts zu lesen, da die neue Position eines Wesens, nachdem das Wesen auf der Oberfläche gerendert wurde, an letzter Stelle der PositionsListe gespeichert wird.
+Mit diesem Vorgehen kann die Position des Wesens jedes Mal auf's Neue gespeichert werden und jede bisherige Position rückt in der PositionsListe um eine Liste weiter nach vorne. Die PositionsListe ist zudem rückwärts zu lesen, da die neue Position eines Wesens, nachdem das Wesen auf der Oberfläche gerendert wurde, an letzter Stelle der PositionsListe gespeichert wird.
 ```python
 pygame.draw.rect(Fenster, (int(farbe[0]), int(farbe[1]), int(farbe[2])), (30 + Wesen.pos[0] * 8, 30 + Wesen.pos[1] * 8, 7, 7))
 # Die Positionen der Wesen werden gespeichert
@@ -228,16 +230,17 @@ PositionsListe[7].append([Wesen.pos[0], Wesen.pos[1]])
 
 # Das Genom
 
-Das Objekt "Genom" beinhaltet drei verschiedenen Gentypen, die auch als Parameter übergeben werden.
-Das X-Gen, Y-Gen und Z-Gen. Wie diese Gene initiiert werden (also, wie sie beispielsweise in zwei Werte geteilt werden oder welche Werte ihnen gegeben werden) ist
+Das Objekt "Genom" beinhaltet drei verschiedene Gentypen, die auch als Parameter übergeben werden - 
+das X-Gen, Y-Gen und Z-Gen. Wie diese Gene initiiert werden (wie sie beispielsweise in zwei Werte geteilt werden oder welche Werte ihnen gegeben werden) ist
 bis dato nicht festgelegt.
+Somit könnte zur Zeit noch alles darin gespeichert werden, denn, was konkret gespeichert wird, wird erst später festgelegt.
 
 ![GenomGrafik](https://user-images.githubusercontent.com/111282979/202248021-fbc11b40-15dc-49b3-b351-b211b11420cd.png)
 
 ## Die Mutation
 
-Jedes Wesen besitzt eine einstellbare [GenomGröße](https://de.wikipedia.org/wiki/Genomgr%C3%B6%C3%9Fe). 
-Damit die ganze Genetik noch realistischer ist, können die Gene jedes Genoms nun mit einer Wahrscheinlichkeit von 2% mutieren. Dabei hat jedes einzelne Genom zu Beginn der Runde einen zufälligen Mutationswert, welcher im Intervall [0;15] liegt. Abhängig von dem Mutationswert, bestimmt die Zahl, welches Gen genau mutiert.
+Jedes Wesen besitzt eine einstellbare [Genomgröße](https://de.wikipedia.org/wiki/Genomgr%C3%B6%C3%9Fe). 
+Damit die ganze Genetik noch realistischer ist, können die Gene jedes Genoms nun mit einer Wahrscheinlichkeit von 2% mutieren. Dabei hat jedes einzelne Genom zu Beginn der Runde einen zufälligen Mutationswert, welcher im Intervall [0;15] liegt. Abhängig von dem Mutationswert bestimmt die Zahl, welches Gen genau mutiert.
 
 <details>
   <summary>Erklärung</summary>
@@ -247,8 +250,8 @@ Damit die ganze Genetik noch realistischer ist, können die Gene jedes Genoms nu
 Mutierendes Gen|x0-Gen mutiert             |x1-Gen mutiert             |y0-Gen mutiert             |y1-Gen mutiert             |z-Gen mutiert              |
 zugeteilter Wert zum Gen |zufälliger Wert zwischen 0 und 1|zufälliger Wert zwischen 0 und 1|zufälliger Wert zwischen 0 und 7|zufälliger Wert zwischen 0 und 7|zufälliger Wert zwischen 0 und 8|
 
-Wenn der Mutationswert "0" beträgt , mutiert das x0-Gen, bei einem Mutationswert von "1" hingegen das x1-Gen.Wenn der Wert im Intervall [2;4] liegt, dann mutiert das y0-Gen und wenn die Zahl Im Intervall [5;7] liegt das y1-gen. Wennn der Wert sogar im Intervall [8;15] liegen sollte , mutiert das z-Gen. Insgesammt lässt sich abschließend betrachten, dass die Anzahl der Gesammtmutationen propotional zur Genomanzahl ist. Wenn man allerdings jedes Genom einzeln betrachtet, ist hier die Wahrscheinlichkeit konstant, dass ein Genom zu 1/50 also 2% mutiert. Eine Mutation kann sich zwar einserseits positiv auf das Überleben des Wesens auswirken, weil es die Bewegungsart zufällig verändert. Gleichzeitig kann eine Mutation aber auch negative Folgen mit sich bringen, weil alles auf dem Zufall beruht.
-
+Wenn der Mutationswert "0" beträgt , mutiert das x0-Gen. Bei einem Mutationswert von "1" hingegen das x1-Gen. Wenn der Wert im Intervall [2;4] liegt, dann mutiert das y0-Gen und wenn die Zahl Im Intervall [5;7] liegt das y1-Gen. Wenn der Wert sogar im Intervall [8;15] liegen sollte , mutiert das z-Gen. Insgesamt lässt sich abschließend sagen, dass die Anzahl der Gesamtmutationen proportional zur Genomanzahl ist. Wenn man allerdings jedes Genom einzeln betrachtet, ist hier die Wahrscheinlichkeit konstant, dass ein Genom zu 2% mutiert. <br>
+Eine Mutation kann sich zwar einerseits positiv auf das Überleben des Wesens auswirken, weil es die Bewegungsart zufällig verändert. Gleichzeitig kann eine Mutation aber auch negative Folgen mit sich bringen, weil alles auf dem Zufall beruht.
   
 </details>
 
@@ -258,13 +261,13 @@ Wenn der Mutationswert "0" beträgt , mutiert das x0-Gen, bei einem Mutationswer
 
 Sobald die Simulation startet, wird zuerst abgefragt, ob die Generation noch läuft.
 Daraufhin wird bei jedem Tick der Generation (von 200 bis 1) durch die Liste der Wesen iteriert und für jedes Wesen ein "stabiler Wert" definiert.
-Dazu wird auch eine Variable mit dem Namen "Veränderung" definiert, die die aktuelle Position, den Zeitwert, 
+Dazu wird auch eine Variable mit dem Namen "Veränderung" definiert, die die aktuelle Position und weitere momentane Eigenschaften des Wesens beschreibt.
 Dieser "stabile Wert" wird im Folgenden dazu genutzt, die "Veränderung" zu speichern.
 
 ## Das Generieren
 
-Damit die Simulation beginnen kann, werden natürlich die Hauptakteure des Ganze benötigt. Die Wesen.
-Dafür haben wir die Funktion "generieren" definiert, welche die festlegbare Gesamtanzahl in einer temporären Variable speichert und solange Wesen mit der festgelegten Genomgröße erschafft und den temporären Wert um 1 verringert, bis der temporäre Wert 0 beträgt.
+Damit die Simulation beginnen kann, werden die Hauptakteure des Ganzen benötigt - die Wesen.
+Dafür haben wir die Funktion "generieren" definiert, welche die festlegbare Gesamtanzahl an Wesen in einer temporären Variable speichert und daraufhin solange Wesen mit der festgelegten Genomgröße erschafft, bis der temporäre Wert 0 beträgt. Nach jedem erschaffenen Wesen, wird der temporäre Wert um 1 verringert.
 
 ```python
 def generieren():
@@ -281,11 +284,11 @@ Die Bewegung jedes Wesens steht in Abhängigkeit zu dessen Genen.
 Je nachdem, welches X-, Y-, und Z-Gen vorhanden ist und auf welcher Höhe und Breite sich das Wesen befindet, bewegt sich das Wesen schneller oder langsamer nach oben, unten, links oder rechts.
 
 ## Die Veränderung
-Da wir versuchen, die Bewegung der Wesen so zufällig, wie möglich zu gestalten, haben wir uns überlegt, möglichst viele Einflussfaktoren einzubeziehen.
-Um einen Wert zu erhalten, der diese Kombination der Einflussfaktoren beinhaltet, haben wir **die Veränderung** eingeführt.
-Der Name mag zwar im ersten Moment ein wenig komisch erscheinen, jedoch besagt dieser genau das, wofür die Variable da ist.
+Da wir versuchen, die Bewegung der Wesen so zufällig wie möglich zu gestalten, haben wir uns überlegt, möglichst viele Einflussfaktoren einzubeziehen.
+Um einen Wert zu erhalten, der diese Kombination der Einflussfaktoren beinhaltet, haben wir *die Veränderung* eingeführt.
+Der Name mag zwar im ersten Moment ein wenig besonders erscheinen, jedoch besagt dieser genau das, wofür die Variable da ist.
 Sie beschreibt die Veränderung, die letztendlich an der Position eines Wesens vorgenommen werden soll, sodass daraus durch mehrfaches Wiederholen eine flüssige und zufällige Bewegung entsteht.
-Da diese Faktoren, die einen Einfluss auf die Bewegung nehmen sehr zahlreich sind, werden sie in der folgenden Tabelle veranschaulicht.
+Da diese Faktoren, die einen Einfluss auf die Bewegung nehmen, sehr zahlreich sind, werden sie in der folgenden Tabelle veranschaulicht. <br>
 Zu Beginn, nachdem der [stabile Wert](#der-stabile-wert) initialisiert wurde, werden die Genome jedes Wesens enumeriert.
 
 ```python
@@ -308,23 +311,23 @@ y0-gen == 0                |y0_gen == 1                |y0_gen == 2             
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
 Die y-Position(Höhe) des Wesens wird der Veränderung hinzugefügt|Die x-Position(Breite) des Wesens wird der Veränderung hinzugefügt|Der aktuelle Zeitpunkt (Tick) der Generation wird der Veränderung hinzugefügt|Die Tatsache, dass das Wesen sich in der Safezone befindet wird der Veränderung als Wert(z_gen / 2) hinzugefügt|Ein zufälliger Wert zwischen 0 und 4, multipliziert mit dem (z_gen / 8), wird der Veränderung hinzugefügt|Ein zufälliger Wert zwischen 0 und 3, multipliziert mit dem (z_gen / 8), wird der Veränderung hinzugefügt|
 
-Nun, da die Veränderung durch alle möglichen Einflüsse verändert wurde, soll diese abgespeichert werden, da sie bei jedem Zeitpunkt wieder neuen Einflüssen ausgesetzt ist. Um die Veränderung folglich statisch und sicher abspeichern zu können, nutzen wir den [stabilen Wert](#der-stabile-wert). An welcher Stelle die Veränderung gespeichert wird, ist abhängig vom jeweiligen Wert des x1-gens (entweder 0 oder 1).
-Das x1-gen entscheidet, ob die Veränderung gespeichert wird, oder nicht. An welcher Stelle der Liste genau, ist jedoch abhängig vom Wert des x1-Gens.
+Nun, da die Veränderung durch alle möglichen Einflüsse editiert wurde, soll diese nun abgespeichert werden, da sie, bzw. das Wesen, bei jedem Zeitpunkt wieder neuen Einflüssen ausgesetzt ist. Um die Veränderung folglich statisch und sicher abspeichern zu können, nutzen wir den [stabilen Wert](#der-stabile-wert). An welcher Stelle die Veränderung gespeichert wird, ist abhängig vom jeweiligen Wert des x1-Gens (entweder 0 oder 1).
+Das x1-Gen entscheidet, ob die Veränderung gespeichert wird oder nicht - an welcher Stelle der Liste genau, ist jedoch abhängig vom Wert des x1-Gens.
 
-Wert des x1-Gens           |x1_gen = 0               |x1_gen = 1
+Wert des x1-Gens           |x1_Gen = 0               |x1_Gen = 1
 :-------------------------:|:-------------------------:|:-------------------------:|
-Wie mit der Veränderung verfahren wird| Die Veränderung wird nicht gespeichert| Die Veränderung wird in der Liste:<br>([0, 0, 0, 0, 0, 0, 0, 0]) gespeichert|
+Wie mit der Veränderung verfahren wird| Die Veränderung wird nicht gespeichert| Die Veränderung wird in der Liste gespeichert|
 
-An welcher Stelle (Index) die Veränderung in der jeweiligen Liste nun jedoch genau gespeichert wird, soll jedoch auch mit den 
+An welcher Stelle (Index) die Veränderung in der jeweiligen Liste nun jedoch genau gespeichert wird, soll jedoch nun auch durch das y- und z-Gen beeinflusst werden.
 
-Das y1_gen wird durch (2 - x1-gen) geteilt und das Ergebnis in einen Integer (Ganzzahl) gerundet.
-Da das y1_gen einen Wert zwischen 0 und 8 haben kann und das x1_gen entweder 0 oder 1 beträgt, kann sich bei dieser Rechnung jede Ganzzahl zwischen 0 und 8 ergeben. Somit besteht die Möglichkeit, abhängig von den Genen des Wesens, die Veränderung an jeder Stelle der Liste zu speichern.
+Das y1_Gen wird durch (2 - x1-Gen) geteilt und das Ergebnis in einen Integer (Ganzzahl) gerundet.
+Da das y1_Gen einen Wert zwischen 0 und 8 haben kann und das x1_Gen entweder 0 oder 1 beträgt, kann sich bei dieser Rechnung jede Ganzzahl zwischen 0 und 8 ergeben. Somit besteht die Möglichkeit, abhängig von den Genen des Wesens, die Veränderung an jeder Stelle der Liste zu speichern.
 
 ![carbon (6)](https://user-images.githubusercontent.com/65679099/203022345-ae6ef6a8-d340-4779-b36f-eeff81980d6b.png)
 
 ## Der stabile Wert
 Eine der elementarsten Datenspeicherungen in unserer Simulation bildet der stabile Wert.
-Jedes Wesen besitz einen eigenen stabilen Wert.
+Jedes Wesen besitzt einen eigenen stabilen Wert.
 
 ```python
 stabilerWert = [0, 0, 0, 0, 0, 0, 0, 0]
@@ -332,20 +335,20 @@ stabilerWert = [0, 0, 0, 0, 0, 0, 0, 0]
 
 Der stabile Wert besteht aus einer Liste mit 8 einzelnen Werten.
 
-Doch welche Funktion erfüllt der stabile Wert denn nun eigentlich? 
+Doch welche Funktion erfüllt der stabile Wert denn nun eigentlich? <br>
 Der stabile Wert ist für die Simulation von elementarer Bedeutung, denn er speichert die einzelnen [Veränderungen](#die-veränderung) jedes Wesens, die für die Bewegung genutzt werden.
 
 ## Zufällige Ausführung der Bewegungen
 
 Nun haben wir bei jedem Zeitwert (Tick) unserer Simulation eine Liste mit Werten, die aus der Kombination der Gene des Wesens berechnet wurden.
-Um die Bewegungen nun auch wirklich zufällig auszuführen, initialisieren wir eine weitere leere Liste, genannt: "ZufälligeBewegungen".
+Um die Bewegungen nun auch wirklich zufällig auszuführen, initialisieren wir eine weitere leere Liste, genannt: *ZufälligeBewegungen*.
 Die Liste des stabilen Wertes wird nun enumeriert und jeder Wert wird, multipliziert mit einem zufälligen Wert zwischen 0 und 39, der Liste der *ZufälligenBewegungen* angehängt. 
 Nun wird das letzte Mal die Liste der *ZufälligenBewegungen* enumeriert.
 Dabei gibt die Variable *s* den Index des Wertes in der Liste (von 0 bis 7) und die Variable *Aktion* den Wert an sich an.
 Damit kein unnötiger Fehler auftritt, wird noch die Bedingung überprüft, dass die Variable *Aktion* größer 0 ist.
 Dazu soll die Bedingung auch nur erfüllt sein, wenn *Aktion* das Maximum aller Werte ist (von ZufälligeBewegungen[0] bis ZufälligeBewegungen[7]).
 Nun ist der Index des Maximums der Liste, der in *s* gespeichert ist, von großer Bedeutung.
-Dieser kann zwischen 0 und 7 liegen, doch, da die Bewegung, bzw. Änderung der Position eines Wesens nur in alle vier Himmelsrichtungen erfolgen kann, sind die Indizes 5 bis 7 bisher nicht implementiert. Wenn dafür aber eine gute Idee vorhanden sind, können diese mit Leichtigkeit umgesetzt werden.
+Dieser kann zwischen 0 und 7 liegen. Da die Bewegung, bzw. Änderung der Position eines Wesens nur in alle vier Himmelsrichtungen erfolgen kann, sind die Indizes 5 bis 7 bisher nicht implementiert. Wenn dafür aber eine gute Idee vorhanden sist, können diese mit Leichtigkeit umgesetzt werden.
 
 Index (s)                  |s = 0                      |s = 1                      |s = 2                      |s = 3                      |s = 4|
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
@@ -354,9 +357,9 @@ Index (s)                  |s = 0                      |s = 1                   
 
 ## Überprüfung der Validität
 
-Da die Simulation, um schöne Ergebnisse mit dennoch komplexen Genen zu erhalten, viele Generationen durchlaufen muss, wäre es ziemlich schade, wenn auf einmal, ein Fehler, bezüglich der Koordinaten eines Wesens oder der Felder der Safezone, auftreten würde.
-Dafür haben wir eine Funktion "überprüfeValidität" mit den Parametern "(x und y)" definiert, die überprüft, dass die eingegebenen Parameter gültigen Koordinaten im Simulationsfenster entsprechen.
-Infolgedessen ist es sehr ungültig, wenn sich mehrere Wesen auf ein und demselben Feld befinden können, da die Konkurrenz darunter leidet.
+Da die Simulation, um schöne Ergebnisse mit dennoch komplexen Genen zu erhalten, viele Generationen durchlaufen muss, wäre es ziemlich schade, wenn auf einmal ein Fehler bezüglich der Koordinaten eines Wesens oder der Felder der Safezone auftreten würde.
+Dafür haben wir eine Funktion `überprüfeValidität` mit den Parametern "(x und y)" definiert, die überprüft, dass die eingegebenen Parameter gültigen Koordinaten im Simulationsfenster entsprechen.
+Infolgedessen ist es sehr ungünstig, wenn sich mehrere Wesen auf ein und demselben Feld befinden können, da die Konkurrenz darunter leidet.
 Deshalb wird dazu auch noch überprüft, ob die x- und y-Positionen irgendeines Wesens mit den übergebenen Parametern übereinstimmt.
 Sollte das der Fall sein, wird ein False-Statement zurückgegeben, das die eingegebenen Werte als invalide Positionen deklariert.
 Wenn keine Kongruenz zu den Positionen eines anderen Wesens vorliegt, wird ein True-Statement zurückgegeben und die eingegebenen Werte sind valide Positionen.
@@ -365,17 +368,17 @@ Wenn keine Kongruenz zu den Positionen eines anderen Wesens vorliegt, wird ein T
 
 # Die Safezone
 
-Die Safezone ist die grün gekennzeichnete Fläche, welche auch das "Zielfeld" markiert, in welchem sich die Wesen bis zum [Ende einer Generation](#nach-dem-ende-der-generation) befinden sollten, damit sie ihre Gene vererben.<br> Die Wesen wissen nicht, wo sich die Safezone genau befindet und sind deshalb auf ihre Bewegungsart und somit indirekt auf ihre Gene angewiesen, bzw. müssen hoffen, dass sie durch ihre Bewegung die Zone bis zum Ende einer Generation erreichen.<br>
-Die Wesen, welche es rechzeitig schaffen die Safezone zu erreichen, vererben ihre Gene und somit auch ihre Bewegungsart weiter, damit in der nächsten Generation die neu entstandenen Wesen, welche jetzt hauptsächlich die Bewegungsart ihrer Vorfahren übernommen haben, ebenfalls die Safezone erreichen. Dieser Vorgang wiederholt sich immer wieder, wobei gehofft wird, dass irgendwann alle Individuen die Safezone erreichen.
+Die Safezone ist die grün gekennzeichnete Fläche, welche auch das "Zielfeld" markiert, in welchem sich die Wesen bis zum [Ende einer Generation](#nach-dem-ende-der-generation) befinden sollten, damit sie ihre Gene vererben.<br> Die Wesen wissen nicht, wo sich die Safezone genau befindet und sind deshalb auf ihre Bewegungsart und somit auf ihre Gene angewiesen bzw. müssen hoffen, dass sie durch ihre Bewegung die Zone bis zum Ende einer Generation erreichen.<br>
+Die Wesen, welche es rechtzeitig schaffen die Safezone zu erreichen, vererben ihre Gene und somit auch ihre Bewegungsart weiter, damit in der nächsten Generation die neu entstandenen Wesen, welche jetzt hauptsächlich die Bewegungsart ihrer Vorfahren übernommen haben, ebenfalls die Safezone erreichen. Dieser Vorgang wiederholt sich immer wieder, wobei gehofft wird, dass irgendwann alle Wesen die Safezone erreichen.
 Das ist jedoch unmöglich, da jederzeit Mutationen auftreten können oder manche Wesen sich direkt zu Beginn in der Safezone befinden und sich überhaupt nicht bewegen, sodass ihr Überleben vom Feld, in dem sie erscheinen, abhängig ist. Die Safezone verändert sich von Generation zu Generation nicht, weil die Weitergabe der angepassten Gene, die eine erfolgreiche Bewegungsart bewirken, keinen Sinn ergibt, wenn sich die Safezone mit jedem Mal ändert. Dann müssten sich die Gene der Wesen jedes Mal verändern, was bezüglich des Vererbungsprinzips jedoch nicht mit solcher Präzision möglich ist, dass ein Wesen jede Safezone mit hundertprozentiger Sicherheit erreicht.
 
 ![Screenshot (14)](https://user-images.githubusercontent.com/111282979/202275940-c29e4862-93db-4afe-a4f3-cf434d3aa931.png)
 
 ## Die Initialisierung der Safezone
 
-Die Initialisierung, bzw. Berechnung der Safezone erfolgt durch einzelne Felder, deren Koordinaten in der Liste "Safezone" gespeichert werden. 
-Durch die Variablen *SafezoneX* und *SafezoneY* lässt sich die Safezone beliebig begrenzen.
-*SafezoneX* und *SafezoneY* entsprechen zu Beginn der (Größe des Simulationsbereiches - 1).
+Die Initialisierung, bzw. Berechnung der Safezone erfolgt durch einzelne Felder, deren Koordinaten in der Liste `Safezone` gespeichert werden. 
+Durch die Variablen `SafezoneX` und `SafezoneY` lässt sich die Safezone beliebig in Breite und Höhe begrenzen.
+`SafezoneX` und `SafezoneY` entsprechen zu Beginn der (Größe des Simulationsbereiches - 1).
 Nun lassen sich Intervalle festlegen, in denen sich die Safezone befinden soll.
 Daraufhin werden die Variablen iterativ um 1 verringert und wenn sie sich im festgelegten Intervall befinden, werden die Werte als x- und y-Koordinaten der "Safezone" Liste angehängt.
 
@@ -406,7 +409,7 @@ def GenerationsEnde():
       exit()
 ```
 
-Wenn die Generation abgelaufen ist, sammelt zuerst der GarbageCollecter die nicht mehr genutzten Objekte ein, sodass der Arbeitsspeicher entlastet wird und die gesamte Simulation somit flüssiger laufen kann.
+Wenn die Generation abgelaufen ist, sammelt zuerst der [GarbageCollecter](https://docs.python.org/3/library/gc.html) die nicht mehr genutzten Objekte ein, sodass der Arbeitsspeicher entlastet wird und die gesamte Simulation somit flüssiger laufen kann.
 Die Generationsanzahl wird um 1 erhöht und der Zeitwert (die Ticks) wieder auf 200 gesetzt.
 Nun wird die leere Liste "Überlebende" initialisiert.
 
@@ -425,15 +428,13 @@ if Generation[1] < 0:
 ## Die Vererbung der Gene
 
 Die Hauptfunktion dieser Simulation stellt die Vererbung der angepasstesten Gene, womit ein Wesen mit hoher Wahrscheinlichkeit die Safezone erreichen kann, dar.
-Damit das Ganze ohne Probleme ablaufen kann, wird die leere Liste "Überlebende" erstellt. Wenn die Generation abgelaufen ist, sammelt zuerst der GarbageCollecter die nicht mehr genutzten Objekte ein, sodass der Arbeitsspeicher entlastet wird und die gesamte Simulation somit flüssiger laufen kann.
-Die Generationsanzahl wird um 1 erhöht und der Zeitwert (die Ticks) wieder auf 200 gesetzt.
-Nun wird die leere Liste "Überlebende" initialisiert.
-Nun wird die Position jedes Wesens mit den Koordinaten der Safezone überprüft und wenn eine Übereinstimmung der x- und y-Koordinate besteht, wird ein neues Wesen erschaffen. Dieses Objekt (Wesen) wird mit der Genomgröße = 0 erschaffen, da es keine zufälligen Gene erhalten soll.
-Das Wesen, dessen Koordinaten mit denen der Safezone übereinstimmten, hat nun die Ehre, seine Gene an das neuerschaffene Wesen zu vererben. 
-Dieses neue Wesen, dass nun Gene erhalten hat, mit denen ein anderes Wesen in der vorigen Generation die Safezone erreicht hat, wird nun an die Liste der Überlebenden angehängt.
-Die "WesenListe" (Liste aller Wesen einer Generation) wird geleert und die Anzahl der Überlebenden wird mit der Anzahl der Werte in der "Überlebenden" Liste in der Konsole ausgegeben.
+Damit das Ganze ohne Probleme ablaufen kann, wird die leere Liste `Überlebende` erstellt.
+Nun wird die Position jedes Wesens mit den Koordinaten der Safezone überprüft und wenn eine Übereinstimmung der x- und y-Koordinate besteht, wird ein neues Wesen erschaffen. Dieses Objekt (Wesen) wird mit der Genomgröße 0 erschaffen, da es keine zufälligen anfänglichen Gene erhalten soll.
+Das Wesen, dessen Koordinaten mit denen der Safezone übereinstimmten, hat nun die Ehre, seine Gene an das neu erschaffene Wesen zu vererben. <br>
+Dieses neue Wesen, welches nun die Gene vererbt bekommen hat, mit denen ein anderes Wesen in der vorigen Generation die Safezone erreicht hat, wird nun an die Liste der `Überlebenden` angehängt.
+Die `WesenListe` (Liste aller Wesen einer Generation) wird geleert und die Anzahl der Überlebenden wird mit der Anzahl der Werte in der `Überlebenden` Liste in der Konsole ausgegeben.
 Nun müssen für die neue Generation neue Wesen geschaffen und der WesenListe angehängt werden.
-Die Gesamtanzahl (standardmäßig 200) der Wesen in der Simulation wird wieder einem temporären Wert zugewiesen und solange dieser größer 0 ist, wird aus der Liste der Überlenden Wesen ein zufälliges Wesen ausgewählt, das einem neu erschaffenen Wesen, seine Gene vererbt. Nach jeder Vererbung wird der temporäre Wert um 1 verringert. <br>
+Die Gesamtanzahl (standardmäßig 200) der Wesen in der Simulation wird wieder einem temporären Wert zugewiesen und solange dieser größer 0 ist, wird aus der Liste der überlebenden Wesen ein zufälliges Wesen ausgewählt, das einem neu erschaffenen Wesen, seine Gene vererbt. Nach jeder Vererbung wird der temporäre Wert um 1 verringert. <br>
 Jedes neue Wesen mit "guten Genen" wird an die WesenListe angehängt und ist in der nächsten Generation dabei.
 
 ```python
@@ -471,32 +472,32 @@ for i, creature in enumerate(WesenListe):
 
 # Die Main-Funktion und Initialisierung aller Variablen
 
-Nun sind wir am Ende des Programmes angelangt. Alle Objekte, Funktionen und jedes klitzekleine Detail wurde erklärt und nun fragt man sich, was denn überhaupt noch fehlen kann, wo doch bereits knapp 400 Zeilen Quelltext überstanden sind. Um kurz auf die Frage zu antworten: Die Main-Funktion.
+Nun sind wir am Ende des Programmes angelangt. Alle Objekte, Funktionen und jedes klitzekleine Detail wurden erklärt und nun fragt man sich, was denn überhaupt noch fehlen kann, wo doch bereits knapp 400 Zeilen Quelltext überstanden sind. Um kurz auf die Frage zu antworten: Die Main-Funktion. <br>
 Als Main wird in jeder Programmiersprache die Funktion bezeichnet, in der alle Funktionen, Klassen, Objekte und Sonstiges zusammengefügt und letztendlich ausgeführt werden. Das ist in unserem Projekt auch der Fall. In dieser Funktion werden auch die ganzen "verstellbaren" Variablen, welche als Parameter für die zahlreichen Funktionen dienen, initialisiert. Man kann beispielsweise die Länge einer Generation verändern, die Größe des Fensters oder der Safezone, die Gesamtanzahl der Wesen oder die Genomgröße. Diese Änderungen haben eine globale Wirkung.
-Normalerweise bleiben Variablen, bzw. die Werte, die Variablen in einer Funktion zugewiesen werden, lokal in dieser Funktion. 
-Das Schlüsselwort *global* legt jedoch fest, dass die Änderungen, die man an den, mit diesem Schlüsselwort bezeichneten Variablen vornimmt, im gesamten Programm wirksam sind.
-Alle wichtigen, zu initialisierenden Variablen, die wir in unserem Programm an verschiedensten Stellen benötigen, sind als *global* in der Main-Funktion deklariert.
+Normalerweise bleiben Variablen bzw. die Werte, die Variablen in einer Funktion zugewiesen werden, lokal in dieser Funktion. 
+Das Schlüsselwort `global` legt jedoch fest, dass die Änderungen, die man an den, mit diesem Schlüsselwort bezeichneten Variablen vornimmt, im gesamten Programm wirksam sind.
+Alle wichtigen zu initialisierenden Variablen, die wir in unserem Programm an verschiedensten Stellen benötigen, sind als `global` in der Main-Funktion deklariert.
 ```python
 global WesenListe, Generation, Größe, GenomGröße, PositionsListe, Safezone, Überlebende, GesamtAnzahl
 ```
-Als erste Funktion wird pygame.init() ausgeführt, um alle Module Pygames zu initialisieren und den Prozess zu starten.
+Als erste Funktion wird `pygame.init()` ausgeführt, um alle Module Pygames zu initialisieren und den Prozess zu starten.
 Daraufhin werden alle Variablen initialisiert.
 Die besondere Festlegung der Safezone wird in der [Initialisierung der Safezone](#die-initialisierung-der-safezone) genauestens erklärt.
-Danach folgt auch schon die Generierung der Wesen durch die Funktion *generieren()*.
+Danach folgt auch schon die Generierung der Wesen durch die Funktion `generieren()`.
 Das Pygamefenster, welches als Parameter für die [*renderFenster-Funktion*](#das-rendering) dient, wird nun auch festgelegt.
 Dazu auch noch der Fenstertitel: **"Survival of the fittest - Wer ist am besten angepasst?"** und schon kommt die eigentliche Ausführung des ganzen Programms.
 Eigentlich kann das Programm, wenn es nicht vorher abgebrochen wird, auf immer und ewig weiterlaufen, da es sich in einem endlosen while-True-Loop befindet.
 Zuerst gibt es eine Pause von 5ms und daraufhin wird das Fenster gerendert, die Simulation beendet und daraufhin wieder gestartet.
 Dieser Ablauf wiederholt sich dauerhaft.
-Nun bleibt nur noch eine Frage offen.<br>
-Wofür stehen denn diese letzten beiden Zeilen?:
+Nun bleibt nur noch eine Frage offen:<br>
+_Wofür stehen denn diese letzten beiden Zeilen?_
 ```python
 if __name__ == "__main__":
   main()
 ``` 
-In Python beschreibt diese Bedingung, dass die *main()*-Funktion, die in der Bedinung steht, nur ausgeführt werden, soll, wenn die Datei als Skript ausgeführt wird.
-Es gebe auch die Möglichkeit, die Datei als Modul in eine andere Datei zu importieren. Dann würde das, was in der Bedingung steht, nicht ausgeführt werden, da die Datei nicht als "Hauptdatei", sondern als Modul ausgeführt wird.
-Eigentlich wäre dieser Zusatz nicht nötig, da dieses Projekt nur auf einer Datei beruht, jedoch ist es eine gute Angewohnheit, "Hauptdateien" (Main-Dateien) mit dieser Bedingung am Ende zu versehen, da sich das Ganze positiv auf zukünftige Projekte, wo vielleicht mit selbstgeschriebenen Modulen gearbeitet wird, auswirkt.
+In Python beschreibt diese Bedingung, dass die `Main-Funktion`, die in der Bedingung steht, nur ausgeführt werden soll, wenn die Datei als Skript ausgeführt wird.
+Es gebe auch die Möglichkeit, die Datei als Modul in eine andere Datei zu importieren. Dann würde das, was in der Bedingung steht, nicht ausgeführt werden, da die Datei nicht als `Hauptdatei`, sondern als `Modul` ausgeführt wird.
+Eigentlich wäre dieser Zusatz nicht nötig, da dieses Projekt nur auf einer Datei beruht, jedoch ist es eine gute Angewohnheit, Hauptdateien` (Main-Dateien) mit dieser Bedingung am Ende zu versehen, da sich das Ganze positiv auf zukünftige Projekte, wo vielleicht mit selbstgeschriebenen Modulen gearbeitet wird, auswirkt.
 ```python
 def main():
     # Deklarierung der Variablen als Global, sodass jedes Objekt und jede Funktion darauf zugreifen kann
