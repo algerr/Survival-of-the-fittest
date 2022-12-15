@@ -252,7 +252,7 @@ Wenn der Mutationswert "0" beträgt , mutiert das x0-Gen, bei einem Mutationswer
   
 </details>
 
-![carbon (13)](https://user-images.githubusercontent.com/65679099/207897092-825f4b97-fb7b-44d8-9be1-c92311490d40.png)
+![carbon (14)](https://user-images.githubusercontent.com/65679099/207897194-721fcab6-37ac-47e6-a606-86da577570b4.png)
 
 # Die Simulation
 
