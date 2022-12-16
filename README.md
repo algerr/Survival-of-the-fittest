@@ -215,9 +215,9 @@ Die Gesamtanzahl der Wesen bleibt von Generation zu Generation konstant, da sie 
 
 Um die Bewegung der Wesen nachverfolgen zu können, werden die vorherigen 8 Positionen gespeichert und unterschiedlich [gefärbt](#der-schweif-hinter-den-wesen).
 Um die PositionsListe jedoch immer zu aktualisieren, bedient man sich eines while-Loops. Da die PositionsListe 8 innere Listen besitzt, definieren wir einen *LoopZähler* mit dem Wert 7. <br>
-Solange der LoopZähler also größer 0 ist, wird der Wert der PositionsListe an der Stelle (7 - LoopZähler) mit dem Wert der PositionsListe an der Stelle (8 - LoopZähler) ersetzt. Daraufhin wird der LoopZähler um 1 verringert.
+Solange der LoopZähler also größer 0 ist, wird der Wert der PositionsListe an der Stelle `(7 - LoopZähler)` mit dem Wert der PositionsListe an der Stelle `(8 - LoopZähler)` ersetzt. Daraufhin wird der LoopZähler um 1 verringert.
 Somit rückt jede Position immer eine Liste weiter nach vorne.
-Anschließend wird die gespeicherte Position an letzter Stelle (8. Liste der PositionsListe) gelöscht, sodass Platz für eine neue vorhanden ist.
+Anschließend wird die gespeicherte Position an letzter Stelle `(8. Liste)` gelöscht, sodass Platz für eine neue Position vorhanden ist.
 ```python
 while LoopZähler > 0:
   PositionsListe[7 - LoopZähler] = PositionsListe[8 - LoopZähler]
@@ -243,7 +243,7 @@ Somit könnte zur Zeit noch alles darin gespeichert werden, denn, was konkret ge
 ## Die Mutation
 
 Jedes Wesen besitzt eine einstellbare [Genomgröße](https://de.wikipedia.org/wiki/Genomgr%C3%B6%C3%9Fe). 
-Damit die ganze Genetik noch realistischer ist, können die Gene jedes Genoms nun mit einer Wahrscheinlichkeit von 2% mutieren. Dabei hat jedes einzelne Genom zu Beginn der Runde einen zufälligen Mutationswert, welcher im Intervall [0;15] liegt. Abhängig von dem Mutationswert bestimmt die Zahl, welches Gen genau mutiert.
+Damit die ganze Genetik noch realistischer ist, können die Gene jedes Genoms nun mit einer Wahrscheinlichkeit von `2%` mutieren. Dabei hat jedes einzelne Genom zu Beginn der Runde einen zufälligen Mutationswert, welcher im Intervall `[0;15]` liegt. Abhängig von dem Mutationswert bestimmt die Zahl, welches Gen genau mutiert.
 
 <details>
   <summary>Erklärung</summary>
@@ -253,7 +253,7 @@ Damit die ganze Genetik noch realistischer ist, können die Gene jedes Genoms nu
 Mutierendes Gen|x0-Gen mutiert             |x1-Gen mutiert             |y0-Gen mutiert             |y1-Gen mutiert             |z-Gen mutiert              |
 zugeteilter Wert zum Gen |zufälliger Wert zwischen 0 und 1|zufälliger Wert zwischen 0 und 1|zufälliger Wert zwischen 0 und 7|zufälliger Wert zwischen 0 und 7|zufälliger Wert zwischen 0 und 8|
 
-Wenn der Mutationswert `0` beträgt , mutiert das x0-Gen. Bei einem Mutationswert von `1` hingegen das x1-Gen. Wenn der Wert im Intervall `[2;4]` liegt, dann mutiert das y0-Gen und wenn die Zahl Im Intervall `[5;7]` liegt das y1-Gen. Wenn der Wert sogar im Intervall `[8;15]` liegen sollte , mutiert das z-Gen. Insgesamt lässt sich abschließend sagen, dass die Anzahl der Gesamtmutationen proportional zur Genomanzahl ist. Wenn man allerdings jedes Genom einzeln betrachtet, ist hier die Wahrscheinlichkeit konstant, dass ein Genom zu 2% mutiert. <br>
+Wenn der Mutationswert `0` beträgt , mutiert das x0-Gen. Bei einem Mutationswert von `1` hingegen das x1-Gen. Wenn der Wert im Intervall `[2;4]` liegt, dann mutiert das y0-Gen und wenn die Zahl Im Intervall `[5;7]` liegt das y1-Gen. Wenn der Wert sogar im Intervall `[8;15]` liegen sollte , mutiert das z-Gen. Insgesamt lässt sich abschließend sagen, dass die Anzahl der Gesamtmutationen proportional zur Genomanzahl ist. Wenn man allerdings jedes Genom einzeln betrachtet, ist hier die Wahrscheinlichkeit konstant, dass ein Genom zu `2%` mutiert. <br>
 Eine Mutation kann sich zwar einerseits positiv auf das Überleben des Wesens auswirken, weil es die Bewegungsart zufällig verändert. Gleichzeitig kann eine Mutation aber auch negative Folgen mit sich bringen, weil alles auf dem Zufall beruht.
   
 </details>
@@ -270,7 +270,7 @@ Dieser "stabile Wert" wird im Folgenden dazu genutzt, die `Veränderung` zu spei
 ## Das Generieren
 
 Damit die Simulation beginnen kann, werden die Hauptakteure des Ganzen benötigt - die Wesen.
-Dafür haben wir die Funktion "generieren" definiert, welche die festlegbare Gesamtanzahl an Wesen in einer temporären Variable speichert und daraufhin solange Wesen mit der festgelegten Genomgröße erschafft, bis der temporäre Wert 0 beträgt. Nach jedem erschaffenen Wesen, wird der temporäre Wert um 1 verringert.
+Dafür haben wir die Funktion `generieren` definiert, welche die festlegbare Gesamtanzahl an Wesen in einer temporären Variable speichert und daraufhin solange Wesen mit der festgelegten Genomgröße erschafft, bis der temporäre Wert `0` beträgt. Nach jedem erschaffenen Wesen, wird der temporäre Wert um `1` verringert.
 
 ```python
 def generieren():
@@ -291,7 +291,7 @@ Je nachdem, welches X-, Y-, und Z-Gen vorhanden ist und auf welcher Höhe und Br
 
 ## Die Veränderung
 Da wir versuchen, die Bewegung der Wesen so zufällig wie möglich zu gestalten, haben wir uns überlegt, möglichst viele Einflussfaktoren einzubeziehen.
-Um einen Wert zu erhalten, der diese Kombination der Einflussfaktoren beinhaltet, haben wir *die Veränderung* eingeführt.
+Um einen Wert zu erhalten, der diese Kombination der Einflussfaktoren beinhaltet, haben wir `die Veränderung` eingeführt.
 Der Name mag zwar im ersten Moment ein wenig besonders erscheinen, jedoch besagt dieser genau das, wofür die Variable da ist.
 Sie beschreibt die Veränderung, die letztendlich an der Position eines Wesens vorgenommen werden soll, sodass daraus durch mehrfaches Wiederholen eine flüssige und zufällige Bewegung entsteht.
 Da diese Faktoren, die einen Einfluss auf die Bewegung nehmen, sehr zahlreich sind, werden sie in der folgenden Tabelle veranschaulicht. <br>
@@ -315,7 +315,7 @@ if x_gen[0] == 0:
 
 y0-Gen == 0                |y0_Gen == 1                |y0_Gen == 2                |y0_Gen == 3                |y0_Gen == 4                |y0_gen == 5
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
-Die y-Position(Höhe) des Wesens wird der Veränderung hinzugefügt|Die x-Position(Breite) des Wesens wird der Veränderung hinzugefügt|Der aktuelle Zeitpunkt (Tick) der Generation wird der Veränderung hinzugefügt|Die Tatsache, dass das Wesen sich in der Safezone befindet wird der Veränderung als Wert(z_gen / 2) hinzugefügt|Ein zufälliger Wert zwischen 0 und 4, multipliziert mit dem (z_gen / 8), wird der Veränderung hinzugefügt|Ein zufälliger Wert zwischen 0 und 3, multipliziert mit dem (z_gen / 8), wird der Veränderung hinzugefügt|
+Die y-Position (Höhe) des Wesens wird der Veränderung hinzugefügt|Die x-Position (Breite) des Wesens wird der Veränderung hinzugefügt|Der aktuelle Zeitpunkt (Tick) der Generation wird der Veränderung hinzugefügt|Die Tatsache, dass das Wesen sich in der Safezone befindet wird der Veränderung als Wert `(z_Gen / 2)` hinzugefügt|Ein zufälliger Wert zwischen 0 und 4, multipliziert mit dem `(z_Gen / 8)`, wird der Veränderung hinzugefügt|Ein zufälliger Wert zwischen 0 und 3, multipliziert mit dem `(z_Gen / 8)`, wird der Veränderung hinzugefügt|
 
 Nun, da die Veränderung durch alle möglichen Einflüsse editiert wurde, soll diese nun abgespeichert werden, da sie, bzw. das Wesen, bei jedem Zeitpunkt wieder neuen Einflüssen ausgesetzt ist. Um die Veränderung folglich statisch und sicher abspeichern zu können, nutzen wir den [stabilen Wert](#der-stabile-wert). An welcher Stelle die Veränderung gespeichert wird, ist abhängig vom jeweiligen Wert des x1-Gens (entweder 0 oder 1).
 Das x1-Gen entscheidet, ob die Veränderung gespeichert wird oder nicht - an welcher Stelle der Liste genau, ist jedoch abhängig vom Wert des x1-Gens.
@@ -326,7 +326,9 @@ Wie mit der Veränderung verfahren wird| Die Veränderung wird nicht gespeichert
 
 An welcher Stelle (Index) die Veränderung in der jeweiligen Liste nun jedoch genau gespeichert wird, soll jedoch nun auch durch das y- und z-Gen beeinflusst werden.
 
-Das y1_Gen wird durch (2 - x1-Gen) geteilt und das Ergebnis in einen Integer (Ganzzahl) gerundet.
+![y1gendurch2-x1gen](https://user-images.githubusercontent.com/65679099/208081009-c3dfc35c-2270-4433-a125-0e6b7216ba6a.svg)
+
+Das y1_Gen wird durch `(2 - x1-Gen)` geteilt und das Ergebnis in einen Integer (Ganzzahl) gerundet.
 Da das y1_Gen einen Wert zwischen 0 und 8 haben kann und das x1_Gen entweder 0 oder 1 beträgt, kann sich bei dieser Rechnung jede Ganzzahl zwischen 0 und 8 ergeben. Somit besteht die Möglichkeit, abhängig von den Genen des Wesens, die Veränderung an jeder Stelle der Liste zu speichern.
 
 ![carbon (6)](https://user-images.githubusercontent.com/65679099/203022345-ae6ef6a8-d340-4779-b36f-eeff81980d6b.png)
