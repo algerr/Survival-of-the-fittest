@@ -28,6 +28,7 @@ https://user-images.githubusercontent.com/65679099/208104099-c17a43d5-66a3-464c-
   - [Die Initialisierung der Safezone](#die-initialisierung-der-safezone)
   - [Die Vererbung der Gene](#die-vererbung-der-gene)
 - [Die Main-Funktion und Initialisierung aller Variablen](#die-main-funktion-und-initialisierung-aller-variablen)
+- [Reflexion](#reflexion)
 - [Quellenverzeichnis](#quellenverzeichnis)
 - [Eigenständigkeitserklärung](#eigenständigkeitserklärung)
 
@@ -587,6 +588,41 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+# Reflexion
+
+In der folgenden Reflexion soll es um den Halbjahresrückblick unserer 
+geleisteten Arbeit gehen und um die Kompetenzen, die wir dadurch 
+verbessert bzw. neu erworben haben. Angefangen haben wir am 
+Halbjahresbeginn mit dem “VocabNow” Projekt. Als Ziel hatten wir uns 
+gesetzt, einen Vokabeltrainer zu entwickeln, welcher in der Lage sein 
+sollte, mit einer Spracherkennungssoftware dem Nutzer das Vokabellernen zu vereinfachen. 
+Dabei setzten wir viele verschiedene Ideen um 
+(siehe Blogeinträge). Mit jeder Stunde kamen immer weitere Ideen dazu und das Projekt hat uns wirklich Freude bereitet. 
+Eigentlich war alles gut umsetzbar, jedoch scheiterte es in den Herbstferien dann am finalen Schritt. 
+"VocabNow" sollte eine App fürs Handy sein und musste deswegen auch im App Store veröffentlicht werden.
+Leider wird dafür ein Apple Developer Account benötigt, der 100€ im Jahr kostet.
+Das konnten wir leider nicht stemmen, weshalb wir uns leider, was "VocabNow" anging, geschlagen geben mussten. 
+Daraufhin motivierte uns jedoch der Frust über das verlorene Projekt. Wir wollten uns damit nicht zufriedengeben und überlegten, ein weiteres Projekt anzufangen.
+Bei der Suche nach dem perfekten Projekt kam uns Conway's Spiel des Lebens in den Sinn und die Themen des früheren Biologieunterrichts.
+Das Thema Genetik fanden wir sehr interessant und überlegten uns, was man denn daraus machen könnte.
+Die Idee war, eine Evolution zu simulieren.
+Die Entwicklung einzelner Wesen im Kampf ums Überleben.
+Sie sollten sehr auf ihre Gene angewesen sein und so begannen wir voller Motivation die Arbeit an "Survival of the fittest".
+Das Projekt hat uns bzgl. der Programmierung sehr weitergebracht. Man mag zwar eine Idee haben, jedoch ist die Umsetzung immer etwas ganz anderes. 
+Daniel, der vorher keinen Kontakt mit dem Programmieren hatte, erlernte die Programmiersprache Python und Laurenz festigte seine Kenntnisse. 
+Gerade der pragmatische Bezug zur Evolution und Biologie war sehr hilfreich, um unsere Fähigkeit zur Problemlösung zu erweitern. 
+Durch viele Funktion, konnte die Grundidee des Programms in kleinere Teilprobleme separiert werden und man musste sich nicht dem Ganzen sondern nur Teilen annehmen.
+Letztendlich, nachdem alles zusammengefügt wurde, funktionierte es einwandfrei.
+Eine weitere wichtige Fähigkeit, die auch durch unser Projekt verbessert wurde, war das eindeutige und anschauliche Erklären.
+Wenn eine Person, die mit dem Projekt gar nichts zu tun hat, den Quelltext ohne Kommentare liest, wird es auch mit weitreichenden Python-Kenntnissen schwierig, solange keine Kommentare vorhanden sind. Infolgedessen war es eine wichtige Aufgabe, den Quelltext so verständlich wie möglich zu machen, indem wir an vielen Stellen Erklärungen eingefügt haben.
+Auch die Dokumentierung des Projektes auf der Projektseite war wichtig dafür.
+Durch Markdown konnte man Tabellen, Grafiken und weitere visualisierende Elemente einfügen, die dem Leser die Erklärung näherbringen.
+Auch das Erstellen einer klaren und ansprechenden sowie lehrreichen GitHub Präsenz viel uns mit der Zeit immer leichter.
+Definitiv wurde unsere Teamfähigkeit verbessert, da wir bei all dem, was wir uns vorgenommen hatten, die Arbeit häufig aufteilten. 
+Darüber hinaus haben wir gelernt auch in stressigen Situationen gemeinsam eine Lösung zu erarbeiten.
+Abschließend lässt sich jetzt rückblickend sagen, dass das Scheitern am "VocabNow" Projekt sich für uns bzgl. der Teamarbeit, Motivation und Leistung, die wir erbringen mussten, positiv ausgewirkt hat. Natürlich wäre es schön gewesen, an einem Projekt von Anfang bis Ende zu arbeiten, doch es geht im Leben nicht immer alles nach Plan und das hat uns dieses Projekt auch gezeigt. 
+Deshalb sind wir froh über das, was wir erreicht haben und freuen uns auf das nächste Projekt im Informatikunterricht.
 
 # Quellenverzeichnis
 
