@@ -460,34 +460,34 @@ Jedes neue Wesen mit "guten Genen" wird an die WesenListe angehängt und ist in 
 ```python
 for i, creature in enumerate(WesenListe):
   for x, Safespot in enumerate(Safezone):
-    # Bei jedem Wesen wird geprüft, ob die Koordinaten(Position) mit denen der Safezone übereinstimmen
+    # Bei jedem Wesen wird geprüft, ob die Koordinaten mit denen der Safezone übereinstimmen.
     if creature.pos[0] == Safespot[0] and creature.pos[1] == Safespot[1]:
-      # Wenn das Ganze zutrifft, wird ein neues Wesen erschaffen
-      # Dieses Wesen wird ohne Gene erschaffen
+      # Wenn alles zutrifft, wird ein neues Wesen erschaffen.
+      # Dieses Wesen wird ohne anfängliche zufällige Gene erschaffen.
       neuesWesen = Wesen(0)
       for j, genom in enumerate(creature.Gene):
-        # Das überlebende Wesen vererbt seine Gene an das neuerschaffene Wesen
-        neuesWesen.Gene.append(gene([genom.x_gen[0], genom.x_gen[1]], [genom.y_gen[0], genom.y_gen[1]], genom.z_gen))
-      # Somit lässt sich eine Liste der Überlebenden mitsamt ihren Genen erstellen
+        # Das überlebende Wesen vererbt seine Gene an das neu erschaffene Wesen.
+        neuesWesen.Gene.append(Genom([genom.x_gen[0], genom.x_gen[1]], [genom.y_gen[0], genom.y_gen[1]], genom.z_gen))
+      # Somit lässt sich eine Liste der Überlebenden mitsamt ihren Genen erstellen.
       Überlebende.append(neuesWesen)
-    # Die Liste der Wesen wird nach jeder Generation geleert
-    WesenListe = []
-    # Die Anzahl der Wesen in der Liste der Überlebenden wird ausgegeben
-    print('Anzahl der Überlebenden:' + str(len(Überlebende)))
-    Temp = GesamtAnzahl
-    # Für jedes der Wesen (in unserem Beispiel 200)
-    while Temp > 0:
-      # Ein Wesen wird aus der Liste der Überlebenden ausgewählt
-      AuserwähltesWesen = Überlebende[random.randrange(len(Überlebende))]
-      neuesWesen = Wesen(0)
-      for j, genom in enumerate(AuserwähltesWesen.Gene):
-        # Und Erbinformationen (Bewegung, Farbe, etc.) werden an ein anderes Wesen weitergegeben
-        # Starke/gute Gene, mit denen ein Wesen in der vorigen Generation die Safezone erreicht hat, werden weitergegeben
-        neuesWesen.Gene.append(gene([genom.x_gen[0], genom.x_gen[1]], [genom.y_gen[0], genom.y_gen[1]], genom.z_gen))
-        # Das neue Wesen wird zur Liste der Wesen hinzugefügt
-      WesenListe.append(neuesWesen)
-      # Das Ganze geht so lange, bis durch alle Wesen durch iteriert wurde
-      Temp -= 1
+# Die Liste der Wesen wird nach jeder Generation geleert.
+WesenListe = []
+# Die Anzahl der Wesen in der Liste der Überlebenden wird ausgegeben.
+print('Anzahl der Überlebenden:' + str(len(Überlebende)))
+Temp = GesamtAnzahl
+# Für jedes der (in unserem Beispiel 200) Wesen 
+while Temp > 0:
+  # wird ein Wesen aus der Liste der Überlebenden zufällig ausgewählt.
+  AuserwähltesWesen = Überlebende[random.randrange(len(Überlebende))]
+  neuesWesen = Wesen(0)
+  for j, genom in enumerate(AuserwähltesWesen.Gene):
+    # Und Erbinformationen (Bewegung, Farbe, etc.) werden an ein anderes Wesen weitergegeben.
+    # Starke/gute Gene, mit denen ein Wesen in der vorigen Generation die Safezone erreicht hat, werden weitergegeben.
+    neuesWesen.Gene.append(Genom([genom.x_gen[0], genom.x_gen[1]], [genom.y_gen[0], genom.y_gen[1]], genom.z_gen))
+  # Das neue Wesen wird zur Liste der Wesen hinzugefügt, die in der nächsten Generation die Safezone erreichen müssen.
+  WesenListe.append(neuesWesen)
+  # Bis alle Wesen der Liste der Überlebenden enumeriert wurden, wird die Vererbung wiederholt.
+  Temp -= 1
 ```
 
 # Die Main-Funktion und Initialisierung aller Variablen
@@ -520,54 +520,59 @@ Es gebe auch die Möglichkeit, die Datei als Modul in eine andere Datei zu impor
 Eigentlich wäre dieser Zusatz nicht nötig, da dieses Projekt nur auf einer Datei beruht, jedoch ist es eine gute Angewohnheit, Hauptdateien` (Main-Dateien) mit dieser Bedingung am Ende zu versehen, da sich das Ganze positiv auf zukünftige Projekte, wo vielleicht mit selbstgeschriebenen Modulen gearbeitet wird, auswirkt.
 ```python
 def main():
-    # Deklarierung der Variablen als Global, sodass jedes Objekt und jede Funktion darauf zugreifen kann
+    # Deklarierung der Variablen als Global, sodass jedes Objekt und jede Funktion darauf zugreifen kann.
     global WesenListe, Generation, Größe, GenomGröße, PositionsListe, Safezone, Überlebende, GesamtAnzahl
-    # Initialisierung Pygames
+    # Initialisierung Pygames.
     pygame.init()
-    # In dieser Liste werden alle Wesen gespeichert
+    # In dieser Liste werden alle Wesen gespeichert.
     WesenListe = []
-    # Von jedem Wesen werden 8 Positionen gespeichert, sodass die Bewegung nachverfolgbar ist (s. Schweif im GitHub Repository)
+    # Von jedem Wesen werden 8 Positionen gespeichert, sodass die Bewegung nachverfolgbar ist. (Siehe "Der Schweif hinter den Wesen" in der Dokumentation)
     PositionsListe = [[], [], [], [], [], [], [], []]
-    # Alle überlebenden Wesen werden in dieser Liste gespeichert
+    # Alle überlebenden Wesen werden in dieser Liste gespeichert.
     Überlebende = []
-    # [Aktuelle Generation, Ablaufende Ticks, Standard-Zeitwert für die ablaufenden Ticks]
     # Eine Generation dauert 200 Ticks, es sei denn, die Wesen bewegen sich vorher nicht mehr.
-    # Danach werden die ablaufenden Ticks (Generation[1]) wieder auf 200 gesetzt und das Ganze beginnt von Neuem
+    # Danach werden die ablaufenden Ticks (Generation[1]) 
+    # wieder auf den Standard-Wert 200 (Generation[2]) gesetzt 
+    # und die Generationenanzahl (Generation[0]) um 1 erhöht.
+    # [Generationenanzahl, Ablaufende Ticks, Standard-Zeitwert für die ablaufenden Ticks]
     Generation = [1, 200, 200]
-    # Größe des Simulationsbereiches
+    # Größe des Simulationsfensters.
     Größe = [100, 100]
-    # Anzahl der Wesen
+    # Anzahl der Wesen.
     GesamtAnzahl = 200
-    # Beinhaltet alle Pixel, die die Safezone markieren
+    # Liste, die alle Felder, die die Safezone markieren, beinhaltet.
     Safezone = []
+    # Safezone
     SafezoneX = Größe[0] - 1
     while SafezoneX >= 0:
         SafezoneY = Größe[1] - 1
         while SafezoneY >= 0:
-            # Über die Intervalle für X und Y lässt sich die Safezone bestimmen
-            # Es wird von 100 bis 0 iteriert und, wenn sich SafezoneX/SafezoneY im Safezone-Bereich befinden, werden diese der Safezone Liste angehängt
+            # Über die Intervalle für X und Y lässt sich die Safezone bestimmen.
+            # Es wird von 100 bis 0 iteriert und, wenn sich SafezoneX/SafezoneY im Safezone-Bereich befinden, 
             if SafezoneX >= 0 and SafezoneX <= 30 and SafezoneY >= 0 and SafezoneY <= 30:
-                # Die Safezone Pixel werden festgehalten
+                # werden deren aktuelle Werte der Safezone-Liste angehängt.
                 Safezone.append([SafezoneX, SafezoneY])
             SafezoneY -= 1
         SafezoneX -= 1
-        # print(SafezoneX)
-        # print(SafezoneY)
-    # Die Größe (Komplexität in der Berechnung) des Erbguts wird festgelegt. Je größer, desto komplizierter der Organismus (Beispiel: Bakterium = 1
+
+    # Die Größe (Anzahl der Genome) des Erbguts wird festgelegt. Je größer das Erbgut, desto komplizierter der Organismus. (Beispiel: Bakterium = 1
     #                                                                                                                                 Mensch = 1000)
+    # Wenn die Simulation auf einem etwas älteren PC ausgeführt wird, 
+    # sollte die Genomgröße verringert werden.
     GenomGröße = 10
 
-    # Mit den initialisierten (Variablen)Parametern werden die Wesen generiert
+    # Mit den definierten Parametern werden die Wesen generiert.
     generieren()
 
-    # Die Fenstergröße wird festgelegt (Der Faktor 8 und der Summand 59 fungiert wieder als Anpassung an die Größe des Pygame Fensters)
+    # Die Fenstergröße wird festgelegt. (Der Faktor 8 und der Summand 59 fungiert wieder als Anpassung an die Größe des Pygamefensters)
     Fenster = pygame.display.set_mode((Größe[0] * 8 + 59, Größe[1] * 8 + 59))
 
-    # Fenstertitel: 'Survival of the fittest - Wer ist am besten angepasst ?' wird festgelegt
-    pygame.display.set_caption('Survival of the fittest - Wer ist am besten angepasst ?')
+    # Fenstertitel: 'Survival of the fittest - Wer ist am besten angepasst ?' wird festgelegt.
+    pygame.display.set_caption(
+        'Survival of the fittest - Wer ist am besten angepasst ?')
 
-    # Während das Programm läuft, gibt es nach jeder Generation eine 5ms Pause.
-    # Daraufhin wird das Fenster gerendert, überprüft, ob die Simulation überhaupt noch läuft und dann die simulationStart-Funktion aufgerufen
+    # Während das Programm läuft, gibt es nach jeder Generation eine 5ms Pause, um Komplikationen zwischen den Generationen zu vermeiden.
+    # Daraufhin wird das Fenster gerendert, überprüft, ob die Simulation überhaupt noch läuft und dann die Main-Funktion ausgeführt.
     while True:
         pygame.time.delay(5)
         renderFenster(Fenster)
