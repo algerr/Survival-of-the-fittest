@@ -382,7 +382,7 @@ Deshalb wird dazu auch noch überprüft, ob die x- und y-Positionen irgendeines 
 Sollte das der Fall sein, wird ein False-Statement zurückgegeben, das die eingegebenen Werte als invalide Positionen deklariert.
 Wenn keine Kongruenz zu den Positionen eines anderen Wesens vorliegt, wird ein True-Statement zurückgegeben und die eingegebenen Werte sind valide Positionen.
 
-![überprüfeValiditätCarbon](https://user-images.githubusercontent.com/65679099/202256158-ccb9bd2e-1091-47c0-8350-b7cf945b668c.png)
+![carbon (1)](https://user-images.githubusercontent.com/65679099/208089431-4249fe72-b2eb-478a-8ec9-8b0464ba9a55.png)
 
 # Die Safezone
 
