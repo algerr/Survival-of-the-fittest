@@ -258,7 +258,7 @@ Eine Mutation kann sich zwar einerseits positiv auf das Überleben des Wesens au
   
 </details>
 
-![carbon (14)](https://user-images.githubusercontent.com/65679099/207897194-721fcab6-37ac-47e6-a606-86da577570b4.png)
+![carbon](https://user-images.githubusercontent.com/65679099/208078874-45664361-1316-47c6-9114-d3572d8d58df.png)
 
 # Die Simulation
 
