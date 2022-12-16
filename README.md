@@ -5,9 +5,8 @@
 
 <img src="https://user-images.githubusercontent.com/111282979/203019520-8f5bb350-82f7-41cb-a5b9-6865cea33f66.gif" width="650px" height="650px"/>
 
-[Zu den Blogeinträgen](https://github.com/algerr/Stundenblog-1)
-
 # Inhaltsverzeichnis
+- [Blogeinträge](#blogeintr%C3%BCge)
 - [Ausführungsanweisungen](#ausf%C3%BChrungsanweisung)
 - [Das Grundprinzip](#das-grundprinzip)
 - [Was ist Pygame?](#was-ist-pygame)
@@ -31,6 +30,10 @@
 - [Die Main-Funktion und Initialisierung aller Variablen](#die-main-funktion-und-initialisierung-aller-variablen)
 - [Quellenverzeichnis](#quellenverzeichnis)
 - [Eigenständigkeitserklärung](#eigenständigkeitserklärung)
+
+# Blogeinträge
+
+[Zu den Blogeinträgen](https://github.com/algerr/Stundenblog-1)
 
 # Ausführungsanweisung
 
