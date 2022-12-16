@@ -1,3 +1,5 @@
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Namensnennung - Nicht kommerziell - Keine Bearbeitungen 4.0 International Lizenz</a>
+
 ![SOTF-GIF](https://user-images.githubusercontent.com/65679099/205529978-335f3294-ac76-4dea-ab23-a727b27962aa.gif)
 
 <img src="https://user-images.githubusercontent.com/111282979/203019520-8f5bb350-82f7-41cb-a5b9-6865cea33f66.gif" width="650px" height="650px"/>
@@ -533,7 +535,7 @@ def main():
         SafezoneX -= 1
         # print(SafezoneX)
         # print(SafezoneY)
-    # Die Größe (Komplexität in der Berechnung) des Erbguts wird festgelegt. Je gräßer, desto komplizierter der Organismus (Beispiel: Bakterium = 1
+    # Die Größe (Komplexität in der Berechnung) des Erbguts wird festgelegt. Je größer, desto komplizierter der Organismus (Beispiel: Bakterium = 1
     #                                                                                                                                 Mensch = 1000)
     GenomGröße = 10
 
