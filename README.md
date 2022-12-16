@@ -324,7 +324,7 @@ Wert des x1-Gens           |x1_Gen = 0               |x1_Gen = 1
 :-------------------------:|:-------------------------:|:-------------------------:|
 Wie mit der Veränderung verfahren wird| Die Veränderung wird nicht gespeichert| Die Veränderung wird in der Liste gespeichert|
 
-An welcher Stelle (Index) die Veränderung in der jeweiligen Liste nun jedoch genau gespeichert wird, soll jedoch nun auch durch das y- und z-Gen beeinflusst werden.
+An welcher Stelle (Index) die Veränderung in der jeweiligen Liste nun jedoch genau gespeichert wird, soll jedoch nun auch durch das y1- und x1-Gen beeinflusst werden.
 
 ![y1gendurch2-x1gen](https://user-images.githubusercontent.com/65679099/208081397-d9e49ef3-9181-4094-b44e-cfc51420c90a.png)
 
