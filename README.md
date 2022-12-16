@@ -274,10 +274,13 @@ Dafür haben wir die Funktion "generieren" definiert, welche die festlegbare Ges
 
 ```python
 def generieren():
+    # Um die festgelegte Anzahl an Wesen zu generieren, 
+    # wird ein temporärer Wert mit dieser Anzahl initialisiert.
     Temp = GesamtAnzahl
-    # Solange der temporäre Wert größer 0 ist, werden Wesen mit der festgelegten Genomgröße erschaffen
+    # Solange der temporäre Wert größer 0 ist, werden Wesen mit der festgelegten Genomgröße erschaffen.
     while Temp > 0:
         WesenListe.append(Wesen(GenomGröße))
+        # Nachdem ein Wesen erschaffen wurde, wird der temporäre Wert um 1 verringert.
         Temp -= 1
 ```
 
