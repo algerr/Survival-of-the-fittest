@@ -3,7 +3,7 @@
 
 ![SOTF-GIF](https://user-images.githubusercontent.com/65679099/205529978-335f3294-ac76-4dea-ab23-a727b27962aa.gif)
 
-https://user-images.githubusercontent.com/65679099/208103956-ba5eb0c3-a10d-4907-a7df-2a93289b7d95.mp4
+https://user-images.githubusercontent.com/65679099/208104099-c17a43d5-66a3-464c-90c1-cbb0c4b8ec80.mp4
 
 # Inhaltsverzeichnis
 - [Blogeinträge](#blogeintr%C3%A4ge)
