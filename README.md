@@ -167,7 +167,7 @@ Zum Schluss kommen noch die einzelnen Wesen hinzu und der "Generationszähler", 
   <details>
     <summary>Erklärung</summary>
 
-Alles ist ausgehend von den Werten der Standardfarbe grau (125, 125, 125). Je nach Kombination der Gene wird ein Wert mit dem Standardwert summiert oder davon subtrahiert. Um die Wesen auch visuell bezüglich "guter, angepasster Gene" unterscheiden zu können, wird die Anzahl der funktionalen Genome genutzt. Ein Genom gilt als funktional, wenn das x1_gen den Wert 1 besitzt, denn dadurch nimmt dieses Genom einen Einfluss auf die Bewegung des Wesens.<br> (Nur zur Erinnerung: das x1_Gen benötigt den Wert 1, um die Veränderung im stabilen Wert zu speichern.)<br> Die Anzahl dieser funktionalen Genome wird folglich durch Enumeration überprüft.
+Alles ist ausgehend von den Werten der Standardfarbe grau (125, 125, 125). Je nach Kombination der Gene wird ein Wert mit dem Standardwert summiert oder davon subtrahiert. Um die Wesen auch visuell bezüglich "guter, angepasster Gene" unterscheiden zu können, wird die Anzahl der funktionalen Genome genutzt. Ein Genom gilt als funktional, wenn das x1_Gen den Wert 1 besitzt, denn dadurch nimmt dieses Genom einen Einfluss auf die Bewegung des Wesens.<br> (Nur zur Erinnerung: das x1_Gen benötigt den Wert 1, um die Veränderung im stabilen Wert zu speichern.)<br> Die Anzahl dieser funktionalen Genome wird folglich durch Enumeration überprüft.
 
 Genkombination|x1_Gen = 1 und y1_Gen = 0  |x1_Gen = 1 und y1_Gen = 1  |x1_Gen = 1 und y1_Gen = 2  |x1_Gen = 1 und y1_Gen = 3  |x1_Gen = 1 und y1_Gen = 4  |
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
@@ -175,7 +175,7 @@ Veränderung der roten Farbe|Wert wird addiert          |Wert wird subtrahiert  
 Veränderung der grünen Farbe|Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert          |Wert wird subtrahiert      |
 Veränderung der blauen Farbe|Wert bleibt gleich         |Wert bleibt gleich         |Wert bleibt gleich         |Wert bleibt gleich         |Wert wird addiert |
 
-Nach Feinjustierung hat sich für die Berechnung des zu `addierenden Wertes` ergeben, dass<br> das Minimum aus `(254 - *dem Farbwert*)` und dem Integer aus `(40 + z_Gen * 60) * 2 / Anzahl der funktionellen Gene` <br>**für jegliche Genomgrößen funktioniert**.
+Nach Feinjustierung hat sich für die Berechnung des zu `addierenden Wertes` ergeben, dass<br> das Minimum aus `(254 - dem Farbwert)` und dem Integer aus `(40 + z_Gen * 60) * 2 / Anzahl der funktionellen Gene` <br>**für jegliche Genomgrößen funktioniert**.
 
 Für den zu `subtrahierenden Wert` hat sich ergeben, dass<br> das Minimum aus dem *Farbwert* und dem Integer aus `(40 + z_Gen * 60) * 2 / Anzahl der funktionellen Genome` <br>**für jegliche Genomgrößen funktioniert**.
 
