@@ -376,7 +376,7 @@ Index (s)                  |s = 0                      |s = 1                   
 ## Überprüfung der Validität
 
 Da die Simulation, um schöne Ergebnisse mit dennoch komplexen Genen zu erhalten, viele Generationen durchlaufen muss, wäre es ziemlich schade, wenn auf einmal ein Fehler bezüglich der Koordinaten eines Wesens oder der Felder der Safezone auftreten würde.
-Dafür haben wir eine Funktion `überprüfeValidität` mit den Parametern "(x und y)" definiert, die überprüft, dass die eingegebenen Parameter gültigen Koordinaten im Simulationsfenster entsprechen.
+Dafür haben wir eine Funktion `überprüfeValidität` mit den Parametern `x und y` definiert, die überprüft, dass die eingegebenen Parameter gültigen Koordinaten im Simulationsfenster entsprechen.
 Infolgedessen ist es sehr ungünstig, wenn sich mehrere Wesen auf ein und demselben Feld befinden können, da die Konkurrenz darunter leidet.
 Deshalb wird dazu auch noch überprüft, ob die x- und y-Positionen irgendeines Wesens mit den übergebenen Parametern übereinstimmt.
 Sollte das der Fall sein, wird ein False-Statement zurückgegeben, das die eingegebenen Werte als invalide Positionen deklariert.
