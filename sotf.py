@@ -56,6 +56,8 @@ class Genom(object):
         self.y_gen = y_gen
         self.z_gen = z_gen
         # Bei einer Chance von 1 zu 50 mutiert das Gen. (Wahrscheinlickeit von 2%)
+        if random.randrange(50) == 0:
+            self.mutation()
            
     def mutation(self):
         # Der Mutationswert ist ein zufälliger Wert zwischen 0 und 15, 
