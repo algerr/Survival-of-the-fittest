@@ -56,7 +56,7 @@ Einflussreich waren dabei der Biologieunterricht des vergangenen Jahres sowie [C
 Das Programm stellt eine Evolution dar. Wesen mit unterschiedlichen Genen geben ihr Bestes, um die grünmarkierte Safezone zu erreichen. Wer am Ende der Generation die Zone erreicht hat, gibt seine Gene an die nächste Generation weiter.
 Zu Beginn erhalten alle Wesen ein zufälliges Erbgut.
 Dieses besteht aus X-Genen, Y-Genen und Z-Genen.
-Wie in der menschlichen DNA bestehen die Gene aus Basenpaaren. Um diese Paare zu vereinfachen, besteht bei uns das X-Gen aus: X[1] und X[2], das Y-Gen aus: Y[1] und Y[2] und nur das Z-Gen besteht aus einem Wert. 
+Wie in der menschlichen DNA bestehen die Gene aus Basenpaaren. Um diese Paare zu vereinfachen, besteht bei uns das X-Gen aus: `X[1]` und `X[2]`, das Y-Gen aus: `Y[1]` und `Y[2]` und nur das Z-Gen besteht aus einem Wert. 
 Davon abhängig sind die Bewegung jedes einzelnen Wesens und seine Farbe.
 Nun gilt: Wessen Gene es in die Safezone schaffen, werden weitergegeben.
 Somit werden zunehmend Wesen mit ähnlichen Genen übrig bleiben, die fast alle die Safezone erreichen.
@@ -231,7 +231,7 @@ PositionsListe[7].append([Wesen.pos[0], Wesen.pos[1]])
 # Das Genom
 
 Das Objekt `Genom` beinhaltet drei verschiedene Gentypen, die auch als Parameter übergeben werden - 
-das X-Gen, Y-Gen und Z-Gen. Wie diese Gene initiiert werden (wie sie beispielsweise in zwei Werte geteilt werden oder welche Werte ihnen gegeben werden) ist
+das `X-Gen`, `Y-Gen` und `Z-Gen`. Wie diese Gene initiiert werden (wie sie beispielsweise in zwei Werte geteilt werden oder welche Werte ihnen gegeben werden) ist
 bis dato nicht festgelegt.
 Somit könnte zur Zeit noch alles darin gespeichert werden, denn, was konkret gespeichert wird, wird erst später festgelegt.
 
@@ -250,7 +250,7 @@ Damit die ganze Genetik noch realistischer ist, können die Gene jedes Genoms nu
 Mutierendes Gen|x0-Gen mutiert             |x1-Gen mutiert             |y0-Gen mutiert             |y1-Gen mutiert             |z-Gen mutiert              |
 zugeteilter Wert zum Gen |zufälliger Wert zwischen 0 und 1|zufälliger Wert zwischen 0 und 1|zufälliger Wert zwischen 0 und 7|zufälliger Wert zwischen 0 und 7|zufälliger Wert zwischen 0 und 8|
 
-Wenn der Mutationswert `0` beträgt , mutiert das x0-Gen. Bei einem Mutationswert von `1` hingegen das x1-Gen. Wenn der Wert im Intervall [2;4] liegt, dann mutiert das y0-Gen und wenn die Zahl Im Intervall [5;7] liegt das y1-Gen. Wenn der Wert sogar im Intervall [8;15] liegen sollte , mutiert das z-Gen. Insgesamt lässt sich abschließend sagen, dass die Anzahl der Gesamtmutationen proportional zur Genomanzahl ist. Wenn man allerdings jedes Genom einzeln betrachtet, ist hier die Wahrscheinlichkeit konstant, dass ein Genom zu 2% mutiert. <br>
+Wenn der Mutationswert `0` beträgt , mutiert das x0-Gen. Bei einem Mutationswert von `1` hingegen das x1-Gen. Wenn der Wert im Intervall `[2;4]` liegt, dann mutiert das y0-Gen und wenn die Zahl Im Intervall `[5;7]` liegt das y1-Gen. Wenn der Wert sogar im Intervall `[8;15]` liegen sollte , mutiert das z-Gen. Insgesamt lässt sich abschließend sagen, dass die Anzahl der Gesamtmutationen proportional zur Genomanzahl ist. Wenn man allerdings jedes Genom einzeln betrachtet, ist hier die Wahrscheinlichkeit konstant, dass ein Genom zu 2% mutiert. <br>
 Eine Mutation kann sich zwar einerseits positiv auf das Überleben des Wesens auswirken, weil es die Bewegungsart zufällig verändert. Gleichzeitig kann eine Mutation aber auch negative Folgen mit sich bringen, weil alles auf dem Zufall beruht.
   
 </details>
@@ -260,9 +260,9 @@ Eine Mutation kann sich zwar einerseits positiv auf das Überleben des Wesens au
 # Die Simulation
 
 Sobald die Simulation startet, wird zuerst abgefragt, ob die Generation noch läuft.
-Daraufhin wird bei jedem Tick der Generation (von 200 bis 1) durch die Liste der Wesen iteriert und für jedes Wesen ein "stabiler Wert" definiert.
+Daraufhin wird bei jedem Tick der Generation (von 200 bis 1) durch die Liste der Wesen iteriert und für jedes Wesen ein `stabiler Wert` definiert.
 Dazu wird auch eine Variable mit dem Namen `Veränderung` definiert, die die aktuelle Position und weitere momentane Eigenschaften des Wesens beschreibt.
-Dieser "stabile Wert" wird im Folgenden dazu genutzt, die "Veränderung" zu speichern.
+Dieser "stabile Wert" wird im Folgenden dazu genutzt, die `Veränderung` zu speichern.
 
 ## Das Generieren
 
@@ -307,7 +307,7 @@ if x_gen[0] == 0:
 
 ![Screenshot (30)](https://user-images.githubusercontent.com/111282979/204501332-41445875-13b4-4159-ac91-ee6d7a3883c1.png)
 
-y0-gen == 0                |y0_gen == 1                |y0_gen == 2                |y0_gen == 3                |y0_gen == 4                |y0_gen == 5
+y0-Gen == 0                |y0_Gen == 1                |y0_Gen == 2                |y0_Gen == 3                |y0_Gen == 4                |y0_gen == 5
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
 Die y-Position(Höhe) des Wesens wird der Veränderung hinzugefügt|Die x-Position(Breite) des Wesens wird der Veränderung hinzugefügt|Der aktuelle Zeitpunkt (Tick) der Generation wird der Veränderung hinzugefügt|Die Tatsache, dass das Wesen sich in der Safezone befindet wird der Veränderung als Wert(z_gen / 2) hinzugefügt|Ein zufälliger Wert zwischen 0 und 4, multipliziert mit dem (z_gen / 8), wird der Veränderung hinzugefügt|Ein zufälliger Wert zwischen 0 und 3, multipliziert mit dem (z_gen / 8), wird der Veränderung hinzugefügt|
 
