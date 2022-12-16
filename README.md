@@ -326,7 +326,7 @@ Wie mit der Veränderung verfahren wird| Die Veränderung wird nicht gespeichert
 
 An welcher Stelle (Index) die Veränderung in der jeweiligen Liste nun jedoch genau gespeichert wird, soll jedoch nun auch durch das y- und z-Gen beeinflusst werden.
 
-![y1gendurch2-x1gen](https://user-images.githubusercontent.com/65679099/208081197-4c842e24-43cf-4323-99f1-f19e54486fbd.svg)
+![y1gendurch2-x1gen](https://user-images.githubusercontent.com/65679099/208081397-d9e49ef3-9181-4094-b44e-cfc51420c90a.png)
 
 Das y1_Gen wird durch `(2 - x1-Gen)` geteilt und das Ergebnis in einen Integer (Ganzzahl) gerundet.
 Da das y1_Gen einen Wert zwischen 0 und 8 haben kann und das x1_Gen entweder 0 oder 1 beträgt, kann sich bei dieser Rechnung jede Ganzzahl zwischen 0 und 8 ergeben. Somit besteht die Möglichkeit, abhängig von den Genen des Wesens, die Veränderung an jeder Stelle der Liste zu speichern.
