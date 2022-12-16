@@ -122,18 +122,20 @@ Zum Schluss kommen noch die einzelnen Wesen hinzu und der "Generationszähler", 
   Dadurch ist es möglich, die gespeicherten alten Positionen aus der PositionsListe der Reihe nach zu färben. Da die PositionsListe mit den ältesten Positionen beginnt und mit den aktuellsten aufhört, wird mit jedem Durchlaufen des for-Loops, die Farbe des Feldes erhöht. Somit werden, je näher man der aktuellen Position des Wesens kommt, die Felder der ehemaligen Positionen heller gefärbt.
   ```python
   for i, PositionsListenWerte in enumerate(PositionsListe):
-    # Nun wird durch die Positionsdaten (also PositionsListenWerte) iteriert und das Ganze in "altePosition" gespeichert
+    # Die Positionsdaten (also PositionsListenWerte) werden enumeriert und das Ganze in "altePosition" gespeichert,
+    # da diese Position nun nicht mehr aktuell ist.
     for j, altePosition in enumerate(PositionsListenWerte):
-    # Je nachdem, welchen Index die Position hat, wird sie dunkler/heller gefärbt
-    # Der erste gespeicherte Wert (die älteste Position) wird mit i=0 bezeichnet
-    # Also beträgt der Farbwert (5 + 0*10)
-    # Somit ist der RGB Wert ((5+0*10),(5+0*10),(5+0*10)) also (5,5,5)
-    # Je neuer der gespeicherte, alte Wert ist, also, je näher er an der aktuellen Position liegt,
-    # desto heller wird er.
-    # Somit wird der aktuellste gespeicherte Wert (nach dem aktuellen) mit i = 7 bezeichnet
-    # Also ist der RGB Wert ((5+7*10),(5+7*10),(5+7*10)) also (75,75,75), welcher definitiv heller ist als (5,5,5)
-    # Die altePosition wird mit dem Faktor 8 und dem Summanden 30 an die Größe des Fensters angepasst
-    # Und anschließend wird jede altePosition in ihrer Farbe gezeichnet
+      # Je nachdem, welchen Index die Position hat, wird sie dunkler/heller gefärbt.
+      # Der erste gespeicherte Wert (die älteste Position) wird mit i=0 bezeichnet.
+      # Also beträgt der Farbwert (5 + 0*10).
+      # Somit ist der RGB Wert ((5+0*10),(5+0*10),(5+0*10)) also (5,5,5).
+      # Je neuer die gespeicherte Position ist (also desto näher er an der aktuellen Position liegt), 
+      # desto heller wird sie gerendert.
+      # Somit wird der aktuellste gespeicherte Wert mit i = 7 bezeichnet.
+      # Also ist der RGB Wert ((5+7*10),(5+7*10),(5+7*10)) also (75,75,75), welcher definitiv heller ist als (5,5,5).
+      # Die altePosition wird mit dem Faktor 8 und dem Summanden 30 an die Größe des Fensters angepasst.
+      # Und anschließend wird jede altePosition in ihrer Farbe gerendert.
+      # So entsteht ein Schweif, der, je weiter er vom Wesen entfernt ist, dunkler wird.
       pygame.draw.rect(Fenster, (5 + i * 10, 5 + i * 10, 5 + i * 10), (30 + altePosition[0] * 8, 30 + altePosition[1] * 8, 7, 7))
   ```
 
