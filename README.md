@@ -220,17 +220,17 @@ Somit rückt jede Position immer eine Liste weiter nach vorne.
 Anschließend wird die gespeicherte Position an letzter Stelle `(8. Liste)` gelöscht, sodass Platz für eine neue Position vorhanden ist.
 ```python
 # Nun wird die Bewegung der Wesen visualisiert.
-    LoopZähler = 7
-    # Jede Position des Wesens wird an der Stelle 0 der PositionsListe (PositionsListe[0]) gespeichert.
-    # Jedes Mal, wenn eine neue Position dazukommt, wird die vorige Position um einen Index nach vorne "verschoben".
-    # Die Liste kann 8 Elemente beinhalten und die Nummerierung beginnt bei 0.
-    # Deshalb trägt der LoopZähler den Wert 7.
-    while LoopZähler > 0:
-        # Solange der LoopZähler größer 0 ist, wird jede gespeicherte Position um 1 nach vorne "verschoben".
-        PositionsListe[7 - LoopZähler] = PositionsListe[8 - LoopZähler]
-        LoopZähler -= 1
-    # Anschließend wird die Position an letzter Stelle gelöscht, sodass Platz für eine neue Position vorhanden ist.
-    PositionsListe[7] = []
+LoopZähler = 7
+# Jede Position des Wesens wird an der Stelle 0 der PositionsListe (PositionsListe[0]) gespeichert.
+# Jedes Mal, wenn eine neue Position dazukommt, wird die vorige Position um einen Index nach vorne "verschoben".
+# Die Liste kann 8 Elemente beinhalten und die Nummerierung beginnt bei 0.
+# Deshalb trägt der LoopZähler den Wert 7.
+while LoopZähler > 0:
+  # Solange der LoopZähler größer 0 ist, wird jede gespeicherte Position um 1 nach vorne "verschoben".
+  PositionsListe[7 - LoopZähler] = PositionsListe[8 - LoopZähler]
+  LoopZähler -= 1
+# Anschließend wird die Position an letzter Stelle gelöscht, sodass Platz für eine neue Position vorhanden ist.
+PositionsListe[7] = []
 ```
 Mit diesem Vorgehen kann die Position des Wesens jedes Mal auf's Neue gespeichert werden und jede bisherige Position rückt in der PositionsListe um eine Liste weiter nach vorne. Die PositionsListe ist zudem rückwärts zu lesen, da die neue Position eines Wesens, nachdem das Wesen auf der Oberfläche gerendert wurde, an letzter Stelle der PositionsListe gespeichert wird.
 ```python
