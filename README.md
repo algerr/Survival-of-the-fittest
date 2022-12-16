@@ -93,7 +93,7 @@ Zum Schluss kommen noch die einzelnen Wesen hinzu und der "Generationszähler", 
   draw.rect()                |Ein Rechteck mit beliebiger Größe und Farbe kann gezeichnet werden. Diese Funktion wird in diesem Projekt für das Rendering jeder viereckigen Form genutzt-vom Wesen bis zum schwarzen Hintergrund. <br> Benötigte Parameter: (Die Oberfläche, die RGB-Werte, (der Abstand vom linken Rand, der Abstand vom oberen Rand, die Breite des Rechtecks, die Höhe des Rechtecks)|
   font.Font()                |Es wird ein neues Objekt erstellt. Die Schriftart und Größe können festgelegt werden. <br> Benötigte Parameter: (Schriftart, Größe(Höhe der Schrift in Pixeln))|
   font.Font.render()         |Ein Text wird auf einer neu erzeugten Oberfläche gerendert. <br> Benötigte Parameter: (Der Text, Anti-Aliasing, Farbe des Textes)|
-  Surface.blit()             |Eine Oberfläche wird auf eine andere "draufgelegt". <br> Benötigte Paramter: (Neue Oberfläche, Untergrund-Oberfläche|
+  Surface.blit()             |Eine Oberfläche wird auf eine andere "draufgelegt". <br> Benötigte Paramter: (Neue Oberfläche, Untergrund-Oberfläche)|
   display.update()           |Ein gewisser Teil des Pygamefensters kann neu geladen werden. Wenn kein Parameter übergeben wird, wird das gesamte Fenster bzw. die gesamte Oberfläche neu geladen. (In diesem Projekt wird pygame.display.update() ohne Parameter aufgerufen.)|
   display.set_mode()         |Ein Fenster kann mit dieser Funktion initialisiert werden. <br> Benötigte Parameter: (Breite, Höhe)|
   display.set_caption()      |Der Fenstertitel kann mit dieser Funktion festgelegt werden. <br> Benötigte Parameter: (Fenstertitel (Beispiel: "Survival of the fittest - Wer ist am besten angepasst?)|
