@@ -359,18 +359,18 @@ Der stabile Wert ist für die Simulation von elementarer Bedeutung, denn er spei
 ## Zufällige Ausführung der Bewegungen
 
 Nun haben wir bei jedem Zeitwert (Tick) unserer Simulation eine Liste mit Werten, die aus der Kombination der Gene des Wesens berechnet wurden.
-Um die Bewegungen nun auch wirklich zufällig auszuführen, initialisieren wir eine weitere leere Liste, genannt: *ZufälligeBewegungen*.
-Die Liste des stabilen Wertes wird nun enumeriert und jeder Wert wird, multipliziert mit einem zufälligen Wert zwischen 0 und 39, der Liste der *ZufälligenBewegungen* angehängt. 
-Nun wird das letzte Mal die Liste der *ZufälligenBewegungen* enumeriert.
-Dabei gibt die Variable *s* den Index des Wertes in der Liste (von 0 bis 7) und die Variable *Aktion* den Wert an sich an.
-Damit kein unnötiger Fehler auftritt, wird noch die Bedingung überprüft, dass die Variable *Aktion* größer 0 ist.
-Dazu soll die Bedingung auch nur erfüllt sein, wenn *Aktion* das Maximum aller Werte ist (von ZufälligeBewegungen[0] bis ZufälligeBewegungen[7]).
+Um die Bewegungen nun auch wirklich zufällig auszuführen, initialisieren wir eine weitere leere Liste, genannt: `ZufälligeBewegungen`.
+Die Liste des stabilen Wertes wird nun enumeriert und jeder Wert wird, multipliziert mit einem zufälligen Wert zwischen 0 und 39, der Liste der `ZufälligenBewegungen` angehängt. 
+Nun wird das letzte Mal die Liste der `ZufälligenBewegungen` enumeriert.
+Dabei gibt die Variable `s` den Index des Wertes in der Liste `von 0 bis 7` und die Variable `Aktion` den Wert an sich an.
+Damit kein unnötiger Fehler auftritt, wird noch die Bedingung überprüft, dass die Variable `Aktion` größer 0 ist.
+Dazu soll die Bedingung auch nur erfüllt sein, wenn *Aktion* das Maximum aller Werte ist (von `ZufälligeBewegungen[0]` bis `ZufälligeBewegungen[7]`).
 Nun ist der Index des Maximums der Liste, der in *s* gespeichert ist, von großer Bedeutung.
-Dieser kann zwischen 0 und 7 liegen. Da die Bewegung, bzw. Änderung der Position eines Wesens nur in alle vier Himmelsrichtungen erfolgen kann, sind die Indizes 5 bis 7 bisher nicht implementiert. Wenn dafür aber eine gute Idee vorhanden sist, können diese mit Leichtigkeit umgesetzt werden.
+Dieser kann zwischen 0 und 4 liegen.
 
 Index (s)                  |s = 0                      |s = 1                      |s = 2                      |s = 3                      |s = 4|
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
-Änderung der Position      |Ein Feld nach links        |Ein Feld nach rechts       |Ein Feld nach oben         |Ein Feld nach unten        |Zwei zufällige Werte zwischen [-1;1] werden jeweils zur x und y Koordinate hinzuaddiert|
+Änderung der Position      |Ein Feld nach links        |Ein Feld nach rechts       |Ein Feld nach oben         |Ein Feld nach unten        |Zwei zufällige Werte zwischen `[-1;1]` werden jeweils zur x-und y-Koordinate addiert|
 
 
 ## Überprüfung der Validität
